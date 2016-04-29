@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/29/Android-CountDownTimer-使用时遇到的坑/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
 <meta property="og:description" content="CountDownTimer遇到的坑 先来看一段触发CountDownTimer的代码 12345678910111213141516mDefaultButton.setOnClickListener(new View.OnClickListener() &amp;#123;            @Override            public void onClick(View v) &amp;#123">
-<meta property="og:updated_time" content="2016-04-29T08:49:52.000Z">
+<meta property="og:updated_time" content="2016-04-29T08:55:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android CountDownTimer 使用时遇到的坑">
 <meta name="twitter:description" content="CountDownTimer遇到的坑 先来看一段触发CountDownTimer的代码 12345678910111213141516mDefaultButton.setOnClickListener(new View.OnClickListener() &amp;#123;            @Override            public void onClick(View v) &amp;#123">
@@ -80,7 +80,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -238,7 +238,7 @@
 <p>那期望的结果是：<br>4000<br>3000<br>2000<br>1000<br>finish</p>
 <p>实际的打印结果是：<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 997<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: isFinish!</p>
 <p>从上面的日志里面分析，当onTick返回的时间是1998毫秒时， 整个计时器紧接着就delay了1998毫秒， 然后就直接onFinish了， 计算次数减少一次，且最后一次计数间隔大于一毫秒小于两毫秒。</p>
-<p>回到上面场景，我们来分析下到底是什么原因导致的：<br>当第22行onTick(millisLeft)返回，且millisLeft = 1998毫秒， 继续往下执行，执行到最后一行sendMessageDelayed(obtainMessage(MSG), delay)位置，此时delay为999毫秒， 然后休眠999毫秒之后，重新进入到handleMessage方法，此时13行计算后millisLeft == 997， 进入到16行判断里，millisLeft &lt; mCountdownInterval条件成立， 继续休眠997毫秒， 继续进入handleMessage方法，此时millisLeft == -1毫秒，第14行millisLeft &lt;= 0条件成立，直接调用onFinish()方法，计时结束。</p>
+<p>回到上面场景，我们来分析下到底是什么原因导致的：<br>当第22行onTick(millisLeft)返回，且millisLeft == 1998毫秒， 继续往下执行，执行到最后一行sendMessageDelayed(obtainMessage(MSG), delay)位置，此时delay为999毫秒， 然后休眠999毫秒之后，重新进入到handleMessage方法，此时13行计算后millisLeft == 997， 进入到16行判断里，millisLeft &lt; mCountdownInterval条件成立， 继续休眠997毫秒， 继续进入handleMessage方法，此时millisLeft == -1毫秒，第14行millisLeft &lt;= 0条件成立，直接调用onFinish()方法，计时结束。</p>
 <p>通过分析说明，CountDownTimer计时并不能完全准确，特别是计算一些时间周长短且需求精度高的动作， 所以平时开发时用这个类一定要注意。</p>
 <p>万一要用这个类计算建议millisInFuture参数最好不要写成整数，如上例子如果millisInFuture参数写成4012毫秒。<br>执行打印Log如下：</p>
 <p>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:53.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 7<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: isFinish!</p>
