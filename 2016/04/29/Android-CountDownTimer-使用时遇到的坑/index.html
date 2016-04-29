@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android CountDownTimer 使用时遇到的坑 | CoffeeTao的技术生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CountDownTimer遇到的坑 先来看一段触发CountDownTimer的代码 12345678910111213141516mDefaultButton.setOnClickListener(new View.OnClickListener() &amp;#123;            @Override            public void onClick(View v) &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android CountDownTimer 使用时遇到的坑">
+<meta property="og:url" content="http://yoursite.com/2016/04/29/Android-CountDownTimer-使用时遇到的坑/index.html">
+<meta property="og:site_name" content="CoffeeTao的技术生活">
+<meta property="og:description" content="CountDownTimer遇到的坑 先来看一段触发CountDownTimer的代码 12345678910111213141516mDefaultButton.setOnClickListener(new View.OnClickListener() &amp;#123;            @Override            public void onClick(View v) &amp;#123">
+<meta property="og:updated_time" content="2016-04-29T08:42:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android CountDownTimer 使用时遇到的坑">
+<meta name="twitter:description" content="CountDownTimer遇到的坑 先来看一段触发CountDownTimer的代码 12345678910111213141516mDefaultButton.setOnClickListener(new View.OnClickListener() &amp;#123;            @Override            public void onClick(View v) &amp;#123">
+  
+    <link rel="alternative" href="/atom.xml" title="CoffeeTao的技术生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">CoffeeTao</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">学着开心的编程...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>Tags</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dashentao1989" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/2433556600/profile?topnav=1&wvr=6&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/dashentao1989" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 13.33px;">生活</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/dashentao1989">my_csdn_blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">keep activity, keep study!</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">CoffeeTao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">CoffeeTao</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">学着开心的编程...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dashentao1989" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2433556600/profile?topnav=1&wvr=6&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/dashentao1989" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android-CountDownTimer-使用时遇到的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/" class="article-date">
+  	<time datetime="2016-04-29T08:10:02.000Z" itemprop="datePublished">2016-04-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android CountDownTimer 使用时遇到的坑
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="CountDownTimer遇到的坑"><a href="#CountDownTimer遇到的坑" class="headerlink" title="CountDownTimer遇到的坑"></a>CountDownTimer遇到的坑</h3><p><strong> 先来看一段触发CountDownTimer的代码 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mDefaultButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                CountDownTimer countDownTimer = <span class="keyword">new</span> CountDownTimer(<span class="number">4000</span>, <span class="number">1</span> * <span class="number">1000</span>) &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, millisUntilFinished + <span class="string">""</span>);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, <span class="string">"isFinish!"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>触发按钮就会触发CountDownTimer计时器，这里我们来分析下CountDownTimer两个参数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> millisInFuture The number of millis in the future from the call</span><br><span class="line">     *   to &#123;<span class="doctag">@link</span> #start()&#125; until the countdown is done and &#123;<span class="doctag">@link</span> #onFinish()&#125;</span><br><span class="line">     *   is called.</span><br><span class="line">     * <span class="doctag">@param</span> countDownInterval The interval along the way to receive</span><br><span class="line">     *   &#123;<span class="doctag">@link</span> #onTick(long)&#125; callbacks.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CountDownTimer</span><span class="params">(<span class="keyword">long</span> millisInFuture, <span class="keyword">long</span> countDownInterval)</span> </span>&#123;</span><br><span class="line">        mMillisInFuture = millisInFuture;</span><br><span class="line">        mCountdownInterval = countDownInterval;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.millisInFuture 计时器从开始计时到结束计时的周长<br>2.countDownInterval 计时器计时的间隔时间</p>
+<p>我们来分析下CountDownTimer的实现原理：<br><strong> start </strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Start the countdown.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> CountDownTimer <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mCancelled = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (mMillisInFuture &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        onFinish();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mStopTimeInFuture = SystemClock.elapsedRealtime() + mMillisInFuture;</span><br><span class="line">    mHandler.sendMessage(mHandler.obtainMessage(MSG));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过start()启动计时器，通过代码可以看出通过mHandler进行一些核心操作，进入到mHandler看看到底干了些什么；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// handles counting down</span></span><br><span class="line">    <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">synchronized</span> (CountDownTimerTest.<span class="keyword">this</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mCancelled) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">long</span> millisLeft = mStopTimeInFuture - SystemClock.elapsedRealtime();</span><br><span class="line">                Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft = "</span> + millisLeft);</span><br><span class="line">                <span class="keyword">if</span> (millisLeft &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    onFinish();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (millisLeft &lt; mCountdownInterval) &#123;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft &lt; mCountdownInterval!"</span>);</span><br><span class="line">                    <span class="comment">// no tick, just delay until done</span></span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), millisLeft);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">long</span> lastTickStart = SystemClock.elapsedRealtime();</span><br><span class="line">                    onTick(millisLeft);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// take into account user's onTick taking time to execute</span></span><br><span class="line">                    <span class="keyword">long</span> delay = lastTickStart + mCountdownInterval - SystemClock.elapsedRealtime();</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// special case: user's onTick took more than interval to</span></span><br><span class="line">                    <span class="comment">// complete, skip to next interval</span></span><br><span class="line">                    <span class="keyword">while</span> (delay &lt; <span class="number">0</span>) delay += mCountdownInterval;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"delay = "</span> + delay);</span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), delay);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>通过代码可以看出实现还是蛮简单的，通过计算delay时间，触发sendMessageDelayed(message, delay)轮训发送消息达到计时的效果。</p>
+<p>这里面反复用到SystemClock.elapsedRealtime()计算时间，这里说明下与其他时间的区别：<br> -System.currentTimeMillis()  系统时间，也就是日期时间，可以被系统设置修改，然后值就会发生跳变。<br> -uptimeMillis 自开机后，经过的时间，不包括深度睡眠的时间<br> -elapsedRealtime自开机后，经过的时间，包括深度睡眠的时间</p>
+<p><strong> 这里我来说下我遇到的坑 </strong><br>这里我重写了CountDownTimer类在handler的代码里打印了下Log, 当我构造CountDownTimer是传入的参数分别为： 4000， 1000</p>
+<p>那期望的结果是：<br>4000<br>3000<br>2000<br>1000<br>finish</p>
+<p>实际的打印结果是：<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 997<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: isFinish!</p>
+<p>从上面的日志里面分析，当onTick返回的时间是1998毫秒时， 整个计时器紧接着就delay了1998毫秒， 然后就直接onFinish了， 计数次数减少一次技术，且最后一次计数间隔大于一毫秒小于两毫秒。</p>
+<p>回到上面场景，我们来分析下到底是什么原因导致的：<br>当onTick(millisLeft) millisLeft = 1998毫秒， 继续往下执行，执行到最后一行sendMessageDelayed(obtainMessage(MSG), delay)位置，此时delay为999毫秒， 然后休眠999毫秒之后，进入handleMessage方法，此时xxx行计算millisLeft == 997， 进入到xxx行判断里，millisLeft &lt; mCountdownInterval成立， 继续休眠997毫秒， 继续进入handleMessage方法，此时millisLeft == -1毫秒，xxx行millisLeft &lt;= 0条件成立，直接调用onFinish()方法，及时结束。</p>
+<p>通过分析说明，CountDownTimer并不能完全准确，特别是计算一些时间周长短且需求精度高的动作， 所以平时开发时用这个类一定要注意。</p>
+<p>万一要用这个类计算建议millisInFuture参数最好不要写成整数，如上例子如果millisInFuture 写成4012毫秒。<br>执行打印Log如下：</p>
+<p>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:53.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 7<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: isFinish!</p>
+<p>结果符合预期。</p>
+
+  
+</div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/27/git-reset-相关知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git reset 相关知识</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android-CountDownTimer-使用时遇到的坑" data-title="Android CountDownTimer 使用时遇到的坑" data-url="http://yoursite.com/2016/04/29/Android-CountDownTimer-使用时遇到的坑/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 CoffeeTao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+  </div>
+</body>
+</html>
