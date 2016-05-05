@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,71 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-gerrit-push遇到change-Id丢失" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/27/gerrit-push遇到change-Id丢失/" class="article-date">
+  	<time datetime="2016-04-27T07:54:52.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/27/gerrit-push遇到change-Id丢失/">gretti push 遇到change_id missing</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <p><strong> gerrit提交代码出现changeId missing </strong></p>
+<p>输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">commit eb5e25bd7e4be5241f8378cbed387b60e22c9430</span><br><span class="line">Author: hongentao &lt;hongentao@youzan.com&gt;</span><br><span class="line">Date:   Wed Apr 27 15:19:29 2016 +0800</span><br><span class="line"></span><br><span class="line">    add LogUtil and code optimize</span><br><span class="line"></span><br><span class="line">commit 6e99d04c912ba68e858d5950b4ad06cdb3c9bf15</span><br><span class="line">Author: hongentao &lt;hongentao@youzan.com&gt;</span><br><span class="line">Date:   Wed Apr 27 14:24:02 2016 +0800</span><br><span class="line"></span><br><span class="line">    optimize code</span><br><span class="line">    </span><br><span class="line">    Change-Id: Iadeb1de5dacdd33c8cced163e164463dd7ef1536</span><br><span class="line"></span><br><span class="line">commit 09d0beca4aa713bf25365bca4ade83cf10bd8e8c</span><br></pre></td></tr></table></figure></p>
+<p>相比上次提交缺失change-Id:</p>
+<p>报错内容：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! [remote rejected] HEAD -&gt; refs/<span class="keyword">for</span>/master (missing Change-Id in commit message footer)</span><br></pre></td></tr></table></figure></p>
+<p>解决方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">commit 815b7190c29c22027436b7b46e20aa7ba71f7e7e</span><br><span class="line">Author: hongentao &lt;hongentao@youzan.com&gt;</span><br><span class="line">Date:   Wed Apr 27 15:19:29 2016 +0800</span><br><span class="line"></span><br><span class="line">    add LogUtil and code optimize</span><br><span class="line">    </span><br><span class="line">    Change-Id: Ica637ba70f525fa4656fa80e020a2b3f8ee57f63</span><br><span class="line"></span><br><span class="line">commit 6e99d04c912ba68e858d5950b4ad06cdb3c9bf15</span><br><span class="line">Author: hongentao &lt;hongentao@youzan.com&gt;</span><br><span class="line">Date:   Wed Apr 27 14:24:02 2016 +0800</span><br><span class="line"></span><br><span class="line">    optimize code</span><br><span class="line">    </span><br><span class="line">    Change-Id: Iadeb1de5dacdd33c8cced163e164463dd7ef1536</span><br></pre></td></tr></table></figure></p>
+<p>出现change-id 解决问题。</p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gretti/">gretti</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Android常用的Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -422,67 +487,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小朋友/">小朋友</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Start-New-Life" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/22/Start-New-Life/" class="article-date">
-  	<time datetime="2016-04-22T10:21:17.000Z" itemprop="datePublished">2016-04-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/22/Start-New-Life/">Start New Life</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <h3 id="生活之美"><a href="#生活之美" class="headerlink" title="生活之美"></a>生活之美</h3><blockquote>
-<p>心静如水，波澜不惊，无论得到与失去，心境始终如一。</p>
-</blockquote>
-<p>经过两天的折腾，新Blog终于迁移成功了，<a href="http://blog.csdn.net/dashentao1989" target="_blank" rel="external">CSDN博客</a>不再更新，后续生活，技术，感悟等都会在这里与大家一起分享。</p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感悟/">感悟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
 	</div>
 
       
