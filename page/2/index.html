@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>A propos</li>
 						
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 13.33px;">生活</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,73 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-git-reset-相关知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/27/git-reset-相关知识/" class="article-date">
+  	<time datetime="2016-04-27T08:53:29.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/27/git-reset-相关知识/">git reset 相关知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>首先，让我们来解释几个定义.<br>First, let’s define a few terms.</p>
+<p><strong> HEAD（头）</strong><br>指向当前branch最顶端的一个commit，该分支上一次commit后的节点<br>This is an alias for the tip of the current branch, which is themost recent commit you have made to that branch.</p>
+<p><strong> Index（索引）</strong><br>The index, 也可以被认为是staging area（暂存区）,是一堆将在下一次commit中提交的文件，提交之后它就是 HEAD的父节点. （译注：Git add添加的文件）<br>The index, also known as the staging area, is the set of filesthat will become the next commit. It is also the commit thatwill become HEAD’s parent.</p>
+<p><strong> Working Copy（工作副本）</strong><br>当前工作目录下的文件，（译注：一般指，有修改，没有git add，没有git commit的文件）<br>This is the term for the current set of files you’re working onin your file system.</p>
+<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><p>如果你仔细研究reset命令本身就知道，它本身做的事情就是重置HEAD(当前分支的版本顶端）到另外一个commit。假设我们有一个分支（名称本身无所谓，所以我们就简单称为”super-duper-feature”分支吧），图形化表示如下：<br><img src="http://images0.cnblogs.com/blog2015/737565/201505/182225251979460.png" alt=""><br>如果我们执行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD</span><br></pre></td></tr></table></figure></p>
+<p>任何事情都不会发生，这是因为我们告诉GIT重置这个分支到HEAD，而这个正是它现在所在的位置。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD~<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>当我们再执行上面的命令时（HEAD~1是“the commit right before HEAD”的别名，或者说：put differently “HEAD’s parent”），我们的分支将会如下所示:<br><img src="http://images0.cnblogs.com/blog2015/737565/201505/182229495415187.png" alt=""><br>如果我们执行git reset HEAD~2,则意味着将HEAD从顶端的commit往下移动两个更早的commit。</p>
+<h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><p> –soft<br> –soft参数告诉Git重置HEAD到另外一个commit，但也到此为止。如果你指定–soft参数，Git将停止在那里而什么也不会根本变化。这意味着index,working copy都不会做任何变化，所有的在original HEAD和你重置到的那个commit之间的所有变更集都放在stage(index)区域中。<br> <img src="http://images0.cnblogs.com/blog2015/737565/201505/182237338854646.png" alt=""></p>
+<p> –hard<br> –hard参数将会blow out everything.它将重置HEAD返回到另外一个commit(取决于~12的参数），重置index以便反映HEAD的变化，并且重置working copy也使得其完全匹配起来。这是一个比较危险的动作，具有破坏性，数据因此可能会丢失！如果真是发生了数据丢失又希望找回来，那么只有使用：git reflog命令了。makes everything match the commit you have reset to.你的所有本地修改将丢失。如果我们希望彻底丢掉本地修改但是又不希望更改branch所指向的commit，则执行git reset –hard = git reset –hard HEAD. i.e. don’t change the branch but get rid of all local changes.另外一个场景是简单地移动branch从一个到另一个commit而保持index/work区域同步。这将确实令你丢失你的工作，因为它将修改你的work tree！<br> <img src="http://images0.cnblogs.com/blog2015/737565/201505/182238305101646.png" alt=""></p>
+<p> –mixed(default)<br> –mixed是reset的默认参数，也就是当你不指定任何参数时的参数。它将重置HEAD到另外一个commit,并且重置index以便和HEAD相匹配，但是也到此为止。working copy不会被更改。所有该branch上从original HEAD（commit）到你重置到的那个commit之间的所有变更将作为local modifications保存在working area中，（被标示为local modification or untracked via git status)，但是并未staged的状态，你可以重新检视然后再做修改和commit:<br> <img src="http://images0.cnblogs.com/blog2015/737565/201505/182238202609380.png" alt=""></p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-gerrit-push遇到change-Id丢失" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -416,77 +483,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-小朋友满月了" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/24/小朋友满月了/" class="article-date">
-  	<time datetime="2016-04-24T03:18:03.000Z" itemprop="datePublished">2016-04-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/24/小朋友满月了/">小朋友满月了</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-      <div id="toc" class="article-toc">
-        <strong class="toc-title">文章目录</strong>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#小朋友诞生记"><span class="toc-text">小朋友诞生记</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#出生前奏"><span class="toc-text">出生前奏</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#医院带娃"><span class="toc-text">医院带娃</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#宝贝回家了"><span class="toc-text">宝贝回家了</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#满月"><span class="toc-text">满月</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#后续"><span class="toc-text">后续</span></a></li></ol></li></ol></li></ol>
-      </div>
-    
-    <h3 id="小朋友诞生记"><a href="#小朋友诞生记" class="headerlink" title="小朋友诞生记"></a>小朋友诞生记</h3><h5 id="出生前奏"><a href="#出生前奏" class="headerlink" title="出生前奏"></a>出生前奏</h5><p>预产期终于到了，但是小朋友在妈妈肚子里就是没动静，预产期超了两天之后，一家人再也等不及了收拾行李直奔医院待产。<br>医院待产过程中别家小朋友把妈妈折腾的死去活来，我家小朋友在妈妈肚子里就是没动静，可能是知道妈妈怀他辛苦不容易，舍不得折腾妈妈，就这样在医生的建议下打了三天催产针，然而……<br>医生产检时，产科主任说我家小朋友体重在7斤半到八斤之间，要做好剖腹产的准备，本来还想顺产的我们，顿时气氛变得紧张起来了，再加上连续打了三天催产针，小朋友一点反应都没有，在做了一晚上思想斗争之后，家人一致同意剖腹产，就这样第二天上午11：28小朋友顺利出生，体重4330g,果真是巨大儿，儿子真乖，这么大你妈妈生你的话还不得痛死。</p>
-<h5 id="医院带娃"><a href="#医院带娃" class="headerlink" title="医院带娃"></a>医院带娃</h5><p>孩子出生后，医生对孩子的身体机能做了对应检查，检查结果：健康。随后护士姐姐陆续安排给小朋友注射预防针，然后毫无经验的我开启了带娃之旅。<br>孩子第一天是最难带的，特别是晚上要特别注意孩子吐羊水，基本上24小时要安排人照看，还好陪产家人比较多，倒也忙活的过来，还有就是吐槽一点医院的空气也太差了，孩子在病房根本睡不着，身上都是热痱子，主要是还不能开窗（病房都是产妇，坐月子期间确实不能开窗，这个能理解），没办法，晚上睡觉的时候，孩子热的睡不着，我们只能轮番抱着小朋友在走廊逛来逛去，这样他才不折腾，倒是睡得香甜。<br>小孩子从出生之后每天的奶量都会呈阶梯式递增，基本上两个小时就会饿一次，人类的本能还是很强大，饿了自然会哭。就这样在医院呆了快两周，收拾好行李，安排好车子，终于可以回家了。</p>
-<h5 id="宝贝回家了"><a href="#宝贝回家了" class="headerlink" title="宝贝回家了"></a>宝贝回家了</h5><p>在医院折腾了两周之后，终于可以回家洗个热水澡。兴奋之余，可别忘了小朋友保暖，毕竟医院相比家里来说温度，湿度都不一样，稍有不慎，有可能会感冒，于是乎大家又开始忙起来了，可能是小孩子对家有一种天生的归属感，平时在医院每天哭哭闹闹的他，回家头一天竟然不哭不闹，倒是弄得我们不习惯，但是话说的太早，第二天习惯家里环境的他，又开启了顽皮的旅程，这样挺好，别像老爸太老实。</p>
-<p>由于在医院呆的时间太久，回家没几天就上班了，产假过后刚上班还真心有点不适应，脑子里想的都是小宝贝，还好随着工作任务的迭代，状态也很快恢复了，还有就是每天下班回家都可以逗逗宝贝儿子，心情也比以前好多了，上次看到一句话说的挺不错，分享给大家。</p>
-<blockquote>
-<p>就算我一无所有，毕竟我有家人，有孩子，有梦想。</p>
-</blockquote>
-<h5 id="满月"><a href="#满月" class="headerlink" title="满月"></a>满月</h5><p>时间过的确实有点快，小朋友都满月了，本来想带孩子去摄影室拍满月照，但是小朋友太小，怕太折腾，就在家里自己DIY了几张，算是留个纪念吧，还有就是小朋友今天理了个满月头，图个喜庆，看看宝宝圆圆的脑袋，可爱极了。</p>
-<h5 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h5><p>贴上几张宝贝的满月照，还有就是在家里宅了N天孩他妈，终于说动我带上她去外面海了一顿，嘻嘻！！！<br><img src="http://chuantu.biz/t3/21/1461511148x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511111x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511130x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511195x3738746571.jpg" alt=""></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小朋友/">小朋友</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
 	</div>
 
       
