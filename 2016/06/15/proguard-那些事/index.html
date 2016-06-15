@@ -6,34 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>proguard 那些事 | CoffeeTao的技术生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="With each build, ProGuard outputs the following files:dump.txt
+  <meta name="description" content="With each build, ProGuard outputs the following files:####dump.txt
 
 描述apk所有文件的内部结构Describes the internal structure of all the class files in the APK.
 
-mapping.txt
+####mapping.txt
 
-提供了一个源文件与混淆文件的对照Provides a translation b">
+提供了一个源文件与混淆文件的对照Provides a trans">
 <meta property="og:type" content="article">
 <meta property="og:title" content="proguard 那些事">
 <meta property="og:url" content="http://yoursite.com/2016/06/15/proguard-那些事/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
-<meta property="og:description" content="With each build, ProGuard outputs the following files:dump.txt
+<meta property="og:description" content="With each build, ProGuard outputs the following files:####dump.txt
 
 描述apk所有文件的内部结构Describes the internal structure of all the class files in the APK.
 
-mapping.txt
+####mapping.txt
 
-提供了一个源文件与混淆文件的对照Provides a translation b">
-<meta property="og:updated_time" content="2016-06-15T07:57:41.000Z">
+提供了一个源文件与混淆文件的对照Provides a trans">
+<meta property="og:updated_time" content="2016-06-15T07:59:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="proguard 那些事">
-<meta name="twitter:description" content="With each build, ProGuard outputs the following files:dump.txt
+<meta name="twitter:description" content="With each build, ProGuard outputs the following files:####dump.txt
 
 描述apk所有文件的内部结构Describes the internal structure of all the class files in the APK.
 
-mapping.txt
+####mapping.txt
 
-提供了一个源文件与混淆文件的对照Provides a translation b">
+提供了一个源文件与混淆文件的对照Provides a trans">
   
     <link rel="alternative" href="/atom.xml" title="CoffeeTao的技术生活" type="application/atom+xml">
   
@@ -98,7 +98,7 @@ mapping.txt
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -243,30 +243,30 @@ mapping.txt
     <div class="article-entry" itemprop="articleBody">
   
     
-    <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><p>dump.txt</p>
+    <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><p>####dump.txt</p>
 <ul>
 <li>描述apk所有文件的内部结构<br><em>Describes the internal structure of all the class files in the APK.</em></li>
 </ul>
-<p>mapping.txt</p>
+<p>####mapping.txt</p>
 <ul>
 <li>提供了一个源文件与混淆文件的对照<br><em>Provides a translation between the original and obfuscated class, method, and field names.</em></li>
 </ul>
-<p>seeds.txt</p>
+<p>####seeds.txt</p>
 <ul>
 <li>列出没有被混淆的类和成员变量<br><em>Lists the classes and members that were not obfuscated.</em></li>
 </ul>
-<p>usage.txt</p>
+<p>####usage.txt</p>
 <ul>
-<li><p>列出apk中被移除的代码<em> 
-</em>Lists the code that was removed from the APK.*</p>
-</li>
-<li><p>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></p>
-</li>
+<li>列出apk中被移除的代码<em> 
+</em>Lists the code that was removed from the APK.*</li>
+</ul>
+<ul>
+<li>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></li>
 </ul>
 <ul>
 <li>要值得注意的是在每次通过proguard打release包时mapping.txt文件都会被重写， 所以你必须仔细的保存一份复制在打一个新的而release包时，通过在打release包时保留一个mapping.txt文件，这样的话当用户在使用老版本app时提出提出混淆的错误信息是你能根据mapping.txt对照关系进行相应准确的deug.</li>
 </ul>
-<p><strong>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</strong></p>
+<p><em>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</em></p>
 <p><em>more coming soon!</em></p>
 
   
