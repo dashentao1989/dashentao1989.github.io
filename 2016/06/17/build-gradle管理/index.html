@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>CoffeeTao的技术生活</title>
+  <title>build.gradle管理 | CoffeeTao的技术生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活在于折腾！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CoffeeTao的技术生活">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="gradle管理：开发过程中难免会有这种架构:project下面创建N个module, 这样的话就会有N+2个build.gradle需要维护，特别一些相同的属性需要单独维护，比如：compilesdkVersion, buildToolsVersion, minSdkVersion, buildToolsVersion,依赖的maven组件等，其实这些都是可以统一管理的；
+组件依赖与版本控制管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="build.gradle管理">
+<meta property="og:url" content="http://yoursite.com/2016/06/17/build-gradle管理/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
-<meta property="og:description" content="生活在于折腾！">
+<meta property="og:description" content="gradle管理：开发过程中难免会有这种架构:project下面创建N个module, 这样的话就会有N+2个build.gradle需要维护，特别一些相同的属性需要单独维护，比如：compilesdkVersion, buildToolsVersion, minSdkVersion, buildToolsVersion,依赖的maven组件等，其实这些都是可以统一管理的；
+组件依赖与版本控制管理">
+<meta property="og:updated_time" content="2016-06-17T12:13:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CoffeeTao的技术生活">
-<meta name="twitter:description" content="生活在于折腾！">
+<meta name="twitter:title" content="build.gradle管理">
+<meta name="twitter:description" content="gradle管理：开发过程中难免会有这种架构:project下面创建N个module, 这样的话就会有N+2个build.gradle需要维护，特别一些相同的属性需要单独维护，比如：compilesdkVersion, buildToolsVersion, minSdkVersion, buildToolsVersion,依赖的maven组件等，其实这些都是可以统一管理的；
+组件依赖与版本控制管理">
   
     <link rel="alternative" href="/atom.xml" title="CoffeeTao的技术生活" type="application/atom+xml">
   
@@ -186,9 +190,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-build-gradle管理" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-build-gradle管理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/06/17/build-gradle管理/" class="article-date">
@@ -204,12 +206,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/17/build-gradle管理/">build.gradle管理</a>
+    <h1 class="article-title" itemprop="name">
+      build.gradle管理
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gradle/">gradle</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -238,332 +251,68 @@
   
 </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gradle/">gradle</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/15/proguard-那些事/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">proguard 那些事</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-
-
-  
-    <article id="post-proguard-那些事" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/15/proguard-那些事/" class="article-date">
-  	<time datetime="2016-06-15T07:08:06.000Z" itemprop="datePublished">2016-06-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/15/proguard-那些事/">proguard 那些事</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><h4 id="dump-txt"><a href="#dump-txt" class="headerlink" title="dump.txt"></a>dump.txt</h4><ul>
-<li>描述apk所有文件的内部结构<br><em>Describes the internal structure of all the class files in the APK.</em></li>
-</ul>
-<h4 id="mapping-txt"><a href="#mapping-txt" class="headerlink" title="mapping.txt"></a>mapping.txt</h4><ul>
-<li>提供了一个源文件与混淆文件的对照<br><em>Provides a translation between the original and obfuscated class, method, and field names.</em></li>
-</ul>
-<h4 id="seeds-txt"><a href="#seeds-txt" class="headerlink" title="seeds.txt"></a>seeds.txt</h4><ul>
-<li>列出没有被混淆的类和成员变量<br><em>Lists the classes and members that were not obfuscated.</em></li>
-</ul>
-<h4 id="usage-txt"><a href="#usage-txt" class="headerlink" title="usage.txt"></a>usage.txt</h4><ul>
-<li>列出apk中被移除的代码<em> 
-</em>Lists the code that was removed from the APK.*</li>
-</ul>
-<ul>
-<li>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></li>
-</ul>
-<ul>
-<li>要值得注意的是在每次通过proguard打release包时mapping.txt文件都会被重写， 所以你必须仔细的保存一份复制在打一个新的而release包时，通过在打release包时保留一个mapping.txt文件，这样的话当用户在使用老版本app时提出提出混淆的错误信息是你能根据mapping.txt对照关系进行相应准确的deug.</li>
-</ul>
-<p><em>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</em></p>
-<p><em>more coming soon!</em></p>
-
-  
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
 </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/proguard/">proguard</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
 
 
 
 
 
-
-
-
-  
-    <article id="post-打开超级adbd引起的Logcat异常" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/12/打开超级adbd引起的Logcat异常/" class="article-date">
-  	<time datetime="2016-06-12T08:54:37.000Z" itemprop="datePublished">2016-06-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/打开超级adbd引起的Logcat异常/">打开超级adbd引起的Logcat异常</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p>打开logcat莫名其妙报如下这个异常：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Communication error: </span><br><span class="line">                                                        java.io.IOException: Connection refused</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connectLocal(Native Method)</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connect(LocalSocketImpl.java:<span class="number">290</span>)</span><br><span class="line">                                                            at android.net.LocalSocket.connect(LocalSocket.java:<span class="number">130</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.listenToSocket(UsbDebuggingManager.java:<span class="number">84</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.run(UsbDebuggingManager.java:<span class="number">120</span>)</span><br><span class="line">                                                            at java.lang.Thread.run(Thread.java:<span class="number">841</span>)</span><br></pre></td></tr></table></figure></p>
-<p>app编译与运行都正常，比较纳闷，最后发现了原因：<br>超级adbd导致的：<br>只要关掉启用adbd(必须启用USB调试才能使用) 选项就可以使用了。</p>
-<p>那么超级adbd是个什么东西呢？</p>
-<p><em>对于已经root的了手机，输入adb root出现adbd cannot run as root in production builds，装了这个之后完美解决，不用老是adb shell然后su一下。</em></p>
-
-  
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="build-gradle管理" data-title="build.gradle管理" data-url="http://yoursite.com/2016/06/17/build-gradle管理/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
 </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adbd/">adbd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
 
 
 
-
-
-
-
-
-  
-    <article id="post-CEO-COO-CTO-CFO-到底是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" class="article-date">
-  	<time datetime="2016-05-24T02:51:02.000Z" itemprop="datePublished">2016-05-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/">CEO COO CTO CFO ...到底是什么鬼</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p>首席品牌官 【CBO】  chief brand officer<br>首席文化官 【CCO】  chief Cultural officer<br>开发总监   【CDO】  chief Development officer<br>首席执行官 【CEO】  chief Executive officer<br>首席财务官 【CFO】  chief finance officer<br>人事总监   【CHO】  chief Human resource officer<br>首席信息官 【CIO】  chief information officer<br>首席知识官 【CKO】  chief knowledge officer<br>首席市场官 【CMO】  chief Maketing officer<br>首席谈判官 【CNO】  chief Negotiation officer<br>首席营运官 【COO】  chief Operation officer<br>公关总监   【CPO】  chief Public relation officer<br>质量总监   【CQO】  chief Quality officer<br>销售总监   【CSO】  chief Sales officer<br>首席技术官 【CTO】  chief Technology officer<br>评估总监   【CVO】  chief Valuation officer</p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Vim使用心得" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/19/Vim使用心得/" class="article-date">
-  	<time datetime="2016-05-19T03:17:12.000Z" itemprop="datePublished">2016-05-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/19/Vim使用心得/">Vim使用心得</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p><strong> 从今天开始学习Vim不要阻止我 </strong></p>
-<blockquote>
-<p>Better.Stronger.Faster</p>
-</blockquote>
-<ul>
-<li>i 编辑</li>
-<li>:wq ZZ :x 保存退出</li>
-<li>:q! 退出不保存</li>
-<li>yy 复制</li>
-<li>p 粘贴</li>
-<li>:q 退出不保存</li>
-<li>v 可视化</li>
-<li>hjkl 光标左上右下移动</li>
-<li>0 光标移动到该行开头</li>
-<li>$ 光标移动到该行末尾</li>
-<li>^ 光标移动到该行第一个不是blank的地方</li>
-<li>g_ 光标移动到该行最后一个不是blank的地方</li>
-<li>w 移动到下个单词的开头 </li>
-<li>e 移动到下个单词的结尾</li>
-<li>:N 移动到第N行</li>
-<li>:set number 显示行号</li>
-<li>:set nonumber 不显示行号</li>
-<li>. 执行上次操作</li>
-<li>.N 执行上次操作N次</li>
-<li>dd 删除改行</li>
-<li>Ndd 删除N行</li>
-<li>o 该行前面插入新行</li>
-<li>O 该行后面插入新行</li>
-<li>N<command> 重复执行command命令N次</li>
-<li>% 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
-<li>*和#:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词</li>
-<li>v 可视化</li>
-<li>fa 到下个为a的字符处，你也可以fs到下一个为s的字符</li>
-<li>3fa 在当前行查找第三个出现的a</li>
-<li>F和T 和f和t一样，只不过是相反的方向</li>
-<li>/pattern 寻找pattern匹配项</li>
-<li>gU 变大写</li>
-<li>gu 变小写</li>
-<li>y2/foo 拷贝2个“foo”之间的字符串</li>
-<li><ctrl-p>或是ctrl-n 自动提示功能</ctrl-p></li>
-</ul>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -587,8 +336,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
