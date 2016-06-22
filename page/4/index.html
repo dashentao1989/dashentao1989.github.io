@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -188,11 +188,11 @@
 
       <div class="body-wrap">
   
-    <article id="post-git-遇到fatal解决方案" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-睿睿妈妈要开Blog了" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/25/git-遇到fatal解决方案/" class="article-date">
-  	<time datetime="2016-04-25T13:50:47.000Z" itemprop="datePublished">2016-04-25</time>
+      <a href="/2016/04/29/睿睿妈妈要开Blog了/" class="article-date">
+  	<time datetime="2016-04-29T14:52:48.000Z" itemprop="datePublished">2016-04-29</time>
 </a>
     </div>
   
@@ -205,7 +205,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/25/git-遇到fatal解决方案/">git 遇到fatal解决方案</a>
+      <a class="article-title" href="/2016/04/29/睿睿妈妈要开Blog了/">睿睿妈妈要开Blog了</a>
     </h1>
   
 
@@ -215,11 +215,151 @@
     <div class="article-entry" itemprop="articleBody">
   
     
-    <p>提交代码到gitHub 的时候遇到“fatal:multiple stage entries for merged file” 提示，Git status或者git add . 都无济于事。</p>
-<p>fatal: multiple stage entries for merged file ‘filePath/~~~’</p>
-<p>最后解决办法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm .git/index</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+    <h4 id="睿睿妈妈的新生活"><a href="#睿睿妈妈的新生活" class="headerlink" title="睿睿妈妈的新生活"></a>睿睿妈妈的新生活</h4><p><strong> 奇迹诞生了 </strong><br>睿睿妈妈今天要写文章了，哈哈</p>
+<p><img src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" alt=""></p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android-CountDownTimer-使用时遇到的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/" class="article-date">
+  	<time datetime="2016-04-29T08:10:02.000Z" itemprop="datePublished">2016-04-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/">Android CountDownTimer 使用时遇到的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="CountDownTimer遇到的坑"><a href="#CountDownTimer遇到的坑" class="headerlink" title="CountDownTimer遇到的坑"></a>CountDownTimer遇到的坑</h3><p><strong> 先来看一段触发CountDownTimer的代码 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mDefaultButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                CountDownTimer countDownTimer = <span class="keyword">new</span> CountDownTimer(<span class="number">4000</span>, <span class="number">1</span> * <span class="number">1000</span>) &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, millisUntilFinished + <span class="string">""</span>);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, <span class="string">"isFinish!"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>触发按钮就会触发CountDownTimer计时器，这里我们来分析下CountDownTimer两个参数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> millisInFuture The number of millis in the future from the call</span><br><span class="line">     *   to &#123;<span class="doctag">@link</span> #start()&#125; until the countdown is done and &#123;<span class="doctag">@link</span> #onFinish()&#125;</span><br><span class="line">     *   is called.</span><br><span class="line">     * <span class="doctag">@param</span> countDownInterval The interval along the way to receive</span><br><span class="line">     *   &#123;<span class="doctag">@link</span> #onTick(long)&#125; callbacks.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CountDownTimer</span><span class="params">(<span class="keyword">long</span> millisInFuture, <span class="keyword">long</span> countDownInterval)</span> </span>&#123;</span><br><span class="line">        mMillisInFuture = millisInFuture;</span><br><span class="line">        mCountdownInterval = countDownInterval;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.millisInFuture 计时器从开始计时到结束计时的周长<br>2.countDownInterval 计时器计时的间隔时间</p>
+<p><strong> 我们来分析下CountDownTimer的实现原理: </strong><br>start</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Start the countdown.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> CountDownTimer <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mCancelled = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (mMillisInFuture &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        onFinish();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mStopTimeInFuture = SystemClock.elapsedRealtime() + mMillisInFuture;</span><br><span class="line">    mHandler.sendMessage(mHandler.obtainMessage(MSG));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过start()启动计时器，通过代码可以看出通过mHandler进行一些核心操作，进入到mHandler看看到底干了些什么；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// handles counting down</span></span><br><span class="line">    <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">synchronized</span> (CountDownTimerTest.<span class="keyword">this</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mCancelled) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">long</span> millisLeft = mStopTimeInFuture - SystemClock.elapsedRealtime();</span><br><span class="line">                Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft = "</span> + millisLeft);</span><br><span class="line">                <span class="keyword">if</span> (millisLeft &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    onFinish();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (millisLeft &lt; mCountdownInterval) &#123;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft &lt; mCountdownInterval!"</span>);</span><br><span class="line">                    <span class="comment">// no tick, just delay until done</span></span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), millisLeft);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">long</span> lastTickStart = SystemClock.elapsedRealtime();</span><br><span class="line">                    onTick(millisLeft);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// take into account user's onTick taking time to execute</span></span><br><span class="line">                    <span class="keyword">long</span> delay = lastTickStart + mCountdownInterval - SystemClock.elapsedRealtime();</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// special case: user's onTick took more than interval to</span></span><br><span class="line">                    <span class="comment">// complete, skip to next interval</span></span><br><span class="line">                    <span class="keyword">while</span> (delay &lt; <span class="number">0</span>) delay += mCountdownInterval;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"delay = "</span> + delay);</span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), delay);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>通过代码可以看出实现还是蛮简单的，通过计算delay时间，触发sendMessageDelayed(message, delay)轮训发送消息达到计时的效果。</p>
+<p>这里面反复用到SystemClock.elapsedRealtime()计算时间，这里说明下与其他获取时间的区别：<br> -System.currentTimeMillis()  系统时间，也就是日期时间，可以被系统设置修改，然后值就会发生跳变。<br> -uptimeMillis 自开机后，经过的时间，不包括深度睡眠的时间<br> -elapsedRealtime自开机后，经过的时间，包括深度睡眠的时间</p>
+<p><strong> 这里我来说下我遇到的坑 </strong><br>这里我重写了CountDownTimer类在handler的代码里打印了下Log, 当我构造CountDownTime时传入的参数分别为： 4000， 1000</p>
+<p>那期望的结果是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4000</span></span><br><span class="line"><span class="number">3000</span></span><br><span class="line"><span class="number">2000</span></span><br><span class="line"><span class="number">1000</span></span><br><span class="line">finish</span><br></pre></td></tr></table></figure></p>
+<p><strong> 实际的打印结果是： </strong></p>
+<p>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 997<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: isFinish!</p>
+<p>从上面的日志里面分析，当onTick返回的时间是1998毫秒时， 整个计时器紧接着就delay了1998毫秒， 然后就直接onFinish了， 计算次数减少一次，且最后一次计数间隔大于一毫秒小于两毫秒。</p>
+<p>回到上面场景，我们来分析下到底是什么原因导致的：<br>当第22行onTick(millisLeft)返回，且millisLeft == 1998毫秒， 继续往下执行，执行到最后一行sendMessageDelayed(obtainMessage(MSG), delay)位置，此时delay为999毫秒， 然后休眠999毫秒之后，重新进入到handleMessage方法，此时13行计算后millisLeft == 997， 进入到16行判断里，millisLeft &lt; mCountdownInterval条件成立， 继续休眠997毫秒， 继续进入handleMessage方法，此时millisLeft == -1毫秒，第14行millisLeft &lt;= 0条件成立，直接调用onFinish()方法，计时结束。</p>
+<p>通过分析说明，CountDownTimer计时并不能完全准确，特别是计算一些时间周长短且需求精度高的动作， 所以平时开发时用这个类一定要注意。</p>
+<p>万一要用这个类计算建议millisInFuture参数最好不要写成整数，如上例子如果millisInFuture参数写成4012毫秒。<br>执行打印Log如下：</p>
+<p>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:53.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 7<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: isFinish!</p>
+<p><strong> 结果符合预期. </strong></p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-git-reset-相关知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/27/git-reset-相关知识/" class="article-date">
+  	<time datetime="2016-04-27T08:53:29.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/27/git-reset-相关知识/">git reset 相关知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>首先，让我们来解释几个定义.<br>First, let’s define a few terms.</p>
+<p><strong> HEAD（头）</strong><br>指向当前branch最顶端的一个commit，该分支上一次commit后的节点<br>This is an alias for the tip of the current branch, which is themost recent commit you have made to that branch.</p>
+<p><strong> Index（索引）</strong><br>The index, 也可以被认为是staging area（暂存区）,是一堆将在下一次commit中提交的文件，提交之后它就是 HEAD的父节点. （译注：Git add添加的文件）<br>The index, also known as the staging area, is the set of filesthat will become the next commit. It is also the commit thatwill become HEAD’s parent.</p>
+<p><strong> Working Copy（工作副本）</strong><br>当前工作目录下的文件，（译注：一般指，有修改，没有git add，没有git commit的文件）<br>This is the term for the current set of files you’re working onin your file system.</p>
+<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><p>如果你仔细研究reset命令本身就知道，它本身做的事情就是重置HEAD(当前分支的版本顶端）到另外一个commit。假设我们有一个分支（名称本身无所谓，所以我们就简单称为”super-duper-feature”分支吧），图形化表示如下：<br><img src="http://images0.cnblogs.com/blog2015/737565/201505/182225251979460.png" alt=""><br>如果我们执行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD</span><br></pre></td></tr></table></figure></p>
+<p>任何事情都不会发生，这是因为我们告诉GIT重置这个分支到HEAD，而这个正是它现在所在的位置。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD~<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>当我们再执行上面的命令时（HEAD~1是“the commit right before HEAD”的别名，或者说：put differently “HEAD’s parent”），我们的分支将会如下所示:<br><img src="http://images0.cnblogs.com/blog2015/737565/201505/182229495415187.png" alt=""><br>如果我们执行git reset HEAD~2,则意味着将HEAD从顶端的commit往下移动两个更早的commit。</p>
+<h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><p> –soft<br> –soft参数告诉Git重置HEAD到另外一个commit，但也到此为止。如果你指定–soft参数，Git将停止在那里而什么也不会根本变化。这意味着index,working copy都不会做任何变化，所有的在original HEAD和你重置到的那个commit之间的所有变更集都放在stage(index)区域中。<br> <img src="http://images0.cnblogs.com/blog2015/737565/201505/182237338854646.png" alt=""></p>
+<p> –hard<br> –hard参数将会blow out everything.它将重置HEAD返回到另外一个commit(取决于~12的参数），重置index以便反映HEAD的变化，并且重置working copy也使得其完全匹配起来。这是一个比较危险的动作，具有破坏性，数据因此可能会丢失！如果真是发生了数据丢失又希望找回来，那么只有使用：git reflog命令了。makes everything match the commit you have reset to.你的所有本地修改将丢失。如果我们希望彻底丢掉本地修改但是又不希望更改branch所指向的commit，则执行git reset –hard = git reset –hard HEAD. i.e. don’t change the branch but get rid of all local changes.另外一个场景是简单地移动branch从一个到另一个commit而保持index/work区域同步。这将确实令你丢失你的工作，因为它将修改你的work tree！<br> <img src="http://images0.cnblogs.com/blog2015/737565/201505/182238305101646.png" alt=""></p>
+<p> –mixed(default)<br> –mixed是reset的默认参数，也就是当你不指定任何参数时的参数。它将重置HEAD到另外一个commit,并且重置index以便和HEAD相匹配，但是也到此为止。working copy不会被更改。所有该branch上从original HEAD（commit）到你重置到的那个commit之间的所有变更将作为local modifications保存在working area中，（被标示为local modification or untracked via git status)，但是并未staged的状态，你可以重新检视然后再做修改和commit:<br> <img src="http://images0.cnblogs.com/blog2015/737565/201505/182238202609380.png" alt=""></p>
 
   
 </div>
@@ -250,221 +390,9 @@
 
 
   
-    <article id="post-小朋友满月了" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/24/小朋友满月了/" class="article-date">
-  	<time datetime="2016-04-24T03:18:03.000Z" itemprop="datePublished">2016-04-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/24/小朋友满月了/">小朋友满月了</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-      <div id="toc" class="article-toc">
-        <strong class="toc-title">文章目录</strong>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#小朋友诞生记"><span class="toc-text">小朋友诞生记</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#出生前奏"><span class="toc-text">出生前奏</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#医院带娃"><span class="toc-text">医院带娃</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#宝贝回家了"><span class="toc-text">宝贝回家了</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#满月"><span class="toc-text">满月</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#后续"><span class="toc-text">后续</span></a></li></ol></li></ol></li></ol>
-      </div>
-    
-    <h3 id="小朋友诞生记"><a href="#小朋友诞生记" class="headerlink" title="小朋友诞生记"></a>小朋友诞生记</h3><h5 id="出生前奏"><a href="#出生前奏" class="headerlink" title="出生前奏"></a>出生前奏</h5><p>预产期终于到了，但是小朋友在妈妈肚子里就是没动静，预产期超了两天之后，一家人再也等不及了收拾行李直奔医院待产。<br>医院待产过程中别家小朋友把妈妈折腾的死去活来，我家小朋友在妈妈肚子里就是没动静，可能是知道妈妈怀他辛苦不容易，舍不得折腾妈妈，就这样在医生的建议下打了三天催产针，然而……<br>医生产检时，产科主任说我家小朋友体重在7斤半到八斤之间，要做好剖腹产的准备，本来还想顺产的我们，顿时气氛变得紧张起来了，再加上连续打了三天催产针，小朋友一点反应都没有，在做了一晚上思想斗争之后，家人一致同意剖腹产，就这样第二天上午11：28小朋友顺利出生，体重4330g,果真是巨大儿，儿子真乖，这么大你妈妈生你的话还不得痛死。</p>
-<h5 id="医院带娃"><a href="#医院带娃" class="headerlink" title="医院带娃"></a>医院带娃</h5><p>孩子出生后，医生对孩子的身体机能做了对应检查，检查结果：健康。随后护士姐姐陆续安排给小朋友注射预防针，然后毫无经验的我开启了带娃之旅。<br>孩子第一天是最难带的，特别是晚上要特别注意孩子吐羊水，基本上24小时要安排人照看，还好陪产家人比较多，倒也忙活的过来，还有就是吐槽一点医院的空气也太差了，孩子在病房根本睡不着，身上都是热痱子，主要是还不能开窗（病房都是产妇，坐月子期间确实不能开窗，这个能理解），没办法，晚上睡觉的时候，孩子热的睡不着，我们只能轮番抱着小朋友在走廊逛来逛去，这样他才不折腾，倒是睡得香甜。<br>小孩子从出生之后每天的奶量都会呈阶梯式递增，基本上两个小时就会饿一次，人类的本能还是很强大，饿了自然会哭。就这样在医院呆了快两周，收拾好行李，安排好车子，终于可以回家了。</p>
-<h5 id="宝贝回家了"><a href="#宝贝回家了" class="headerlink" title="宝贝回家了"></a>宝贝回家了</h5><p>在医院折腾了两周之后，终于可以回家洗个热水澡。兴奋之余，可别忘了小朋友保暖，毕竟医院相比家里来说温度，湿度都不一样，稍有不慎，有可能会感冒，于是乎大家又开始忙起来了，可能是小孩子对家有一种天生的归属感，平时在医院每天哭哭闹闹的他，回家头一天竟然不哭不闹，倒是弄得我们不习惯，但是话说的太早，第二天习惯家里环境的他，又开启了顽皮的旅程，这样挺好，别像老爸太老实。</p>
-<p>由于在医院呆的时间太久，回家没几天就上班了，产假过后刚上班还真心有点不适应，脑子里想的都是小宝贝，还好随着工作任务的迭代，状态也很快恢复了，还有就是每天下班回家都可以逗逗宝贝儿子，心情也比以前好多了，上次看到一句话说的挺不错，分享给大家。</p>
-<blockquote>
-<p>就算我一无所有，毕竟我有家人，有孩子，有梦想。</p>
-</blockquote>
-<h5 id="满月"><a href="#满月" class="headerlink" title="满月"></a>满月</h5><p>时间过的确实有点快，小朋友都满月了，本来想带孩子去摄影室拍满月照，但是小朋友太小，怕太折腾，就在家里自己DIY了几张，算是留个纪念吧，还有就是小朋友今天理了个满月头，图个喜庆，看看宝宝圆圆的脑袋，可爱极了。</p>
-<h5 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h5><p>贴上几张宝贝的满月照，还有就是在家里宅了N天孩他妈，终于说动我带上她去外面海了一顿，嘻嘻！！！<br><img src="http://chuantu.biz/t3/21/1461511148x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511111x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511130x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511195x3738746571.jpg" alt=""></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小朋友/">小朋友</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Start-New-Life" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/22/Start-New-Life/" class="article-date">
-  	<time datetime="2016-04-22T10:21:17.000Z" itemprop="datePublished">2016-04-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/22/Start-New-Life/">Start New Life</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <h3 id="生活之美"><a href="#生活之美" class="headerlink" title="生活之美"></a>生活之美</h3><blockquote>
-<p>心静如水，波澜不惊，无论得到与失去，心境始终如一。</p>
-</blockquote>
-<p>经过两天的折腾，新Blog终于迁移成功了，<a href="http://blog.csdn.net/dashentao1989" target="_blank" rel="external">CSDN博客</a>不再更新，后续生活，技术，感悟等都会在这里与大家一起分享。</p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感悟/">感悟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Parcelable与Serializable性能对比" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/22/Parcelable与Serializable性能对比/" class="article-date">
-  	<time datetime="2016-04-22T06:29:32.000Z" itemprop="datePublished">2016-04-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/22/Parcelable与Serializable性能对比/">Parcelable与Serializable性能对比</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p><a href="http://www.developerphil.com/parcelable-vs-serializable/" target="_blank" rel="external">原文链接</a></p>
-<h3 id="Parcelable-vs-Serializable"><a href="#Parcelable-vs-Serializable" class="headerlink" title="Parcelable vs Serializable"></a>Parcelable vs Serializable</h3><p>当你开始写android时，我们所学到的是不能直接向Activities和Fragments传递对象，我们不得不借助Intent或者Bundle来传递它们。</p>
-<p>当我们看api文档的时候，我们认识到有两种选择，我们的对象要么是Parcelable或者Serializable型，作为一个java开发者，我们已经知道Serializable的机制，那为什么还要去研究Parcelable呢？</p>
-<p>为了回答这个问题，我们来看两个方法。</p>
-<h4 id="Serializable，简洁的鼻祖"><a href="#Serializable，简洁的鼻祖" class="headerlink" title="Serializable，简洁的鼻祖"></a>Serializable，简洁的鼻祖</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// access modifiers, accessors and constructors omitted for brevity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SerializableDeveloper</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span><br><span class="line">    <span class="title">String</span> <span class="title">name</span></span>;</span><br><span class="line">    <span class="keyword">int</span> yearsOfExperience;</span><br><span class="line">    List&lt;Skill&gt; skillSet;</span><br><span class="line">    <span class="keyword">float</span> favoriteFloat;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Skill</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">        String name;</span><br><span class="line">        <span class="keyword">boolean</span> programmingRelated;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>仅仅需要在它和它的子类上实现Serializable接口就能完成一个漂亮的Serializable功能，他是一个标记接口，意味着不需要实现任何方法，java虚拟机将简单高效地完成序列化工作。</p>
-<p>这里面有个问题就是这种序列化是通过反射机制从而削弱了性能，这种机制也创建了大量的临时对象从而引起GC频繁回收调用资源。</p>
-<h4 id="Parcelable-速度之王"><a href="#Parcelable-速度之王" class="headerlink" title="Parcelable, 速度之王"></a>Parcelable, 速度之王</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// access modifiers, accessors and regular constructors ommited for brevity</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParcelableDeveloper</span> <span class="keyword">implements</span> <span class="title">Parcelable</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> yearsOfExperience;</span><br><span class="line">    List&lt;Skill&gt; skillSet;</span><br><span class="line">    <span class="keyword">float</span> favoriteFloat;</span><br><span class="line"></span><br><span class="line">    ParcelableDeveloper(Parcel in) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = in.readString();</span><br><span class="line">        <span class="keyword">this</span>.yearsOfExperience = in.readInt();</span><br><span class="line">        <span class="keyword">this</span>.skillSet = <span class="keyword">new</span> ArrayList&lt;Skill&gt;();</span><br><span class="line">        in.readTypedList(skillSet, Skill.CREATOR);</span><br><span class="line">        <span class="keyword">this</span>.favoriteFloat = in.readFloat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">        dest.writeString(name);</span><br><span class="line">        dest.writeInt(yearsOfExperience);</span><br><span class="line">        dest.writeTypedList(skillSet);</span><br><span class="line">        dest.writeFloat(favoriteFloat);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Parcelable.Creator&lt;ParcelableDeveloper&gt; CREATOR</span><br><span class="line">            = <span class="keyword">new</span> Parcelable.Creator&lt;ParcelableDeveloper&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="function">ParcelableDeveloper <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ParcelableDeveloper(in);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ParcelableDeveloper[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ParcelableDeveloper[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Skill</span> <span class="keyword">implements</span> <span class="title">Parcelable</span> </span>&#123;</span><br><span class="line">        String name;</span><br><span class="line">        <span class="keyword">boolean</span> programmingRelated;</span><br><span class="line"></span><br><span class="line">        Skill(Parcel in) &#123;</span><br><span class="line">            <span class="keyword">this</span>.name = in.readString();</span><br><span class="line">            <span class="keyword">this</span>.programmingRelated = (in.readInt() == <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">            dest.writeString(name);</span><br><span class="line">            dest.writeInt(programmingRelated ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> Parcelable.Creator&lt;Skill&gt; CREATOR</span><br><span class="line">            = <span class="keyword">new</span> Parcelable.Creator&lt;Skill&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="function">Skill <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Skill(in);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Skill[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Skill[size];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>按照google工程师的说话，这段代码将跑起来非常快，其中一个原因是运用真实的序列化处理代替反射，为了完成这个目的代码也做了大量的优化。</p>
-<p>然而，显而易见的是实现Parcelable接口并不是无成本的，创建了大量的引入代码从而导致整个类变得很重同时加大了维护成本。</p>
-<h4 id="Speed-Tests"><a href="#Speed-Tests" class="headerlink" title="Speed Tests"></a>Speed Tests</h4><p>当然，我们想知道Parcelable到底有多快</p>
-<p>测试步骤<br>1：模拟这个操作通过Bundle的writeToParcel（Parcel, int）向Activity传递对象，然后观察它。<br>2：循环这个操作1000次。<br>3：大概模拟10次，观察内存回收情况，以及app的cpu使用率，等等。<br>4：这个被测试的对象分别是SerializableDeveloper和ParcelableDeveloper。<br>5：在多种机型和版本上做测试<br>LG Nexus 4 - Android 4.2.2<br>Samsung Nexus 10 - Android 4.2.2<br>HTC Desire Z - Android 2.3.3</p>
-<p>测试结果：<br><img src="http://img.blog.csdn.net/20160318115133497" alt="这里写图片描述"></p>
-<p>Nexus 10</p>
-<p>Serializable: 1.0004ms,  Parcelable: 0.0850ms - 10.16x improvement.</p>
-<p>Nexus 4</p>
-<p>Serializable: 1.8539ms - Parcelable: 0.1824ms - 11.80x improvement.</p>
-<p>Desire Z</p>
-<p>Serializable: 5.1224ms - Parcelable: 0.2938ms - 17.36x improvement.</p>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>Parcelable比Serializable速度快10倍，在Nexus 10测试过程中得到了有趣的结果，仅仅通过1毫秒就完成了整个的序列化与反序列化过程。</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>假如你想成为一个好的码农，找个时间替换成Parcelable吧，他将提高十倍的速度并且用更少的资源。</p>
-<p>然而，在大部分的案例里，这种缓慢的Serializable序列化过程并没有被注意到，有时候仅仅是为了成本比较低才会使用它但是要记住Serialization是要付出很大的代价的，所以还是尽量少使用这种方式。</p>
-<p>假如你想传递成百上千的序列化对象，整个序列化的过程可能会超过一秒，当你对手机屏幕进行横竖屏切换将感觉有点延迟。</p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pacelable/">Pacelable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Serializable/">Serializable</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>

@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -437,128 +437,9 @@
 
 
   
-    <article id="post-打开超级adbd引起的Logcat异常" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/12/打开超级adbd引起的Logcat异常/" class="article-date">
-  	<time datetime="2016-06-12T08:54:37.000Z" itemprop="datePublished">2016-06-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/打开超级adbd引起的Logcat异常/">打开超级adbd引起的Logcat异常</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p>打开logcat莫名其妙报如下这个异常：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Communication error: </span><br><span class="line">                                                        java.io.IOException: Connection refused</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connectLocal(Native Method)</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connect(LocalSocketImpl.java:<span class="number">290</span>)</span><br><span class="line">                                                            at android.net.LocalSocket.connect(LocalSocket.java:<span class="number">130</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.listenToSocket(UsbDebuggingManager.java:<span class="number">84</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.run(UsbDebuggingManager.java:<span class="number">120</span>)</span><br><span class="line">                                                            at java.lang.Thread.run(Thread.java:<span class="number">841</span>)</span><br></pre></td></tr></table></figure></p>
-<p>app编译与运行都正常，比较纳闷，最后发现了原因：<br>超级adbd导致的：<br>只要关掉启用adbd(必须启用USB调试才能使用) 选项就可以使用了。</p>
-<p>那么超级adbd是个什么东西呢？</p>
-<p><em>对于已经root的了手机，输入adb root出现adbd cannot run as root in production builds，装了这个之后完美解决，不用老是adb shell然后su一下。</em></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adbd/">adbd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CEO-COO-CTO-CFO-到底是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" class="article-date">
-  	<time datetime="2016-05-24T02:51:02.000Z" itemprop="datePublished">2016-05-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/">CEO COO CTO CFO ...到底是什么鬼</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p>首席品牌官 【CBO】  chief brand officer<br>首席文化官 【CCO】  chief Cultural officer<br>开发总监   【CDO】  chief Development officer<br>首席执行官 【CEO】  chief Executive officer<br>首席财务官 【CFO】  chief finance officer<br>人事总监   【CHO】  chief Human resource officer<br>首席信息官 【CIO】  chief information officer<br>首席知识官 【CKO】  chief knowledge officer<br>首席市场官 【CMO】  chief Maketing officer<br>首席谈判官 【CNO】  chief Negotiation officer<br>首席营运官 【COO】  chief Operation officer<br>公关总监   【CPO】  chief Public relation officer<br>质量总监   【CQO】  chief Quality officer<br>销售总监   【CSO】  chief Sales officer<br>首席技术官 【CTO】  chief Technology officer<br>评估总监   【CVO】  chief Valuation officer</p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

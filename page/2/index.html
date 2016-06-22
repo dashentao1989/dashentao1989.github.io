@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -188,6 +188,125 @@
 
       <div class="body-wrap">
   
+    <article id="post-打开超级adbd引起的Logcat异常" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/12/打开超级adbd引起的Logcat异常/" class="article-date">
+  	<time datetime="2016-06-12T08:54:37.000Z" itemprop="datePublished">2016-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/打开超级adbd引起的Logcat异常/">打开超级adbd引起的Logcat异常</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <p>打开logcat莫名其妙报如下这个异常：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Communication error: </span><br><span class="line">                                                        java.io.IOException: Connection refused</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connectLocal(Native Method)</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connect(LocalSocketImpl.java:<span class="number">290</span>)</span><br><span class="line">                                                            at android.net.LocalSocket.connect(LocalSocket.java:<span class="number">130</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.listenToSocket(UsbDebuggingManager.java:<span class="number">84</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.run(UsbDebuggingManager.java:<span class="number">120</span>)</span><br><span class="line">                                                            at java.lang.Thread.run(Thread.java:<span class="number">841</span>)</span><br></pre></td></tr></table></figure></p>
+<p>app编译与运行都正常，比较纳闷，最后发现了原因：<br>超级adbd导致的：<br>只要关掉启用adbd(必须启用USB调试才能使用) 选项就可以使用了。</p>
+<p>那么超级adbd是个什么东西呢？</p>
+<p><em>对于已经root的了手机，输入adb root出现adbd cannot run as root in production builds，装了这个之后完美解决，不用老是adb shell然后su一下。</em></p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adbd/">adbd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CEO-COO-CTO-CFO-到底是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" class="article-date">
+  	<time datetime="2016-05-24T02:51:02.000Z" itemprop="datePublished">2016-05-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/">CEO COO CTO CFO ...到底是什么鬼</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <p>首席品牌官 【CBO】  chief brand officer<br>首席文化官 【CCO】  chief Cultural officer<br>开发总监   【CDO】  chief Development officer<br>首席执行官 【CEO】  chief Executive officer<br>首席财务官 【CFO】  chief finance officer<br>人事总监   【CHO】  chief Human resource officer<br>首席信息官 【CIO】  chief information officer<br>首席知识官 【CKO】  chief knowledge officer<br>首席市场官 【CMO】  chief Maketing officer<br>首席谈判官 【CNO】  chief Negotiation officer<br>首席营运官 【COO】  chief Operation officer<br>公关总监   【CPO】  chief Public relation officer<br>质量总监   【CQO】  chief Quality officer<br>销售总监   【CSO】  chief Sales officer<br>首席技术官 【CTO】  chief Technology officer<br>评估总监   【CVO】  chief Valuation officer</p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vim使用心得" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -289,265 +408,9 @@
 
 
   
-    <article id="post-assembleRelease-SimException异常" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/17/assembleRelease-SimException异常/" class="article-date">
-  	<time datetime="2016-05-17T07:47:25.000Z" itemprop="datePublished">2016-05-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/17/assembleRelease-SimException异常/">assembleRelease SimException异常</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p><a href="http://blog.csdn.net/xude1985/article/details/50776045" target="_blank" rel="external">Gradle之dependencies</a></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gradle/">gradle</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-gitignore注意事项" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/12/gitignore注意事项/" class="article-date">
-  	<time datetime="2016-05-12T08:15:15.000Z" itemprop="datePublished">2016-05-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/12/gitignore注意事项/">gitignore注意事项</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p> <strong> 在Android中Git提交想忽略某些不想提交的文件，可以在项目目录中新建一个.gitignore，如果没有这个文件，可以手动建一个。里面匹配一下你不想提交的文件。 </strong></p>
-<p> .gitignore内容如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#built application files</span><br><span class="line">*.apk</span><br><span class="line">*.ap_</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># files for the dex VM</span><br><span class="line">*.dex</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Java class files</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># generated files</span><br><span class="line">bin/</span><br><span class="line">gen/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Local configuration file (sdk path, etc)</span><br><span class="line">local.properties</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Windows thumbnail db</span><br><span class="line">Thumbs.db</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># OSX files</span><br><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Eclipse project files</span><br><span class="line">.classpath</span><br><span class="line">.project</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Android Studio</span><br><span class="line">.idea</span><br><span class="line">#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.</span><br><span class="line">.gradle</span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Signing files</span><br><span class="line">.signing/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># User-specific configurations</span><br><span class="line">.idea/libraries/</span><br><span class="line">.idea/workspace.xml</span><br><span class="line">.idea/tasks.xml</span><br><span class="line">.idea/.name</span><br><span class="line">.idea/compiler.xml</span><br><span class="line">.idea/copyright/profiles_settings.xml</span><br><span class="line">.idea/encodings.xml</span><br><span class="line">.idea/misc.xml</span><br><span class="line">.idea/modules.xml</span><br><span class="line">.idea/scopes/scope_settings.xml</span><br><span class="line">.idea/vcs.xml</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure></p>
-<p>可能.gitignore不生效:<br><strong> 原因如下： </strong><br>因为.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .  </span><br><span class="line">git add .  </span><br><span class="line">git commit -m <span class="string">'update .gitignore'</span></span><br></pre></td></tr></table></figure></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-捕获异常的那些事" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/03/捕获异常的那些事/" class="article-date">
-  	<time datetime="2016-05-03T04:39:41.000Z" itemprop="datePublished">2016-05-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/03/捕获异常的那些事/">捕获异常的那些事</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p><strong> 记得曾经有轮面试，面试官问我当在catch(Exception e)方法里面return掉，finally里面的数据会执行吗？当时由于对try-catch-finally机制没有全面的了解，猜了一个答案，会执行，竟然答对了，汗颜！！！ 这里还是总结一下，异常捕获应该注意些什么。 </strong></p>
-<h3 id="throw-Exception与try-catch的的区别"><a href="#throw-Exception与try-catch的的区别" class="headerlink" title="throw Exception与try catch的的区别"></a>throw Exception与try catch的的区别</h3><p>在开发业务的过程中，特别对于前端来说，比较依赖后端的数据，但是我们并不能完全信任后端的数据，这里我们往往会对后端的关键数据做异常处理，这里可能会有些同学偷懒直接throw Exception我们看看，直接throw Exception能否解决问题：</p>
-<h3 id="throw-Exception"><a href="#throw-Exception" class="headerlink" title="throw Exception"></a>throw Exception</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/30.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> NullPointerException </span>&#123;</span><br><span class="line">        String a = <span class="keyword">null</span>;</span><br><span class="line">        a.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>Exception in thread “main” java.lang.NullPointerException<br>    at TestDemo.test(TestDemo.java:12)<br>    at TestDemo.main(TestDemo.java:6)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)</p>
-<p>Process finished with exit code 1</p>
-<p>程序直接crash,空指针异常， exit code == 1异常退出，且”test”没有打印出来。</p>
-<h3 id="try-catch"><a href="#try-catch" class="headerlink" title="try catch"></a>try catch</h3><p>try catch进行捕获看看结果又会是怎样的呢？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String a = <span class="keyword">null</span>;</span><br><span class="line">            a.isEmpty();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>test<br>java.lang.NullPointerException<br>    at TestDemo.test(TestDemo.java:16)<br>    at TestDemo.main(TestDemo.java:9)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)</p>
-<p>Process finished with exit code 0</p>
-<p>成功捕获异常， exit code == 0 正常退出，且“test”得到执行。</p>
-<p><strong> 综上所述throw Exception并不能捕获异常仅仅是抛出了异常， 而try catch是可以捕获异常并且不会导致进程crash </strong></p>
-<h3 id="finally关键字"><a href="#finally关键字" class="headerlink" title="finally关键字"></a>finally关键字</h3><p>finally关键字一定会执行，且跟try catch配合使用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String a = <span class="keyword">null</span>;</span><br><span class="line">            a.isEmpty();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"finally"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>java.lang.NullPointerException<br>finally<br>    at TestDemo.test(TestDemo.java:16)<br>test<br>    at TestDemo.main(TestDemo.java:9)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)</p>
-<p>Process finished with exit code 0</p>
-<p>finally被执行，正常退出；</p>
-<p>这里回到文章开头的面试题，catch里面直接return看看finally是否得到执行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String a = <span class="keyword">null</span>;</span><br><span class="line">            a.isEmpty();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"finally"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<br>java.lang.NullPointerException<br>    at TestDemo.test(TestDemo.java:16)<br>    at TestDemo.main(TestDemo.java:9)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)<br>finally<br>test</p>
-<p>Process finished with exit code 0</p>
-<p>finally照样执行。</p>
-<p><strong> 好了分析完毕。 </strong></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-睿睿妈妈要开Blog了" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/29/睿睿妈妈要开Blog了/" class="article-date">
-  	<time datetime="2016-04-29T14:52:48.000Z" itemprop="datePublished">2016-04-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/29/睿睿妈妈要开Blog了/">睿睿妈妈要开Blog了</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <h4 id="睿睿妈妈的新生活"><a href="#睿睿妈妈的新生活" class="headerlink" title="睿睿妈妈的新生活"></a>睿睿妈妈的新生活</h4><p><strong> 奇迹诞生了 </strong><br>睿睿妈妈今天要写文章了，哈哈</p>
-<p><img src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" alt=""></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
