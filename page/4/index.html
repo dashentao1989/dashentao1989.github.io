@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -187,6 +187,66 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-gitignore注意事项" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/12/gitignore注意事项/" class="article-date">
+  	<time datetime="2016-05-12T08:15:15.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/gitignore注意事项/">gitignore注意事项</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <p> <strong> 在Android中Git提交想忽略某些不想提交的文件，可以在项目目录中新建一个.gitignore，如果没有这个文件，可以手动建一个。里面匹配一下你不想提交的文件。 </strong></p>
+<p> .gitignore内容如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#built application files</span><br><span class="line">*.apk</span><br><span class="line">*.ap_</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># files for the dex VM</span><br><span class="line">*.dex</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Java class files</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># generated files</span><br><span class="line">bin/</span><br><span class="line">gen/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Local configuration file (sdk path, etc)</span><br><span class="line">local.properties</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Windows thumbnail db</span><br><span class="line">Thumbs.db</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># OSX files</span><br><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Eclipse project files</span><br><span class="line">.classpath</span><br><span class="line">.project</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Android Studio</span><br><span class="line">.idea</span><br><span class="line">#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.</span><br><span class="line">.gradle</span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Signing files</span><br><span class="line">.signing/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># User-specific configurations</span><br><span class="line">.idea/libraries/</span><br><span class="line">.idea/workspace.xml</span><br><span class="line">.idea/tasks.xml</span><br><span class="line">.idea/.name</span><br><span class="line">.idea/compiler.xml</span><br><span class="line">.idea/copyright/profiles_settings.xml</span><br><span class="line">.idea/encodings.xml</span><br><span class="line">.idea/misc.xml</span><br><span class="line">.idea/modules.xml</span><br><span class="line">.idea/scopes/scope_settings.xml</span><br><span class="line">.idea/vcs.xml</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure></p>
+<p>可能.gitignore不生效:<br><strong> 原因如下： </strong><br>因为.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .  </span><br><span class="line">git add .  </span><br><span class="line">git commit -m <span class="string">'update .gitignore'</span></span><br></pre></td></tr></table></figure></p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-捕获异常的那些事" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -305,82 +365,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android-CountDownTimer-使用时遇到的坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/" class="article-date">
-  	<time datetime="2016-04-29T08:10:02.000Z" itemprop="datePublished">2016-04-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/">Android CountDownTimer 使用时遇到的坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <h3 id="CountDownTimer遇到的坑"><a href="#CountDownTimer遇到的坑" class="headerlink" title="CountDownTimer遇到的坑"></a>CountDownTimer遇到的坑</h3><p><strong> 先来看一段触发CountDownTimer的代码 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mDefaultButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                CountDownTimer countDownTimer = <span class="keyword">new</span> CountDownTimer(<span class="number">4000</span>, <span class="number">1</span> * <span class="number">1000</span>) &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, millisUntilFinished + <span class="string">""</span>);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, <span class="string">"isFinish!"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>触发按钮就会触发CountDownTimer计时器，这里我们来分析下CountDownTimer两个参数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> millisInFuture The number of millis in the future from the call</span><br><span class="line">     *   to &#123;<span class="doctag">@link</span> #start()&#125; until the countdown is done and &#123;<span class="doctag">@link</span> #onFinish()&#125;</span><br><span class="line">     *   is called.</span><br><span class="line">     * <span class="doctag">@param</span> countDownInterval The interval along the way to receive</span><br><span class="line">     *   &#123;<span class="doctag">@link</span> #onTick(long)&#125; callbacks.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CountDownTimer</span><span class="params">(<span class="keyword">long</span> millisInFuture, <span class="keyword">long</span> countDownInterval)</span> </span>&#123;</span><br><span class="line">        mMillisInFuture = millisInFuture;</span><br><span class="line">        mCountdownInterval = countDownInterval;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>1.millisInFuture 计时器从开始计时到结束计时的周长<br>2.countDownInterval 计时器计时的间隔时间</p>
-<p><strong> 我们来分析下CountDownTimer的实现原理: </strong><br>start</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Start the countdown.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> CountDownTimer <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mCancelled = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (mMillisInFuture &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        onFinish();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mStopTimeInFuture = SystemClock.elapsedRealtime() + mMillisInFuture;</span><br><span class="line">    mHandler.sendMessage(mHandler.obtainMessage(MSG));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过start()启动计时器，通过代码可以看出通过mHandler进行一些核心操作，进入到mHandler看看到底干了些什么；</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// handles counting down</span></span><br><span class="line">    <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">synchronized</span> (CountDownTimerTest.<span class="keyword">this</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mCancelled) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">long</span> millisLeft = mStopTimeInFuture - SystemClock.elapsedRealtime();</span><br><span class="line">                Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft = "</span> + millisLeft);</span><br><span class="line">                <span class="keyword">if</span> (millisLeft &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    onFinish();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (millisLeft &lt; mCountdownInterval) &#123;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft &lt; mCountdownInterval!"</span>);</span><br><span class="line">                    <span class="comment">// no tick, just delay until done</span></span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), millisLeft);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">long</span> lastTickStart = SystemClock.elapsedRealtime();</span><br><span class="line">                    onTick(millisLeft);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// take into account user's onTick taking time to execute</span></span><br><span class="line">                    <span class="keyword">long</span> delay = lastTickStart + mCountdownInterval - SystemClock.elapsedRealtime();</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// special case: user's onTick took more than interval to</span></span><br><span class="line">                    <span class="comment">// complete, skip to next interval</span></span><br><span class="line">                    <span class="keyword">while</span> (delay &lt; <span class="number">0</span>) delay += mCountdownInterval;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"delay = "</span> + delay);</span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), delay);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-<p>通过代码可以看出实现还是蛮简单的，通过计算delay时间，触发sendMessageDelayed(message, delay)轮训发送消息达到计时的效果。</p>
-<p>这里面反复用到SystemClock.elapsedRealtime()计算时间，这里说明下与其他获取时间的区别：<br> -System.currentTimeMillis()  系统时间，也就是日期时间，可以被系统设置修改，然后值就会发生跳变。<br> -uptimeMillis 自开机后，经过的时间，不包括深度睡眠的时间<br> -elapsedRealtime自开机后，经过的时间，包括深度睡眠的时间</p>
-<p><strong> 这里我来说下我遇到的坑 </strong><br>这里我重写了CountDownTimer类在handler的代码里打印了下Log, 当我构造CountDownTime时传入的参数分别为： 4000， 1000</p>
-<p>那期望的结果是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4000</span></span><br><span class="line"><span class="number">3000</span></span><br><span class="line"><span class="number">2000</span></span><br><span class="line"><span class="number">1000</span></span><br><span class="line">finish</span><br></pre></td></tr></table></figure></p>
-<p><strong> 实际的打印结果是： </strong></p>
-<p>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 997<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: isFinish!</p>
-<p>从上面的日志里面分析，当onTick返回的时间是1998毫秒时， 整个计时器紧接着就delay了1998毫秒， 然后就直接onFinish了， 计算次数减少一次，且最后一次计数间隔大于一毫秒小于两毫秒。</p>
-<p>回到上面场景，我们来分析下到底是什么原因导致的：<br>当第22行onTick(millisLeft)返回，且millisLeft == 1998毫秒， 继续往下执行，执行到最后一行sendMessageDelayed(obtainMessage(MSG), delay)位置，此时delay为999毫秒， 然后休眠999毫秒之后，重新进入到handleMessage方法，此时13行计算后millisLeft == 997， 进入到16行判断里，millisLeft &lt; mCountdownInterval条件成立， 继续休眠997毫秒， 继续进入handleMessage方法，此时millisLeft == -1毫秒，第14行millisLeft &lt;= 0条件成立，直接调用onFinish()方法，计时结束。</p>
-<p>通过分析说明，CountDownTimer计时并不能完全准确，特别是计算一些时间周长短且需求精度高的动作， 所以平时开发时用这个类一定要注意。</p>
-<p>万一要用这个类计算建议millisInFuture参数最好不要写成整数，如上例子如果millisInFuture参数写成4012毫秒。<br>执行打印Log如下：</p>
-<p>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:53.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 7<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: isFinish!</p>
-<p><strong> 结果符合预期. </strong></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
 	</div>
 
       
