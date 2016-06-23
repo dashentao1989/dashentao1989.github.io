@@ -68,6 +68,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-proguard-那些事" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/15/proguard-那些事/" class="article-date">
+  <time datetime="2016-06-15T07:08:06.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/15/proguard-那些事/">proguard 那些事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+       
+        <div id="toc" class="article-toc">
+          <strong class="toc-title">文章目录</strong>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#With-each-build-ProGuard-outputs-the-following-files"><span class="toc-text">With each build, ProGuard outputs the following files:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dump-txt"><span class="toc-text">dump.txt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mapping-txt"><span class="toc-text">mapping.txt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#seeds-txt"><span class="toc-text">seeds.txt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usage-txt"><span class="toc-text">usage.txt</span></a></li></ol></li></ol>
+          </div>
+        
+        <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><h4 id="dump-txt"><a href="#dump-txt" class="headerlink" title="dump.txt"></a>dump.txt</h4><ul>
+<li>描述apk所有文件的内部结构<br><em>Describes the internal structure of all the class files in the APK.</em></li>
+</ul>
+<h4 id="mapping-txt"><a href="#mapping-txt" class="headerlink" title="mapping.txt"></a>mapping.txt</h4><ul>
+<li>提供了一个源文件与混淆文件的对照<br><em>Provides a translation between the original and obfuscated class, method, and field names.</em></li>
+</ul>
+<h4 id="seeds-txt"><a href="#seeds-txt" class="headerlink" title="seeds.txt"></a>seeds.txt</h4><ul>
+<li>列出没有被混淆的类和成员变量<br><em>Lists the classes and members that were not obfuscated.</em></li>
+</ul>
+<h4 id="usage-txt"><a href="#usage-txt" class="headerlink" title="usage.txt"></a>usage.txt</h4><ul>
+<li>列出apk中被移除的代码<em> 
+</em>Lists the code that was removed from the APK.*</li>
+</ul>
+<ul>
+<li>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></li>
+</ul>
+<ul>
+<li>要值得注意的是在每次通过proguard打release包时mapping.txt文件都会被重写， 所以你必须仔细的保存一份复制在打一个新的而release包时，通过在打release包时保留一个mapping.txt文件，这样的话当用户在使用老版本app时提出提出混淆的错误信息是你能根据mapping.txt对照关系进行相应准确的deug.</li>
+</ul>
+<p><em>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</em></p>
+<p><em>more coming soon!</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/15/proguard-那些事/" data-id="cipsaiui8001giy6785723vir" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/proguard/">proguard</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-打开超级adbd引起的Logcat异常" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/12/打开超级adbd引起的Logcat异常/" class="article-date">
@@ -104,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/12/打开超级adbd引起的Logcat异常/" data-id="cipp1y4d2000r8b67g8fxvsuh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/12/打开超级adbd引起的Logcat异常/" data-id="cipsaiuig001liy67j5kzdt76" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adbd/">adbd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -150,99 +216,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" data-id="cipp1y48x00018b67gup1atma" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" data-id="cipsaiugt0004iy670oq60wzc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Vim使用心得" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/19/Vim使用心得/" class="article-date">
-  <time datetime="2016-05-19T03:17:12.000Z" itemprop="datePublished">2016-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/19/Vim使用心得/">Vim使用心得</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-       
-        <div id="toc" class="article-toc">
-          <strong class="toc-title">文章目录</strong>
-          
-          </div>
-        
-        <p><strong> 从今天开始学习Vim不要阻止我 </strong></p>
-<blockquote>
-<p>Better.Stronger.Faster</p>
-</blockquote>
-<ul>
-<li>i 编辑</li>
-<li>:wq ZZ :x 保存退出</li>
-<li>:q! 退出不保存</li>
-<li>yy 复制</li>
-<li>p 粘贴</li>
-<li>:q 退出不保存</li>
-<li>v 可视化</li>
-<li>hjkl 光标左上右下移动</li>
-<li>0 光标移动到该行开头</li>
-<li>$ 光标移动到该行末尾</li>
-<li>^ 光标移动到该行第一个不是blank的地方</li>
-<li>g_ 光标移动到该行最后一个不是blank的地方</li>
-<li>w 移动到下个单词的开头 </li>
-<li>e 移动到下个单词的结尾</li>
-<li>:N 移动到第N行</li>
-<li>:set number 显示行号</li>
-<li>:set nonumber 不显示行号</li>
-<li>. 执行上次操作</li>
-<li>.N 执行上次操作N次</li>
-<li>dd 删除改行</li>
-<li>Ndd 删除N行</li>
-<li>o 该行前面插入新行</li>
-<li>O 该行后面插入新行</li>
-<li>N<command> 重复执行command命令N次</li>
-<li>% 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
-<li>*和#:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词</li>
-<li>v 可视化</li>
-<li>fa 到下个为a的字符处，你也可以fs到下一个为s的字符</li>
-<li>3fa 在当前行查找第三个出现的a</li>
-<li>F和T 和f和t一样，只不过是相反的方向</li>
-<li>/pattern 寻找pattern匹配项</li>
-<li>gU 变大写</li>
-<li>gu 变小写</li>
-<li>y2/foo 拷贝2个“foo”之间的字符串</li>
-<li><p><ctrl-p>或是ctrl-n 自动提示功能</ctrl-p></p>
-</li>
-<li><p>ctrl+V 块操作</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/19/Vim使用心得/" data-id="cipp1y4a100048b67il66hsx9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
 
     </footer>
   </div>
@@ -278,7 +255,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 17.5px;">git</a> <a href="/tags/gradle/" style="font-size: 12.5px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 17.5px;">git</a> <a href="/tags/gradle/" style="font-size: 12.5px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
     </div>
   </div>
 
@@ -300,6 +277,10 @@
       <ul>
         
           <li>
+            <a href="/2016/06/23/Proxy代理模式/">Proxy代理模式</a>
+          </li>
+        
+          <li>
             <a href="/2016/06/21/git-tag标签/">git tag标签</a>
           </li>
         
@@ -313,10 +294,6 @@
         
           <li>
             <a href="/2016/06/12/打开超级adbd引起的Logcat异常/">打开超级adbd引起的Logcat异常</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/">CEO COO CTO CFO ...到底是什么鬼</a>
           </li>
         
       </ul>
