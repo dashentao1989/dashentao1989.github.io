@@ -20,7 +20,7 @@
 
 环境角色（Context）: 持有一个Strategy的引用。
 抽象策略角色（Strategy）:这是一个抽象角色，通常由一个接口或抽象类实现。此角色给出所有的具体策略类">
-<meta property="og:updated_time" content="2016-06-24T03:17:10.000Z">
+<meta property="og:updated_time" content="2016-06-24T03:20:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Strategy策略模式">
 <meta name="twitter:description" content="策略模式调研策略模式定义：策略模式属于对象的行为模式。其用意是针对一组算法，将每一个算法封装到具有共同接口的独立的类中，从而使得它们可以相互替换。策略模式使得算法可以在不影响到客户端的情况下发生变化。
@@ -92,7 +92,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -262,11 +262,17 @@
 <ul>
 <li>ConcreteStrategy:</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class NormalStrategy implements StrategyInter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void getPrice() &#123;</span><br><span class="line">        System.out.println("9折");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class PlatinumStrategy implements StrategyInter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void getPrice() &#123;</span><br><span class="line">        System.out.println("8折");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DiamondStrategy implements StrategyInter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void getPrice() &#123;</span><br><span class="line">        System.out.println("7折");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">##### 调用方：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public class Supplier &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        NormalStrategy normalStrategy = new NormalStrategy();</span><br><span class="line">        SellPrice sellPrice = new SellPrice(normalStrategy);</span><br><span class="line">        sellPrice.price();</span><br><span class="line"></span><br><span class="line">        PlatinumStrategy platinumStrategy = new PlatinumStrategy();</span><br><span class="line">        SellPrice sellPrice1 = new SellPrice(platinumStrategy);</span><br><span class="line">        sellPrice1.price();</span><br><span class="line"></span><br><span class="line">        DiamondStrategy diamondStrategy = new DiamondStrategy();</span><br><span class="line">        SellPrice sellPrice2 = new SellPrice(diamondStrategy);</span><br><span class="line">        sellPrice2.price();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>打印结果：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9</span>折</span><br><span class="line"><span class="number">8</span>折</span><br><span class="line"><span class="number">7</span>折</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class NormalStrategy implements StrategyInter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void getPrice() &#123;</span><br><span class="line">        System.out.println("9折");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class PlatinumStrategy implements StrategyInter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void getPrice() &#123;</span><br><span class="line">        System.out.println("8折");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DiamondStrategy implements StrategyInter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void getPrice() &#123;</span><br><span class="line">        System.out.println("7折");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">###### 调用方：</span><br></pre></td></tr></table></figure>
+<p>public class Supplier {<br>    public static void main(String[] args) {<br>        NormalStrategy normalStrategy = new NormalStrategy();<br>        SellPrice sellPrice = new SellPrice(normalStrategy);<br>        sellPrice.price();</p>
+<pre><code>    PlatinumStrategy platinumStrategy = new PlatinumStrategy();
+    SellPrice sellPrice1 = new SellPrice(platinumStrategy);
+    sellPrice1.price();
+
+    DiamondStrategy diamondStrategy = new DiamondStrategy();
+    SellPrice sellPrice2 = new SellPrice(diamondStrategy);
+    sellPrice2.price();
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 打印结果：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">9折</span><br><span class="line">8折</span><br><span class="line">7折</span><br></pre></td></tr></table></figure></p>
 <h4 id="优缺点："><a href="#优缺点：" class="headerlink" title="优缺点："></a>优缺点：</h4><p>策略模式的优点</p>
 <ul>
 <li><p>策略模式提供了管理相关的算法族的办法。策略类的等级结构定义了一个算法或行为族。恰当使用继承可以把公共的代码移到父类里面，从而避免代码重复。</p>
