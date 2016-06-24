@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -187,59 +187,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/24/test/" class="article-date">
-  	<time datetime="2016-06-24T02:06:09.000Z" itemprop="datePublished">2016-06-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/24/test/">test</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-读java并发编程实战-part-one" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -383,9 +330,104 @@
 
 
   
+    <article id="post-git-tag标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/21/git-tag标签/" class="article-date">
+  	<time datetime="2016-06-21T06:06:58.000Z" itemprop="datePublished">2016-06-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/21/git-tag标签/">git tag标签</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="版本控制管理"><a href="#版本控制管理" class="headerlink" title="版本控制管理"></a>版本控制管理</h3><p>为了防止远程版本管理混乱，开发过程中无法准确跟踪分支，做相应的hotfix,且远程服务器存在大量的冗余分支，增大了管理难度，这里经过调研，推荐使用tag来管理相应的version,做到快捷修复，敏捷开发，提高管理效率。</p>
+<h4 id="tag相应命令介绍："><a href="#tag相应命令介绍：" class="headerlink" title="tag相应命令介绍："></a>tag相应命令介绍：</h4><ul>
+<li>创建含附注的标签：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a &lt;tag-name&gt; -m <span class="string">'my version 1.x.x'</span></span><br></pre></td></tr></table></figure>
+<p>-a （译注：取 annotated 的首字母）指定标签名字<br><br>-m  指定对应的标签说明</p>
+<ul>
+<li>$ git show 命令查看相应标签的版本信息，并连同显示打标签时的提交对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git show &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询本地标签list：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询远程tag标签list：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git ls-remote --tags origin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送标签到远程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送所有标签到远程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删掉远程tag:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删掉本地分支：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d &lt;tab-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>拉取远程标签:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b branch &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
