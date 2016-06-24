@@ -6,10 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Vim使用心得 | CoffeeTao的技术生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从今天开始学习Vim不要阻止我 
-
-Better.Stronger.Faster
-
+  <meta name="description" content="Better.Stronger.Faster为了装逼，努力学会VIM
 
 i 编辑
 :wq ZZ :x 保存退出
@@ -23,15 +20,13 @@ hjkl 光标左上右下移动
 $ 光标移动到该行末尾
 ^ 光标移动到该行第一个不是blank的地方
 g_ 光标移动到该行最后一个不是blank的地方
-w 移动到下个单词的开头">
+w 移动到下个单词的开头 
+e 移动到下个单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vim使用心得">
 <meta property="og:url" content="http://yoursite.com/2016/05/19/Vim使用心得/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
-<meta property="og:description" content="从今天开始学习Vim不要阻止我 
-
-Better.Stronger.Faster
-
+<meta property="og:description" content="Better.Stronger.Faster为了装逼，努力学会VIM
 
 i 编辑
 :wq ZZ :x 保存退出
@@ -45,14 +40,12 @@ hjkl 光标左上右下移动
 $ 光标移动到该行末尾
 ^ 光标移动到该行第一个不是blank的地方
 g_ 光标移动到该行最后一个不是blank的地方
-w 移动到下个单词的开头">
-<meta property="og:updated_time" content="2016-06-20T05:37:48.000Z">
+w 移动到下个单词的开头 
+e 移动到下个单">
+<meta property="og:updated_time" content="2016-06-24T09:26:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim使用心得">
-<meta name="twitter:description" content="从今天开始学习Vim不要阻止我 
-
-Better.Stronger.Faster
-
+<meta name="twitter:description" content="Better.Stronger.Faster为了装逼，努力学会VIM
 
 i 编辑
 :wq ZZ :x 保存退出
@@ -66,7 +59,8 @@ hjkl 光标左上右下移动
 $ 光标移动到该行末尾
 ^ 光标移动到该行第一个不是blank的地方
 g_ 光标移动到该行最后一个不是blank的地方
-w 移动到下个单词的开头">
+w 移动到下个单词的开头 
+e 移动到下个单">
   
     <link rel="alternative" href="/atom.xml" title="CoffeeTao的技术生活" type="application/atom+xml">
   
@@ -276,10 +270,7 @@ w 移动到下个单词的开头">
     <div class="article-entry" itemprop="articleBody">
   
     
-    <p><strong> 从今天开始学习Vim不要阻止我 </strong></p>
-<blockquote>
-<p>Better.Stronger.Faster</p>
-</blockquote>
+    <h3 id="Better-Stronger-Faster"><a href="#Better-Stronger-Faster" class="headerlink" title="Better.Stronger.Faster"></a>Better.Stronger.Faster</h3><p><strong>为了装逼，努力学会VIM</strong></p>
 <ul>
 <li>i 编辑</li>
 <li>:wq ZZ :x 保存退出</li>
@@ -319,7 +310,42 @@ w 移动到下个单词的开头">
 </li>
 <li><p>ctrl+V 块操作</p>
 </li>
+<li>ctrl+n, ctrl+p 自动提示功能， 但是智能提示当前编辑文档中有的单词，比较蛋疼</li>
 </ul>
+<h4 id="块操作"><a href="#块操作" class="headerlink" title="块操作"></a>块操作</h4><ul>
+<li>对所选择的代码段的行首统一加上某个字符：<br><em>例如对一段代码加注释</em></li>
+</ul>
+<ol>
+<li>ctrl+v 开始块操作</li>
+<li>h,j 上下进行移动操作</li>
+<li>0 光标移动到改行的行首</li>
+<li>I 开始编辑</li>
+<li>插入字段//</li>
+<li>esc 编辑生效</li>
+</ol>
+<h5 id="运行效果："><a href="#运行效果：" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//111</span><br><span class="line">//222</span><br><span class="line">//333333</span><br><span class="line">//5555555</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对所选的代码段的行尾统一加上某个字符：</li>
+</ul>
+<ol>
+<li>ctrl_v 开启块操作</li>
+<li>h,j 上下进行移动操作</li>
+<li>$ 光标移动到改行的末尾</li>
+<li>A 开始编辑</li>
+<li>插入字段//</li>
+<li>esc编辑生效</li>
+</ol>
+<h5 id="运行效果：-1"><a href="#运行效果：-1" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">111//</span><br><span class="line">22222//</span><br><span class="line">3333333//</span><br><span class="line">11//</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除选中的单词</li>
+</ul>
+<ol>
+<li>w 光标移动到定位单词的首字母</li>
+<li>v 开始可视化</li>
+<li>e 光标移动到定位单词的尾字母</li>
+<li>d 删除该单词</li>
+</ol>
+<p>// TODO 后续持续更新</p>
 
   
 </div>
