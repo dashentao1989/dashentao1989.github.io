@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 18px;">git</a> <a href="/tags/gradle/" style="font-size: 12px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 14px;">生活</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a>
+						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 18px;">git</a> <a href="/tags/gradle/" style="font-size: 12px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/汽车/" style="font-size: 10px;">汽车</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 14px;">生活</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,139 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Vim使用心得" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/19/Vim使用心得/" class="article-date">
+  	<time datetime="2016-05-19T03:17:12.000Z" itemprop="datePublished">2016-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/19/Vim使用心得/">Vim使用心得</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="Better-Stronger-Faster"><a href="#Better-Stronger-Faster" class="headerlink" title="Better.Stronger.Faster"></a>Better.Stronger.Faster</h3><p><strong>为了装逼，努力学会VIM</strong></p>
+<ul>
+<li>i 编辑</li>
+<li>:wq ZZ :x 保存退出</li>
+<li>:q! 退出不保存</li>
+<li>yy 复制</li>
+<li>p 粘贴</li>
+<li>:q 退出不保存</li>
+<li>v 可视化</li>
+<li>hjkl 光标左上右下移动</li>
+<li>0 光标移动到该行开头</li>
+<li>$ 光标移动到该行末尾</li>
+<li>^ 光标移动到该行第一个不是blank的地方</li>
+<li>g_ 光标移动到该行最后一个不是blank的地方</li>
+<li>w 移动到下个单词的开头 </li>
+<li>e 移动到下个单词的结尾</li>
+<li>:N 移动到第N行</li>
+<li>:set number 显示行号</li>
+<li>:set nonumber 不显示行号</li>
+<li>. 执行上次操作</li>
+<li>.N 执行上次操作N次</li>
+<li>dd 删除改行</li>
+<li>Ndd 删除N行</li>
+<li>o 该行前面插入新行</li>
+<li>O 该行后面插入新行</li>
+<li>N<command> 重复执行command命令N次</li>
+<li>% 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
+<li>*和#:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词</li>
+<li>v 可视化</li>
+<li>fa 到下个为a的字符处，你也可以fs到下一个为s的字符</li>
+<li>3fa 在当前行查找第三个出现的a</li>
+<li>F和T 和f和t一样，只不过是相反的方向</li>
+<li>/pattern 寻找pattern匹配项</li>
+<li>gU 变大写</li>
+<li>gu 变小写</li>
+<li>y2/foo 拷贝2个“foo”之间的字符串</li>
+<li><p><ctrl-p>或是ctrl-n 自动提示功能</ctrl-p></p>
+</li>
+<li><p>ctrl+V 块操作</p>
+</li>
+<li>ctrl+n, ctrl+p 自动提示功能， 但是智能提示当前编辑文档中有的单词，比较蛋疼</li>
+</ul>
+<h4 id="块操作"><a href="#块操作" class="headerlink" title="块操作"></a>块操作</h4><ul>
+<li>对所选择的代码段的行首统一加上某个字符：<br><em>例如对一段代码加注释</em></li>
+</ul>
+<ol>
+<li>ctrl+v 开始块操作</li>
+<li>h,j 上下进行移动操作</li>
+<li>0 光标移动到改行的行首</li>
+<li>I 开始编辑</li>
+<li>插入字段//</li>
+<li>esc 编辑生效</li>
+</ol>
+<h5 id="运行效果："><a href="#运行效果：" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//111</span><br><span class="line">//222</span><br><span class="line">//333333</span><br><span class="line">//5555555</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对所选的代码段的行尾统一加上某个字符：</li>
+</ul>
+<ol>
+<li>ctrl_v 开启块操作</li>
+<li>h,j 上下进行移动操作</li>
+<li>$ 光标移动到改行的末尾</li>
+<li>A 开始编辑</li>
+<li>插入字段//</li>
+<li>esc编辑生效</li>
+</ol>
+<h5 id="运行效果：-1"><a href="#运行效果：-1" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">111//</span><br><span class="line">22222//</span><br><span class="line">3333333//</span><br><span class="line">11//</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除选中的单词</li>
+</ul>
+<ol>
+<li>w 光标移动到定位单词的首字母</li>
+<li>v 开始可视化</li>
+<li>e 光标移动到定位单词的尾字母</li>
+<li>d 删除该单词</li>
+</ol>
+<p>// TODO 后续持续更新</p>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-assembleRelease-SimException异常" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -285,85 +418,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-捕获异常的那些事" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/03/捕获异常的那些事/" class="article-date">
-  	<time datetime="2016-05-03T04:39:41.000Z" itemprop="datePublished">2016-05-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/03/捕获异常的那些事/">捕获异常的那些事</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p><strong> 记得曾经有轮面试，面试官问我当在catch(Exception e)方法里面return掉，finally里面的数据会执行吗？当时由于对try-catch-finally机制没有全面的了解，猜了一个答案，会执行，竟然答对了，汗颜！！！ 这里还是总结一下，异常捕获应该注意些什么。 </strong></p>
-<h3 id="throw-Exception与try-catch的的区别"><a href="#throw-Exception与try-catch的的区别" class="headerlink" title="throw Exception与try catch的的区别"></a>throw Exception与try catch的的区别</h3><p>在开发业务的过程中，特别对于前端来说，比较依赖后端的数据，但是我们并不能完全信任后端的数据，这里我们往往会对后端的关键数据做异常处理，这里可能会有些同学偷懒直接throw Exception我们看看，直接throw Exception能否解决问题：</p>
-<h3 id="throw-Exception"><a href="#throw-Exception" class="headerlink" title="throw Exception"></a>throw Exception</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/30.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> NullPointerException </span>&#123;</span><br><span class="line">        String a = <span class="keyword">null</span>;</span><br><span class="line">        a.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>Exception in thread “main” java.lang.NullPointerException<br>    at TestDemo.test(TestDemo.java:12)<br>    at TestDemo.main(TestDemo.java:6)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)</p>
-<p>Process finished with exit code 1</p>
-<p>程序直接crash,空指针异常， exit code == 1异常退出，且”test”没有打印出来。</p>
-<h3 id="try-catch"><a href="#try-catch" class="headerlink" title="try catch"></a>try catch</h3><p>try catch进行捕获看看结果又会是怎样的呢？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String a = <span class="keyword">null</span>;</span><br><span class="line">            a.isEmpty();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>test<br>java.lang.NullPointerException<br>    at TestDemo.test(TestDemo.java:16)<br>    at TestDemo.main(TestDemo.java:9)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)</p>
-<p>Process finished with exit code 0</p>
-<p>成功捕获异常， exit code == 0 正常退出，且“test”得到执行。</p>
-<p><strong> 综上所述throw Exception并不能捕获异常仅仅是抛出了异常， 而try catch是可以捕获异常并且不会导致进程crash </strong></p>
-<h3 id="finally关键字"><a href="#finally关键字" class="headerlink" title="finally关键字"></a>finally关键字</h3><p>finally关键字一定会执行，且跟try catch配合使用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String a = <span class="keyword">null</span>;</span><br><span class="line">            a.isEmpty();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"finally"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>java.lang.NullPointerException<br>finally<br>    at TestDemo.test(TestDemo.java:16)<br>test<br>    at TestDemo.main(TestDemo.java:9)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)</p>
-<p>Process finished with exit code 0</p>
-<p>finally被执行，正常退出；</p>
-<p>这里回到文章开头的面试题，catch里面直接return看看finally是否得到执行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();</span><br><span class="line">        System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String a = <span class="keyword">null</span>;</span><br><span class="line">            a.isEmpty();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"finally"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<br>java.lang.NullPointerException<br>    at TestDemo.test(TestDemo.java:16)<br>    at TestDemo.main(TestDemo.java:9)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:606)<br>    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)<br>finally<br>test</p>
-<p>Process finished with exit code 0</p>
-<p>finally照样执行。</p>
-<p><strong> 好了分析完毕。 </strong></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
 	</div>
 
       
