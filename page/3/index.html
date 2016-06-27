@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 18px;">git</a> <a href="/tags/gradle/" style="font-size: 12px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/汽车/" style="font-size: 12px;">汽车</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 14px;">生活</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a>
+						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 18px;">git</a> <a href="/tags/gradle/" style="font-size: 12px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/汽车/" style="font-size: 14px;">汽车</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 14px;">生活</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,101 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-git-tag标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/21/git-tag标签/" class="article-date">
+  	<time datetime="2016-06-21T06:06:58.000Z" itemprop="datePublished">2016-06-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/21/git-tag标签/">git tag标签</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="版本控制管理"><a href="#版本控制管理" class="headerlink" title="版本控制管理"></a>版本控制管理</h3><p>为了防止远程版本管理混乱，开发过程中无法准确跟踪分支，做相应的hotfix,且远程服务器存在大量的冗余分支，增大了管理难度，这里经过调研，推荐使用tag来管理相应的version,做到快捷修复，敏捷开发，提高管理效率。</p>
+<h4 id="tag相应命令介绍："><a href="#tag相应命令介绍：" class="headerlink" title="tag相应命令介绍："></a>tag相应命令介绍：</h4><ul>
+<li>创建含附注的标签：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a &lt;tag-name&gt; -m <span class="string">'my version 1.x.x'</span></span><br></pre></td></tr></table></figure>
+<p>-a （译注：取 annotated 的首字母）指定标签名字<br><br>-m  指定对应的标签说明</p>
+<ul>
+<li>$ git show 命令查看相应标签的版本信息，并连同显示打标签时的提交对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git show &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询本地标签list：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询远程tag标签list：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git ls-remote --tags origin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送标签到远程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送所有标签到远程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删掉远程tag:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删掉本地分支：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d &lt;tab-name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>拉取远程标签:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b branch &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-build-gradle管理" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -342,70 +437,9 @@
 
 
   
-    <article id="post-打开超级adbd引起的Logcat异常" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/12/打开超级adbd引起的Logcat异常/" class="article-date">
-  	<time datetime="2016-06-12T08:54:37.000Z" itemprop="datePublished">2016-06-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/打开超级adbd引起的Logcat异常/">打开超级adbd引起的Logcat异常</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <p>打开logcat莫名其妙报如下这个异常：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Communication error: </span><br><span class="line">                                                        java.io.IOException: Connection refused</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connectLocal(Native Method)</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connect(LocalSocketImpl.java:<span class="number">290</span>)</span><br><span class="line">                                                            at android.net.LocalSocket.connect(LocalSocket.java:<span class="number">130</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.listenToSocket(UsbDebuggingManager.java:<span class="number">84</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.run(UsbDebuggingManager.java:<span class="number">120</span>)</span><br><span class="line">                                                            at java.lang.Thread.run(Thread.java:<span class="number">841</span>)</span><br></pre></td></tr></table></figure></p>
-<p>app编译与运行都正常，比较纳闷，最后发现了原因：<br>超级adbd导致的：<br>只要关掉启用adbd(必须启用USB调试才能使用) 选项就可以使用了。</p>
-<p>那么超级adbd是个什么东西呢？</p>
-<p><em>对于已经root的了手机，输入adb root出现adbd cannot run as root in production builds，装了这个之后完美解决，不用老是adb shell然后su一下。</em></p>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adbd/">adbd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
