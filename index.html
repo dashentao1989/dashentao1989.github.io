@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 18px;">git</a> <a href="/tags/gradle/" style="font-size: 12px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/汽车/" style="font-size: 14px;">汽车</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 14px;">生活</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a>
+						<a href="/tags/Pacelable/" style="font-size: 10px;">Pacelable</a> <a href="/tags/Serializable/" style="font-size: 10px;">Serializable</a> <a href="/tags/adbd/" style="font-size: 10px;">adbd</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/git/" style="font-size: 17.5px;">git</a> <a href="/tags/gradle/" style="font-size: 12.5px;">gradle</a> <a href="/tags/gretti/" style="font-size: 10px;">gretti</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/proguard/" style="font-size: 10px;">proguard</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/小朋友/" style="font-size: 10px;">小朋友</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/汽车/" style="font-size: 15px;">汽车</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,94 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Dynamic-Proxy动态代理模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/29/Dynamic-Proxy动态代理模式/" class="article-date">
+  	<time datetime="2016-06-29T06:21:55.000Z" itemprop="datePublished">2016-06-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/29/Dynamic-Proxy动态代理模式/">Dynamic Proxy动态代理模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+  
+    
+    <h3 id="动态代理模式"><a href="#动态代理模式" class="headerlink" title="动态代理模式"></a>动态代理模式</h3><ul>
+<li>RealSubject 委托对象</li>
+<li>ProxySubject 代理角色</li>
+<li>Subject 委托对象与代理角色共同实现的接口</li>
+</ul>
+<p><strong>动态代理涉及到的类：</strong></p>
+<ol>
+<li><p>java.lang.reflect.Proxy: 这是生成代理类的主类，通过 Proxy 类生成的代理类都继承了 Proxy 类，即 DynamicProxyClass extends Proxy。</p>
+</li>
+<li><p>java.lang.reflect.InvocationHandler: 这里称他为”调用处理器”，他是一个接口，我们动态生成的代理类需要完成的具体内容需要自己定义一个类，而这个类必须实现 InvocationHandler 接口。</p>
+</li>
+</ol>
+<h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><ul>
+<li><p>Subject:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Subject &#123;</span><br><span class="line">    void test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RealSubject:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RealSubject</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"real thing be execute!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建代理方法处理器：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    Object targetObject;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Object targetObject)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.targetObject = targetObject;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"pre work!"</span>);</span><br><span class="line">        Object object = method.invoke(targetObject, args);</span><br><span class="line">        System.out.println(<span class="string">"end work!"</span>);</span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用方法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicProxyClient</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Subject subject = <span class="keyword">new</span> RealSubject();</span><br><span class="line">        Handler handler = <span class="keyword">new</span> Handler(subject);</span><br><span class="line">        Subject sj = (Subject) Proxy.newProxyInstance(</span><br><span class="line">                RealSubject.class.getClassLoader(), RealSubject.class.getInterfaces(), handler);</span><br><span class="line">        sj.test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打印结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pre work!</span><br><span class="line">real thing be execute!</span><br><span class="line">end work!</span><br></pre></td></tr></table></figure>
+
+  
+</div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-汽车知识3" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -326,77 +414,6 @@
 </li>
 <li><p>日行灯<br>日行灯是一款安装在车身前部的白天行驶信号灯。它的主要作用不是为了使驾驶员能看清路面，而是在白天行车视线环境较差的情况中提高车辆的被辨识性，让行人与车以及车与车之间可以更早更好的察觉和识别，提前预防事故，保障行车安全。</p>
 </li>
-</ol>
-
-  
-</div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/汽车/">汽车</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-汽车知识1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/26/汽车知识1/" class="article-date">
-  	<time datetime="2016-06-26T05:08:58.000Z" itemprop="datePublished">2016-06-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/26/汽车知识1/">汽车知识1</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-  
-    
-    <h3 id="涡轮增压的特点："><a href="#涡轮增压的特点：" class="headerlink" title="涡轮增压的特点："></a>涡轮增压的特点：</h3><ol>
-<li>排量减少，也较少碳排放。</li>
-<li>可以提高发动机进气量，从而提高发动机的功率和扭矩，让车子更有劲。一台发动机装上涡轮增压器后，其最大功率与未装增压器的时候相比可以增加40%甚至更高。</li>
-</ol>
-<h3 id="自然吸气特点："><a href="#自然吸气特点：" class="headerlink" title="自然吸气特点："></a>自然吸气特点：</h3><ol>
-<li>自然吸气没有涡轮增压那么烧机油。</li>
-<li>自然吸气的保养费用要比涡轮增压低得多。</li>
-<li>自然吸气在加速过程中十分平顺，油门反应很及时，而涡轮增压存在延迟现象。</li>
-<li>理论上来说自然吸气比较耐开，寿命一般比涡轮增压要长。</li>
-</ol>
-<h3 id="自然吸气和涡轮增压含义："><a href="#自然吸气和涡轮增压含义：" class="headerlink" title="自然吸气和涡轮增压含义："></a>自然吸气和涡轮增压含义：</h3><ol>
-<li>自然吸气：是汽车进气的一种，是在不通过任何增压器的情况下，大气压将空气压入燃烧室的一种形式。</li>
-<li>涡轮增压：是一种利用内燃机运作转产生的废气驱动空气压缩机的技术。</li>
 </ol>
 
   
