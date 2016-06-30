@@ -120,7 +120,7 @@ $ 光标移动到该行末尾
 g_ 光标移动到该行最后一个不是blank的地方
 w 移动到下个单词的开头 
 e 移动到下个单">
-<meta property="og:updated_time" content="2016-06-24T09:26:30.000Z">
+<meta property="og:updated_time" content="2016-06-30T08:41:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim使用心得">
 <meta name="twitter:description" content="Better.Stronger.Faster为了装逼，努力学会VIM
@@ -378,8 +378,24 @@ e 移动到下个单">
 </li>
 <li><p>ctrl+V 块操作</p>
 </li>
-<li>ctrl+n, ctrl+p 自动提示功能， 但是智能提示当前编辑文档中有的单词，比较蛋疼</li>
+<li><p>ctrl+n, ctrl+p 自动提示功能， 但是智能提示当前编辑文档中有的单词，比较蛋疼</p>
+</li>
+<li><p>ctrl+b 向后翻页</p>
+</li>
+<li>ctrl+f 向前翻页</li>
+<li>H 移动到当前页面的首行</li>
+<li>M 移动到当前页面的中部</li>
+<li>L 移动到当前页面的地步</li>
+<li>N% 移动到该文档的百分之多少的位置， 例如50% 移动到当前页面的50%的地方</li>
+<li>q/ </li>
+<li>q? 打开查找历史（Vim 会打开一个新的窗口）</li>
+<li>/pattern 查找pattern匹配的内容， 上下箭头翻动查找历史记录</li>
 </ul>
+<h4 id="ctrl-G详解"><a href="#ctrl-G详解" class="headerlink" title="ctrl+G详解"></a>ctrl+G详解</h4><ul>
+<li>ctrl+G 查找当前光标所在的位置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;haha.txt&quot; line 19 of 278 --6%-- col 3</span><br></pre></td></tr></table></figure>
+<p>总共278行， 该光标处于19行， 总文件内容的6%的地方， 第三列的位置</p>
 <h4 id="块操作"><a href="#块操作" class="headerlink" title="块操作"></a>块操作</h4><ul>
 <li>对所选择的代码段的行首统一加上某个字符：<br><em>例如对一段代码加注释</em></li>
 </ul>
@@ -585,7 +601,7 @@ e 移动到下个单">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Better-Stronger-Faster"><span class="nav-number">1.</span> <span class="nav-text">Better.Stronger.Faster</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#块操作"><span class="nav-number">1.1.</span> <span class="nav-text">块操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行效果："><span class="nav-number">1.1.1.</span> <span class="nav-text">运行效果：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行效果：-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">运行效果：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Better-Stronger-Faster"><span class="nav-number">1.</span> <span class="nav-text">Better.Stronger.Faster</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-G详解"><span class="nav-number">1.1.</span> <span class="nav-text">ctrl+G详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块操作"><span class="nav-number">1.2.</span> <span class="nav-text">块操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行效果："><span class="nav-number">1.2.1.</span> <span class="nav-text">运行效果：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行效果：-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">运行效果：</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
