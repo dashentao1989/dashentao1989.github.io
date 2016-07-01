@@ -248,6 +248,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/26/Android常用的Builder模式/" itemprop="url">
+                  Android常用的Builder模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-26T22:38:53+08:00" content="2016-04-26">
+              2016-04-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/26/Android常用的Builder模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/Android常用的Builder模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="模式的定义"><a href="#模式的定义" class="headerlink" title="模式的定义"></a>模式的定义</h4><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>1、相同的方法，不同的执行顺序，产生不同的事件结果时；<br>2、多个部件或零件，都可以装配到一个对象中，但是产生的运行结果又不相同时；<br>3、产品类非常复杂，或者产品类中的调用顺序不同产生了不同的效能，这个时候使用建造者模式非常合适</p>
+<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><p><strong> 这里模拟一个Http请求封装 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/26.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; params;</span><br><span class="line">    <span class="keyword">private</span> String requestType;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setUrl</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setParams</span><span class="params">(Map&lt;String, String&gt; params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.params = params;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setRequestType</span><span class="params">(String requestType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.requestType = requestType;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (url == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"url can not be null!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        RequestManager.getInstance().doHttpRequest(url, params, requestType);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/26.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RequestManager mRequestManager;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestManager <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mRequestManager == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mRequestManager = <span class="keyword">new</span> RequestManager();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mRequestManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doHttpRequest</span><span class="params">(String url, Map&lt;String, String&gt; params, String requestType)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO 做相应的请求</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>http请求发起</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/26.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Builder().setUrl(<span class="string">"http://com.baidu.com/xxx"</span>)</span><br><span class="line">                .setParams(<span class="keyword">new</span> HashMap&lt;String, String&gt;()).setRequestType(<span class="string">"get"</span>).request();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong> 通过上面代码Builder模式的好处一目了然。 </strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/26/png-的坑/" itemprop="url">
                   png 的坑
                 </a>
@@ -433,115 +540,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/24/小朋友满月了/" itemprop="url">
-                  小朋友满月了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-24T11:18:03+08:00" content="2016-04-24">
-              2016-04-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/24/小朋友满月了/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/24/小朋友满月了/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="小朋友诞生记"><a href="#小朋友诞生记" class="headerlink" title="小朋友诞生记"></a>小朋友诞生记</h3><h5 id="出生前奏"><a href="#出生前奏" class="headerlink" title="出生前奏"></a>出生前奏</h5><p>预产期终于到了，但是小朋友在妈妈肚子里就是没动静，预产期超了两天之后，一家人再也等不及了收拾行李直奔医院待产。<br>医院待产过程中别家小朋友把妈妈折腾的死去活来，我家小朋友在妈妈肚子里就是没动静，可能是知道妈妈怀他辛苦不容易，舍不得折腾妈妈，就这样在医生的建议下打了三天催产针，然而……<br>医生产检时，产科主任说我家小朋友体重在7斤半到八斤之间，要做好剖腹产的准备，本来还想顺产的我们，顿时气氛变得紧张起来了，再加上连续打了三天催产针，小朋友一点反应都没有，在做了一晚上思想斗争之后，家人一致同意剖腹产，就这样第二天上午11：28小朋友顺利出生，体重4330g,果真是巨大儿，儿子真乖，这么大你妈妈生你的话还不得痛死。</p>
-<h5 id="医院带娃"><a href="#医院带娃" class="headerlink" title="医院带娃"></a>医院带娃</h5><p>孩子出生后，医生对孩子的身体机能做了对应检查，检查结果：健康。随后护士姐姐陆续安排给小朋友注射预防针，然后毫无经验的我开启了带娃之旅。<br>孩子第一天是最难带的，特别是晚上要特别注意孩子吐羊水，基本上24小时要安排人照看，还好陪产家人比较多，倒也忙活的过来，还有就是吐槽一点医院的空气也太差了，孩子在病房根本睡不着，身上都是热痱子，主要是还不能开窗（病房都是产妇，坐月子期间确实不能开窗，这个能理解），没办法，晚上睡觉的时候，孩子热的睡不着，我们只能轮番抱着小朋友在走廊逛来逛去，这样他才不折腾，倒是睡得香甜。<br>小孩子从出生之后每天的奶量都会呈阶梯式递增，基本上两个小时就会饿一次，人类的本能还是很强大，饿了自然会哭。就这样在医院呆了快两周，收拾好行李，安排好车子，终于可以回家了。</p>
-<h5 id="宝贝回家了"><a href="#宝贝回家了" class="headerlink" title="宝贝回家了"></a>宝贝回家了</h5><p>在医院折腾了两周之后，终于可以回家洗个热水澡。兴奋之余，可别忘了小朋友保暖，毕竟医院相比家里来说温度，湿度都不一样，稍有不慎，有可能会感冒，于是乎大家又开始忙起来了，可能是小孩子对家有一种天生的归属感，平时在医院每天哭哭闹闹的他，回家头一天竟然不哭不闹，倒是弄得我们不习惯，但是话说的太早，第二天习惯家里环境的他，又开启了顽皮的旅程，这样挺好，别像老爸太老实。</p>
-<p>由于在医院呆的时间太久，回家没几天就上班了，产假过后刚上班还真心有点不适应，脑子里想的都是小宝贝，还好随着工作任务的迭代，状态也很快恢复了，还有就是每天下班回家都可以逗逗宝贝儿子，心情也比以前好多了，上次看到一句话说的挺不错，分享给大家。</p>
-<blockquote>
-<p>就算我一无所有，毕竟我有家人，有孩子，有梦想。</p>
-</blockquote>
-<h5 id="满月"><a href="#满月" class="headerlink" title="满月"></a>满月</h5><p>时间过的确实有点快，小朋友都满月了，本来想带孩子去摄影室拍满月照，但是小朋友太小，怕太折腾，就在家里自己DIY了几张，算是留个纪念吧，还有就是小朋友今天理了个满月头，图个喜庆，看看宝宝圆圆的脑袋，可爱极了。</p>
-<h5 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h5><p>贴上几张宝贝的满月照，还有就是在家里宅了N天孩他妈，终于说动我带上她去外面海了一顿，嘻嘻！！！<br><img src="http://chuantu.biz/t3/21/1461511148x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511081x3738746523.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511111x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511130x3738746571.jpg" alt=""><br><img src="http://chuantu.biz/t3/21/1461511195x3738746571.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -587,7 +585,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -597,7 +595,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
