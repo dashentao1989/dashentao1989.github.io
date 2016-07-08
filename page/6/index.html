@@ -248,6 +248,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/15/proguard-那些事/" itemprop="url">
+                  proguard 那些事
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T15:08:06+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/15/proguard-那些事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/proguard-那些事/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><h4 id="dump-txt"><a href="#dump-txt" class="headerlink" title="dump.txt"></a>dump.txt</h4><ul>
+<li>描述apk所有文件的内部结构<br><em>Describes the internal structure of all the class files in the APK.</em></li>
+</ul>
+<h4 id="mapping-txt"><a href="#mapping-txt" class="headerlink" title="mapping.txt"></a>mapping.txt</h4><ul>
+<li>提供了一个源文件与混淆文件的对照<br><em>Provides a translation between the original and obfuscated class, method, and field names.</em></li>
+</ul>
+<h4 id="seeds-txt"><a href="#seeds-txt" class="headerlink" title="seeds.txt"></a>seeds.txt</h4><ul>
+<li>列出没有被混淆的类和成员变量<br><em>Lists the classes and members that were not obfuscated.</em></li>
+</ul>
+<h4 id="usage-txt"><a href="#usage-txt" class="headerlink" title="usage.txt"></a>usage.txt</h4><ul>
+<li>列出apk中被移除的代码<em> 
+</em>Lists the code that was removed from the APK.*</li>
+</ul>
+<ul>
+<li>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></li>
+</ul>
+<ul>
+<li>要值得注意的是在每次通过proguard打release包时mapping.txt文件都会被重写， 所以你必须仔细的保存一份复制在打一个新的而release包时，通过在打release包时保留一个mapping.txt文件，这样的话当用户在使用老版本app时提出提出混淆的错误信息是你能根据mapping.txt对照关系进行相应准确的deug.</li>
+</ul>
+<p><em>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</em></p>
+<p><em>more coming soon!</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/12/打开超级adbd引起的Logcat异常/" itemprop="url">
                   打开超级adbd引起的Logcat异常
                 </a>
@@ -432,198 +553,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/19/Vim使用心得/" itemprop="url">
-                  Vim使用心得
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-19T11:17:12+08:00" content="2016-05-19">
-              2016-05-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/19/Vim使用心得/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/Vim使用心得/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Better-Stronger-Faster"><a href="#Better-Stronger-Faster" class="headerlink" title="Better.Stronger.Faster"></a>Better.Stronger.Faster</h3><p><strong>为了装逼，努力学会VIM</strong></p>
-<ul>
-<li>i 编辑</li>
-<li>:wq ZZ :x 保存退出</li>
-<li>:q! 退出不保存</li>
-<li>yy 复制</li>
-<li>p 粘贴</li>
-<li>:q 退出不保存</li>
-<li>v 可视化</li>
-<li>hjkl 光标左上右下移动</li>
-<li>0 光标移动到该行开头</li>
-<li>$ 光标移动到该行末尾</li>
-<li>^ 光标移动到该行第一个不是blank的地方</li>
-<li>g_ 光标移动到该行最后一个不是blank的地方</li>
-<li>w 移动到下个单词的开头 </li>
-<li>e 移动到下个单词的结尾</li>
-<li>:N 移动到第N行</li>
-<li>:set number 显示行号</li>
-<li>:set nonumber 不显示行号</li>
-<li>. 执行上次操作</li>
-<li>.N 执行上次操作N次</li>
-<li>dd 删除改行</li>
-<li>Ndd 删除N行</li>
-<li>o 该行前面插入新行</li>
-<li>O 该行后面插入新行</li>
-<li>N<command> 重复执行command命令N次</li>
-<li>% 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
-<li>*和#:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词</li>
-<li>v 可视化</li>
-<li>fa 到下个为a的字符处，你也可以fs到下一个为s的字符</li>
-<li>3fa 在当前行查找第三个出现的a</li>
-<li>F和T 和f和t一样，只不过是相反的方向</li>
-<li>/pattern 寻找pattern匹配项</li>
-<li>gU 变大写</li>
-<li>gu 变小写</li>
-<li>y2/foo 拷贝2个“foo”之间的字符串</li>
-<li><p><ctrl-p>或是ctrl-n 自动提示功能</ctrl-p></p>
-</li>
-<li><p>ctrl+V 块操作</p>
-</li>
-<li><p>ctrl+n, ctrl+p 自动提示功能， 但是智能提示当前编辑文档中有的单词，比较蛋疼</p>
-</li>
-<li><p>ctrl+b 向后翻页</p>
-</li>
-<li>ctrl+f 向前翻页</li>
-<li>H 移动到当前页面的首行</li>
-<li>M 移动到当前页面的中部</li>
-<li>L 移动到当前页面的地步</li>
-<li>N% 移动到该文档的百分之多少的位置， 例如50% 移动到当前页面的50%的地方</li>
-<li>q/ </li>
-<li>q? 打开查找历史（Vim 会打开一个新的窗口）</li>
-<li>/pattern 查找pattern匹配的内容， 上下箭头翻动查找历史记录</li>
-</ul>
-<h4 id="ctrl-G详解"><a href="#ctrl-G详解" class="headerlink" title="ctrl+G详解"></a>ctrl+G详解</h4><ul>
-<li>ctrl+G 查找当前光标所在的位置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;haha.txt&quot; line 19 of 278 --6%-- col 3</span><br></pre></td></tr></table></figure>
-<p>总共278行， 该光标处于19行， 总文件内容的6%的地方， 第三列的位置</p>
-<h4 id="块操作"><a href="#块操作" class="headerlink" title="块操作"></a>块操作</h4><ul>
-<li>对所选择的代码段的行首统一加上某个字符：<br><em>例如对一段代码加注释</em></li>
-</ul>
-<ol>
-<li>ctrl+v 开始块操作</li>
-<li>h,j 上下进行移动操作</li>
-<li>0 光标移动到改行的行首</li>
-<li>I 开始编辑</li>
-<li>插入字段//</li>
-<li>esc 编辑生效</li>
-</ol>
-<h5 id="运行效果："><a href="#运行效果：" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//111</span><br><span class="line">//222</span><br><span class="line">//333333</span><br><span class="line">//5555555</span><br></pre></td></tr></table></figure>
-<ul>
-<li>对所选的代码段的行尾统一加上某个字符：</li>
-</ul>
-<ol>
-<li>ctrl_v 开启块操作</li>
-<li>h,j 上下进行移动操作</li>
-<li>$ 光标移动到改行的末尾</li>
-<li>A 开始编辑</li>
-<li>插入字段//</li>
-<li>esc编辑生效</li>
-</ol>
-<h5 id="运行效果：-1"><a href="#运行效果：-1" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">111//</span><br><span class="line">22222//</span><br><span class="line">3333333//</span><br><span class="line">11//</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除选中的单词</li>
-</ul>
-<ol>
-<li>w 光标移动到定位单词的首字母</li>
-<li>v 开始可视化</li>
-<li>e 光标移动到定位单词的尾字母</li>
-<li>d 删除该单词</li>
-</ol>
-<p>// TODO 后续持续更新</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -669,7 +598,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
