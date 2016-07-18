@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/14/10分钟理解annonation原理/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
 <meta property="og:description" content="十分钟理解annonation原理定义（来自wiki）:In the Java computer programming language, an annotation is a form of syntactic metadata that can be added to Java source code. Classes, methods, variables, parameters and">
-<meta property="og:updated_time" content="2016-07-18T05:23:45.000Z">
+<meta property="og:updated_time" content="2016-07-18T05:30:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10分钟理解annonation原理">
 <meta name="twitter:description" content="十分钟理解annonation原理定义（来自wiki）:In the Java computer programming language, an annotation is a form of syntactic metadata that can be added to Java source code. Classes, methods, variables, parameters and">
@@ -334,7 +334,7 @@
 </li>
 <li><p>getSupportedAnnotationTypes(): 这里你必须指定，这个注解处理器是注册给哪个注解的。注意，它的返回值是一个字符串的集合，包含本处理器想要处理的注解类型的合法全称。换句话说，你在这里定义你的注解处理器注册到哪些注解上。</p>
 </li>
-<li><p>getSupportedSourceVersion(): 用来指定你使用的Java版本。通常这里返回SourceVersion.latestSupported()。然而，如果你有足够的理由只支持Java 6的话，你也可以返回SourceVersion.RELEASE_6。我推荐你使用前者。</p>
+<li><p>getSupportedSourceVersion(): 用来注定你使用的java版本，通常这里返回SourceVersion.latestSupported()。然而，如果你有足够的理由只支持java6的话，你也可以返回SourceVersion.RELEASE_6。我推荐你使用前者。</p>
 </li>
 </ul>
 <p>在Java 7中，你也可以使用注解来代替getSupportedAnnotationTypes()和getSupportedSourceVersion()，像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@SupportedSourceVersion(SourceVersion.latestSupported())</span><br><span class="line">@SupportedAnnotationTypes(&#123;</span><br><span class="line">   // 合法注解全名的集合</span><br><span class="line"> &#125;)</span><br><span class="line">public class MyProcessor extends AbstractProcessor &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public synchronized void init(ProcessingEnvironment env)&#123; &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean process(Set&lt;? extends TypeElement&gt; annoations, RoundEnvironment env) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -346,10 +346,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void parse(Object object) &#123;</span><br><span class="line">        if (object != null &amp;&amp; !isSystemCalss(object.getClass().getName())) &#123;</span><br><span class="line">            Method[] methods = object.getClass().getDeclaredMethods();</span><br><span class="line">            for (int i = 0; i &lt; methods.length; i++) &#123;</span><br><span class="line">                Method method = methods[i];</span><br><span class="line">                System.out.println(method.getName());</span><br><span class="line">                if (methods[i].isAnnotationPresent(YouzanCard.class)) &#123;</span><br><span class="line">                    String name = method.getAnnotation(YouzanCard.class).name();</span><br><span class="line">                    int id = method.getAnnotation(YouzanCard.class).id();</span><br><span class="line">                    System.out.println(&quot;name = &quot; + name + &quot;, id = &quot; + id</span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>常用的API:</p>
 <ul>
-<li>boolean isAnnotationPresent(<pre><code>Class&lt;? extends Annotation&gt; annotationClass)*判断调用方是否被annotationClass注解修饰。*
-</code></pre></li>
-<li>Annotation[] getAnnotations()<em>得到调用方的注解结合。</em></li>
-<li><t extends="" annotation=""> T getAnnotation(Class<t> annotationClass)<em>得到调用方的被修饰的注解信息，应为一个调用方可以被多个注解修饰。</em></t></t></li>
+<li><p>boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)<em>判断调用方是否被annotationClass注解修饰。</em></p>
+</li>
+<li><p>Annotation[] getAnnotations()<em>得到调用方的注解结合。</em></p>
+</li>
+<li><p><t extends="" annotation=""> T getAnnotation(Class<t> annotationClass)<em>得到调用方的被修饰的注解信息，应为一个调用方可以被多个注解修饰。</em></t></t></p>
+</li>
 </ul>
 
       
