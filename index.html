@@ -313,13 +313,13 @@
 </ul>
 <h3 id="Annotation分类详解"><a href="#Annotation分类详解" class="headerlink" title="Annotation分类详解"></a>Annotation分类详解</h3><p><strong>主要分为两大类：</strong></p>
 <h4 id="Built-in-annotations"><a href="#Built-in-annotations" class="headerlink" title="Built-in annotations"></a>Built-in annotations</h4><p><em>java定义了一组编译到语言中的注解集合</em></p>
-<h5 id="Mark-annotations"><a href="#Mark-annotations" class="headerlink" title="Mark annotations"></a>Mark annotations</h5><p><em>对java源代码的注解集合，例如：<br>@Override, @Deprecated, @SuppressWarnings等</em></p>
+<h6 id="Mark-annotations"><a href="#Mark-annotations" class="headerlink" title="Mark annotations"></a>Mark annotations</h6><p><em>对java源代码的注解集合，例如：<br>@Override, @Deprecated, @SuppressWarnings等</em></p>
 <ul>
 <li>@Override 重写函数</li>
 <li>@Deprecated 方法已过期，不建议使用</li>
 <li>@SuppressWarning 忽略warning</li>
 </ul>
-<h5 id="Meta-annotations"><a href="#Meta-annotations" class="headerlink" title="Meta annotations"></a>Meta annotations</h5><p><em>修饰其他注解（例如：自定义注解）的注解集合。例如：@Retention, @Target, @Inherited, @Documented</em></p>
+<h6 id="Meta-annotations"><a href="#Meta-annotations" class="headerlink" title="Meta annotations"></a>Meta annotations</h6><p><em>修饰其他注解（例如：自定义注解）的注解集合。例如：@Retention, @Target, @Inherited, @Documented</em></p>
 <ul>
 <li>@Documented 用于描述其他类型的annotation应该被作为被标注的程序成员的公共API，可以被javdoc的工具文档化，无成员。</li>
 <li>@Retention 保留时间， 可选值 SOURCE（源码时），CLASS（编译时），RUNTIME（运行时），默认为 CLASS，SOURCE 大都为 Mark Annotation，这类 Annotation 大都用来校验，比如 Override, SuppressWarnings。</li>
