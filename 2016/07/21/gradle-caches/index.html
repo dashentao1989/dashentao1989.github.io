@@ -84,22 +84,25 @@
 
 
 
-<meta name="description" content="gradle下载的module本地缓存在USER_HOME/.gradle文件下面。
+<meta name="description" content="原文链接
+gradle compile的module本地缓存在USER_HOME/.gradle文件下面。
 假如你没有找到cache缓存的具体位置,你能通过以下的方式进行查询：
-1234567891011dependencies &amp;#123;    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    testCompile &apos;junit:junit:4.12&apos;">
+1234567891011dependencies &amp;#123;    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    testCompile &apos;junit:jun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle caches">
 <meta property="og:url" content="http://yoursite.com/2016/07/21/gradle-caches/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
-<meta property="og:description" content="gradle下载的module本地缓存在USER_HOME/.gradle文件下面。
+<meta property="og:description" content="原文链接
+gradle compile的module本地缓存在USER_HOME/.gradle文件下面。
 假如你没有找到cache缓存的具体位置,你能通过以下的方式进行查询：
-1234567891011dependencies &amp;#123;    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    testCompile &apos;junit:junit:4.12&apos;">
-<meta property="og:updated_time" content="2016-07-21T05:24:54.000Z">
+1234567891011dependencies &amp;#123;    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    testCompile &apos;junit:jun">
+<meta property="og:updated_time" content="2016-07-21T05:27:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle caches">
-<meta name="twitter:description" content="gradle下载的module本地缓存在USER_HOME/.gradle文件下面。
+<meta name="twitter:description" content="原文链接
+gradle compile的module本地缓存在USER_HOME/.gradle文件下面。
 假如你没有找到cache缓存的具体位置,你能通过以下的方式进行查询：
-1234567891011dependencies &amp;#123;    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    testCompile &apos;junit:junit:4.12&apos;">
+1234567891011dependencies &amp;#123;    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    testCompile &apos;junit:jun">
 
 
 
@@ -299,7 +302,8 @@
       
 
       
-        <p>gradle下载的module本地缓存在USER_HOME/.gradle文件下面。</p>
+        <p><a href="http://stackoverflow.com/questions/10834111/gradle-store-on-local-file-system" target="_blank" rel="external">原文链接</a></p>
+<p>gradle compile的module本地缓存在USER_HOME/.gradle文件下面。</p>
 <p>假如你没有找到cache缓存的具体位置,你能通过以下的方式进行查询：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">    compile 'com.android.support:appcompat-v7:23.4.0'</span><br><span class="line">    compile 'com.jakewharton:butterknife:8.2.1'</span><br><span class="line">    apt 'com.jakewharton:butterknife-compiler:8.2.1'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task showMeCache &lt;&lt; </span>&#123;</span><br><span class="line">    configurations.compile.each &#123; println it &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Terminal输入./gradlew showMeCache结果如下：</p>
