@@ -248,6 +248,128 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/11/git-fetch与git-pull的区别/" itemprop="url">
+                  git fetch与git pull的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-11T10:58:44+08:00" content="2016-08-11">
+              2016-08-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/11/git-fetch与git-pull的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/11/git-fetch与git-pull的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h4><p>场景：本地分支拉取远程分支最新commit数据到本地。</p>
+<p>操作：</p>
+<ul>
+<li>git fetch origin <branch_name></branch_name></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git fetch origin master</span><br><span class="line">From https:<span class="comment">//github.com/dashentao1989/SplashView</span></span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br></pre></td></tr></table></figure>
+<ul>
+<li>git log -p ..FETCH_HEAD</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git log -p ..FETCH_HEAD</span><br><span class="line">commit <span class="number">0e1</span>c23f5c1b9fc61ab15af5f498c919052856168</span><br><span class="line">Author: hongentao &lt;hongentao<span class="meta">@youzan</span>.com&gt;</span><br><span class="line">Date:   Thu Aug <span class="number">11</span> <span class="number">10</span>:<span class="number">49</span>:<span class="number">53</span> <span class="number">2016</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    ssss</span><br><span class="line"></span><br><span class="line">diff --git a/app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java b/app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java</span><br><span class="line">index dafd31b..<span class="number">6e6</span>e73b <span class="number">100644</span></span><br><span class="line">--- a/app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java</span><br><span class="line">+++ b/app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java</span><br><span class="line">@@ -<span class="number">35</span>,<span class="number">8</span> +<span class="number">35</span>,<span class="number">10</span> @@ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListe</span></span><br><span class="line">     <span class="title">private</span> <span class="title">String</span> <span class="title">TAG</span> </span>= MainActivity.<span class="keyword">this</span>.getClass().getSimpleName();</span><br><span class="line">     <span class="keyword">private</span> ViewPager viewPager;</span><br><span class="line">     <span class="keyword">private</span> Button login;</span><br><span class="line">+</span><br><span class="line">     <span class="keyword">private</span> Button register;</span><br><span class="line">     <span class="keyword">private</span> LinearLayout linearLayout;</span><br><span class="line">+</span><br><span class="line">     <span class="keyword">private</span> RelativeLayout relativeLayoutFirst;</span><br><span class="line">     <span class="keyword">private</span> RelativeLayout relativeLayoutSecond;</span><br><span class="line">     <span class="keyword">private</span> RelativeLayout relativeLayoutThrid;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>git merge FETCH_HEAD</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git merge FETCH_HEAD</span><br><span class="line">Auto-merging app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java</span><br><span class="line">Merge made by the <span class="string">'recursive'</span> strategy.</span><br><span class="line"> app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java | <span class="number">2</span> ++</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">2</span> insertions(+)</span><br></pre></td></tr></table></figure>
+<p>经过上面的操作分析下FETCH_HEAD关键词：</p>
+<ul>
+<li>FETCH_HEAD</li>
+</ul>
+<p><em>FETCH_HEAD is a short-lived ref, to keep track of what has just been fetched from the remote repository. git pull first invokes git fetch, in normal cases fetching a branch from the remote; FETCH_HEAD points to the tip of this branch (it stores the SHA1 of the commit, just as branches do). git pull then invokes git merge, merging FETCH_HEAD into the current branch.<br>The result is exactly what you’d expect: the commit at the tip of the appropriate remote branch is merged into the commit at the tip of your current branch.</em></p>
+<p>说明如下：</p>
+<p><em>FETCH HEAD是一个暂时的参照区，作用是对从远程仓库拉下的最新代码保持追踪，git pull首先会调用git fetch, 正常情况下从远程基础上拉取一个分支，FETCH_HEAD指向该分支的顶部（他存储了SHA1的提交，也就是远程分支之前所提交的一系列新的commit操作），git pull然后调用git merge操作， 合并FETCH_HEAD到当前的分支。<br>这个结果是你所期盼的， 这个远程分支最新的几次提交会被合并进当前的分支中。</em></p>
+<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p><strong>git pull = git fetch + git merge<br></strong><br>假如你仅仅想拉取远程分支的代码到本地，还没准备merge到代码中，可以用git fetch,毕竟这样风险比较小，但是git pull也是一种敏捷开发命令，具体使用场景视情况而定。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/10/git-fast-forward与no-fast-forward的区别/" itemprop="url">
                   git fast-forward与no fast-forward的区别
                 </a>
@@ -446,211 +568,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/14/10分钟理解annotation原理/" itemprop="url">
-                  10分钟理解annotation原理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T14:04:46+08:00" content="2016-07-14">
-              2016-07-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/14/10分钟理解annotation原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/10分钟理解annotation原理/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="定义（来自wiki）"><a href="#定义（来自wiki）" class="headerlink" title="定义（来自wiki）:"></a>定义（来自wiki）:</h3><p><em>In the Java computer programming language, an annotation is a form of syntactic metadata that can be added to Java source code. Classes, methods, variables, parameters and packages may be annotated. Unlike Javadoc tags, Java annotations can be reflective in that they can be embedded in class files generated by the compiler and may be retained by the Java VM to be made retrievable at run-time. It is possible to create meta-annotations out of the existing ones in Java.</em></p>
-<p>在java计算机编程语言中，注解是一种能够被添加到源代码中的元数据语法。类，方法，变量，参数和包都能够被注解修饰，与javadoc标签不同，java注释表现为嵌入在编译器生成的类文件中，可以由java虚拟机保留供运行时检索，你能够定制非java原生的元数据注解。</p>
-<h3 id="Annotation-分类"><a href="#Annotation-分类" class="headerlink" title="Annotation 分类"></a>Annotation 分类</h3><ul>
-<li><p>Built-in annotations(Java defines a set of annotations that are built into the language)</p>
-<ul>
-<li>Mark annotations(Annotations applied to Java code)</li>
-<li>Meta annotations(Annotations applied to other annotations )</li>
-</ul>
-</li>
-<li><p>Custom annotations</p>
-</li>
-</ul>
-<h3 id="Annotation分类详解"><a href="#Annotation分类详解" class="headerlink" title="Annotation分类详解"></a>Annotation分类详解</h3><p><strong>主要分为两大类：</strong></p>
-<h4 id="Built-in-annotations"><a href="#Built-in-annotations" class="headerlink" title="Built-in annotations"></a>Built-in annotations</h4><p><em>java定义了一组编译到语言中的注解集合</em></p>
-<h6 id="Mark-annotations"><a href="#Mark-annotations" class="headerlink" title="Mark annotations"></a>Mark annotations</h6><p><em>对java源代码的注解集合，例如：<br>@Override, @Deprecated, @SuppressWarnings等</em></p>
-<ul>
-<li>@Override 重写函数</li>
-<li>@Deprecated 方法已过期，不建议使用</li>
-<li>@SuppressWarning 忽略warning</li>
-</ul>
-<h6 id="Meta-annotations"><a href="#Meta-annotations" class="headerlink" title="Meta annotations"></a>Meta annotations</h6><p><em>修饰其他注解（例如：自定义注解）的注解集合。例如：@Retention, @Target, @Inherited, @Documented</em></p>
-<ul>
-<li>@Documented 用于描述其他类型的annotation应该被作为被标注的程序成员的公共API，可以被javdoc的工具文档化，无成员。</li>
-<li>@Retention 保留时间， 可选值 SOURCE（源码时），CLASS（编译时），RUNTIME（运行时），默认为 CLASS，SOURCE 大都为 Mark Annotation，这类 Annotation 大都用来校验，比如 Override, SuppressWarnings。</li>
-<li><p>@Target 描述注解的使用范围，未标注则表示可修饰所有,常用的修饰符如下:</p>
-<ol>
-<li>ElementType.CONSTRUCTOR:描述构造器</li>
-<li>ElementType.FIELD:描述成员变量</li>
-<li>ElementType.VARIABLE: 描述局部变量</li>
-<li>ElementType.METHOD: 描述方法</li>
-<li>ElementType.PACKAGE: 描述包</li>
-<li>ElementType.PARAMETER：描述方法的参数</li>
-<li>ElementType.Type: 描述类，接口（包括注解类型）或enum声明</li>
-</ol>
-</li>
-<li><p>@inherited 用于标注某个标注是被继承的，即父类中使用了一个Annotation，则子类继承父类的这个annotation，annotation需要标记为RUNTIME的才可以, 默认为false。</p>
-</li>
-</ul>
-<h4 id="Custom-annotations"><a href="#Custom-annotations" class="headerlink" title="Custom annotations"></a>Custom annotations</h4><p><em>根据自己需求自定义的注解，定义时需要用到上面的元 Annotation<br>这里是一种分类而已，也可以根据作用域分为源码时、编译时、运行时 Annotation，后面在自定义 Annotation 时会具体介绍</em></p>
-<p><strong>自定义annotations主要分为编译时与运行时</strong></p>
-<h5 id="CLASS-编译时"><a href="#CLASS-编译时" class="headerlink" title="CLASS(编译时)"></a>CLASS(编译时)</h5><p>以下内容摘抄自<a href="http://hannesdorfmann.com/annotation-processing/annotationprocessing101" target="_blank" rel="external">annotation-processing</a>,感兴趣请阅读原文。</p>
-<h5 id="Annotation-Processor"><a href="#Annotation-Processor" class="headerlink" title="Annotation Processor"></a>Annotation Processor</h5><p>是javac的一个工具，它用来在编译时扫描和处理注解（Annotation）。你可以对自定义注解，并注册相应的注解处理器。到这里，我假设你已经知道什么是注解，并且知道怎么申明的一个注解。如果你不熟悉注解，你可以在这官方文档中得到更多信息。注解处理器在Java 5开始就有了，但是从Java 6（2006年12月发布）开始才有可用的API。过了一些时间，Java世界才意识到注解处理器的强大作用，所以它到最近几年才流行起来。</p>
-<p>一个注解的注解处理器，以Java代码（或者编译过的字节码）作为输入，生成文件（通常是.java文件）作为输出。这具体的含义什么呢？你可以生成Java代码！这些生成的Java代码是在生成的.java文件中，所以你不能修改已经存在的Java类，例如向已有的类中添加方法。这些生成的Java文件，会同其他普通的手动编写的Java源代码一样被javac编译。</p>
-<p>编译代码的过程：<br><img src="http://bxbxbai.github.io/img/java_compiler.png" alt=""></p>
-<h6 id="虚处理器AbstractProcessor"><a href="#虚处理器AbstractProcessor" class="headerlink" title="虚处理器AbstractProcessor"></a>虚处理器AbstractProcessor</h6><p>我们首先看一下处理器的API。每一个处理器都是继承于AbstractProcessor，如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment env)</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annoations, RoundEnvironment env)</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SourceVersion <span class="title">getSupportedSourceVersion</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>init(ProcessingEnvironment env): 每一个注解处理器类都必须有一个空的构造函数。然而，这里有一个特殊的init()方法，它会被注解处理工具调用，并输入ProcessingEnviroment参数。ProcessingEnviroment提供很多有用的工具类Elements, Types和Filer。</p>
-</li>
-<li><p>process(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment env): 这相当于每个处理器的主函数main()。你在这里写你的扫描、评估和处理注解的代码，以及生成Java文件。输入参数RoundEnviroment，可以让你查询出包含特定注解的被注解元素。</p>
-</li>
-<li><p>getSupportedAnnotationTypes(): 这里你必须指定，这个注解处理器是注册给哪个注解的。注意，它的返回值是一个字符串的集合，包含本处理器想要处理的注解类型的合法全称。换句话说，你在这里定义你的注解处理器注册到哪些注解上。</p>
-</li>
-<li><p>getSupportedSourceVersion(): 用来注定你使用的java版本，通常这里返回SourceVersion.latestSupported()。然而，如果你有足够的理由只支持java6的话，你也可以返回SourceVersion.RELEASE_6。我推荐你使用前者。</p>
-</li>
-</ul>
-<p>在Java 7中，你也可以使用注解来代替getSupportedAnnotationTypes()和getSupportedSourceVersion()，像这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SupportedSourceVersion</span>(SourceVersion.latestSupported())</span><br><span class="line"><span class="meta">@SupportedAnnotationTypes</span>(&#123;</span><br><span class="line">   <span class="comment">// 合法注解全名的集合</span></span><br><span class="line"> &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment env)</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annoations, RoundEnvironment env)</span> </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>因为兼容的原因，特别是针对Android平台，我建议使用重载getSupportedAnnotationTypes()和getSupportedSourceVersion()方法代替@SupportedAnnotationTypes和@SupportedSourceVersion。</p>
-<p>接下来的你必须知道的事情是，注解处理器是运行它自己的虚拟机JVM中。是的，你没有看错，javac启动一个完整Java虚拟机来运行注解处理器。这对你意味着什么？你可以使用任何你在其他java应用中使用的的东西。使用guava。如果你愿意，你可以使用依赖注入工具，例如dagger或者其他你想要的类库。但是不要忘记，即使是一个很小的处理，你也要像其他Java应用一样，注意算法效率，以及设计模式。</p>
-<h5 id="RUNTIME-运行时"><a href="#RUNTIME-运行时" class="headerlink" title="RUNTIME(运行时)"></a>RUNTIME(运行时)</h5><p><em>创建注解类：</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> YouzanCard &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">id</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Youzan &#123;</span><br><span class="line">    @YouzanCard(name = &quot;people1&quot;, id = 1)</span><br><span class="line">    private void people1() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @YouzanCard(name = &quot;people2&quot;, id = 2)</span><br><span class="line">    private void people2() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @YouzanCard(name = &quot;people3&quot;, id = 3)</span><br><span class="line">    private void people3() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>调用:</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Youzan youzan = <span class="keyword">new</span> Youzan();</span><br><span class="line">        ParseUtil.parse(youzan);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (object != <span class="keyword">null</span> &amp;&amp; !isSystemCalss(object.getClass().getName())) &#123;</span><br><span class="line">            Method[] methods = object.getClass().getDeclaredMethods();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; methods.length; i++) &#123;</span><br><span class="line">                Method method = methods[i];</span><br><span class="line">                System.out.println(method.getName());</span><br><span class="line">                <span class="keyword">if</span> (methods[i].isAnnotationPresent(YouzanCard.class)) &#123;</span><br><span class="line">                    String name = method.getAnnotation(YouzanCard.class).name();</span><br><span class="line">                    <span class="keyword">int</span> id = method.getAnnotation(YouzanCard.class).id();</span><br><span class="line">                    System.out.println(<span class="string">"name = "</span> + name + <span class="string">", id = "</span> + id</span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>打印日志:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">people1</span><br><span class="line">name = people1, id = <span class="number">1</span></span><br><span class="line">people2</span><br><span class="line">name = people2, id = <span class="number">2</span></span><br><span class="line">people3</span><br><span class="line">name = people3, id = <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p>常用的API:</p>
-<ul>
-<li><p>boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)<em>判断调用方是否被annotationClass注解修饰。</em></p>
-</li>
-<li><p>Annotation[] getAnnotations()<em>得到调用方的注解集合。</em></p>
-</li>
-<li><p><t extends="" annotation=""> T getAnnotation(Class<t> annotationClass)<em>得到调用方的被修饰的注解信息，应为一个调用方可以被多个注解修饰。</em></t></t></p>
-</li>
-</ul>
-<h5 id="知名项目自定义注解集锦："><a href="#知名项目自定义注解集锦：" class="headerlink" title="知名项目自定义注解集锦："></a>知名项目自定义注解集锦：</h5><h6 id="ButterKnife-编译时"><a href="#ButterKnife-编译时" class="headerlink" title="ButterKnife(编译时)"></a>ButterKnife(编译时)</h6><ul>
-<li>注解类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(CLASS) <span class="meta">@Target</span>(FIELD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> BindView &#123;</span><br><span class="line">  <span class="comment">/** View ID to which the field will be bound. */</span></span><br><span class="line">  <span class="meta">@IdRes</span> <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注解解析器(ButterKnifeProcessor)</li>
-</ul>
-<p>init</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment env)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.init(env);</span><br><span class="line"></span><br><span class="line">    elementUtils = env.getElementUtils();</span><br><span class="line">    typeUtils = env.getTypeUtils();</span><br><span class="line">    filer = env.getFiler();</span><br><span class="line">    trees = Trees.instance(processingEnv);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>getSupportedAnnotationTypes</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Set&lt;String&gt; types = <span class="keyword">new</span> LinkedHashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Class&lt;? extends Annotation&gt; annotation : getSupportedAnnotations()) &#123;</span><br><span class="line">      types.add(annotation.getCanonicalName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> types;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Set&lt;Class&lt;? extends Annotation&gt;&gt; getSupportedAnnotations() &#123;</span><br><span class="line">    Set&lt;Class&lt;? extends Annotation&gt;&gt; annotations = <span class="keyword">new</span> LinkedHashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    annotations.add(BindArray.class);</span><br><span class="line">    annotations.add(BindBitmap.class);</span><br><span class="line">    annotations.add(BindBool.class);</span><br><span class="line">    annotations.add(BindColor.class);</span><br><span class="line">    annotations.add(BindDimen.class);</span><br><span class="line">    annotations.add(BindDrawable.class);</span><br><span class="line">    annotations.add(BindInt.class);</span><br><span class="line">    annotations.add(BindString.class);</span><br><span class="line">    annotations.add(BindView.class);</span><br><span class="line">    annotations.add(BindViews.class);</span><br><span class="line">    annotations.addAll(LISTENERS);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> annotations;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>getSupportedSourceVersion</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> SourceVersion <span class="title">getSupportedSourceVersion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SourceVersion.latestSupported();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>process</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; elements, RoundEnvironment env)</span> </span>&#123;</span><br><span class="line">   Map&lt;TypeElement, BindingClass&gt; targetClassMap = findAndParseTargets(env);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span> (Map.Entry&lt;TypeElement, BindingClass&gt; entry : targetClassMap.entrySet()) &#123;</span><br><span class="line">     TypeElement typeElement = entry.getKey();</span><br><span class="line">     BindingClass bindingClass = entry.getValue();</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span> (JavaFile javaFile : bindingClass.brewJava()) &#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">         javaFile.writeTo(filer);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">         error(typeElement, <span class="string">"Unable to write view binder for type %s: %s"</span>, typeElement,</span><br><span class="line">             e.getMessage());</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>当它发现一个类中含有任何一个注解时，ButterKnifeProcessor会通过<a href="https://github.com/square/javapoet" target="_blank" rel="external">javapoet</a>生成.java文件，名字类似<classname>$$ViewBinder，这个新生成的类实现了ViewBinder<t>接口</t></classname></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Collection&lt;JavaFile&gt; <span class="title">brewJava</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    TypeSpec.Builder result = TypeSpec.classBuilder(binderClassName)</span><br><span class="line">            .addModifiers(PUBLIC, FINAL)</span><br><span class="line">            .addSuperinterface(ParameterizedTypeName.get(VIEW_BINDER, targetTypeName));</span><br><span class="line"></span><br><span class="line">    result.addMethod(createBindMethod(targetTypeName));</span><br><span class="line"></span><br><span class="line">    List&lt;JavaFile&gt; files = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (isGeneratingUnbinder()) &#123;</span><br><span class="line">      files.add(JavaFile.builder(unbinderClassName.packageName(), createUnbinderClass())</span><br><span class="line">              .addFileComment(<span class="string">"Generated code from Butter Knife. Do not modify!"</span>)</span><br><span class="line">              .build()</span><br><span class="line">      );</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isFinal) &#123;</span><br><span class="line">      result.addMethod(createBindToTargetMethod());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    files.add(JavaFile.builder(binderClassName.packageName(), result.build())</span><br><span class="line">            .addFileComment(<span class="string">"Generated code from Butter Knife. Do not modify!"</span>)</span><br><span class="line">            .build());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> files;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h6 id="AndroidEventBus-运行时"><a href="#AndroidEventBus-运行时" class="headerlink" title="AndroidEventBus(运行时)"></a>AndroidEventBus(运行时)</h6><ul>
-<li>注解类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Subscriber &#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 事件的tag,类似于BroadcastReceiver中的Action,事件的标识符</span><br><span class="line">     * </span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function">String <span class="title">tag</span><span class="params">()</span> <span class="keyword">default</span> EventType.DEFAULT_TAG</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 事件执行的线程,默认为主线程</span><br><span class="line">     * </span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function">ThreadMode <span class="title">mode</span><span class="params">()</span> <span class="keyword">default</span> ThreadMode.MAIN</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>解析注解</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findSubcribeMethods</span><span class="params">(Object subscriber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mSubcriberMap == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"the mSubcriberMap is null. "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Class&lt;?&gt; clazz = subscriber.getClass();</span><br><span class="line">        <span class="comment">// 查找类中符合要求的注册方法,直到Object类</span></span><br><span class="line">        <span class="keyword">while</span> (clazz != <span class="keyword">null</span> &amp;&amp; !isSystemCalss(clazz.getName())) &#123;</span><br><span class="line">            <span class="keyword">final</span> Method[] allMethods = clazz.getDeclaredMethods();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; allMethods.length; i++) &#123;</span><br><span class="line">                Method method = allMethods[i];</span><br><span class="line">                <span class="comment">// 根据注解来解析函数</span></span><br><span class="line">                Subscriber annotation = method.getAnnotation(Subscriber.class);</span><br><span class="line">                <span class="keyword">if</span> (annotation != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// 获取方法参数</span></span><br><span class="line">                    Class&lt;?&gt;[] paramsTypeClass = method.getParameterTypes();</span><br><span class="line">                    <span class="comment">// 订阅函数只支持一个参数</span></span><br><span class="line">                    <span class="keyword">if</span> (paramsTypeClass != <span class="keyword">null</span> &amp;&amp; paramsTypeClass.length == <span class="number">1</span>) &#123;</span><br><span class="line">                        Class&lt;?&gt; paramType = convertType(paramsTypeClass[<span class="number">0</span>]);</span><br><span class="line">                        EventType eventType = <span class="keyword">new</span> EventType(paramType, annotation.tag());</span><br><span class="line">                        TargetMethod subscribeMethod = <span class="keyword">new</span> TargetMethod(method, eventType,</span><br><span class="line">                                annotation.mode());</span><br><span class="line">                        subscibe(eventType, subscribeMethod, subscriber);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="comment">// end for</span></span><br><span class="line">              <span class="comment">// 获取父类,以继续查找父类中符合要求的方法</span></span><br><span class="line">            clazz = clazz.getSuperclass();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>反射调用上层</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleEvent</span><span class="params">(Subscription subscription, Object event)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (subscription == <span class="keyword">null</span></span><br><span class="line">               || subscription.subscriber.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">// 执行</span></span><br><span class="line">           subscription.targetMethod.invoke(subscription.subscriber.get(), event);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IllegalArgumentException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -696,7 +613,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
