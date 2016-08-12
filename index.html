@@ -300,7 +300,27 @@
         
           
             <p><em>接触git有段时间了，对rebase的概念始终比较模糊，今年给自己定的目标是多去深挖，多去搞懂原理，来来来，赶紧撸一发，rebase到底是个什么鬼。</em></p>
-<p>……</p>
+<p>在master上面创建一个my_master分支</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b my_master origin/master</span><br></pre></td></tr></table></figure>
+<p>例图：<br><img src="http://chuantu.biz/t5/27/1470971692x3738746535.png" alt=""></p>
+<p>此时my_master本地做了几次commit操作，而你的小伙伴也在master上面提交了几次新的commit记录。</p>
+<p>例图：<br><img src="http://chuantu.biz/t5/27/1470971872x3738746535.png" alt=""></p>
+<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p>你为了保持同步准备拉取最新代码进行merge处理，此时你调用如下明令：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<p>例图：</p>
+<p><img src="http://chuantu.biz/t5/27/1470971906x3738746535.png" alt=""></p>
+<p>此时新增了merge H节点，将两条分支线汇在一起，对于有洁癖的同学们，肯定不想看到这种情况的出现，下面我们看看rebase的神奇之处。</p>
+<h4 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h4><p>切换到my_master分支，进行rebase衍合：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout my_master</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+<p>上面命令会把你的”my_master”分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到”.git/rebase”目录中),然后把”my_master”分支更新 到最新的”master”分支状态，最后把保存的这些补丁应用到”my_master”分支上。</p>
+<p>例图：<br><img src="http://chuantu.biz/t5/27/1470972568x3738746535.png" alt=""></p>
+<p>当’my_master’分支更新之后，它会指向这些新创建的提交(commit),而那些老的提交会被丢弃。 如果运行垃圾收集命令(pruning garbage collection), 这些被丢弃的提交就会删除.</p>
+<p>在rebase的时候可能会出现conflict情况，这个时候rebase会暂停处理， 这个时候你只需解决冲突，然后调用git add命令将冲突保存到index中，此时你不需要调用git commit命令保存代码到local repository中，只需要调用以下命令：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --<span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+<p>这样git会继续引用余下的补丁。</p>
+<p>在任何时候，你可以用–abort参数来终止rebase的操作，并且my_master分支会回到rebase开始前的状态。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
+<p>又学到了新知识！</p>
 
           
         
