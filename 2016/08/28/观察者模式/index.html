@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式,java," />
 
 
 
@@ -84,15 +84,28 @@
 
 
 
-<meta name="description" content="生活在于折腾！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CoffeeTao的技术生活">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态上发生变化时，会通知所有观察者对象，使它们能够自动更新自己。
+观察者对应的角色：
+抽象主题（Subject角色）：
+
+抽象主题角色把所有对观察者对象的引用保存在一个聚集（比如ArrayList对象）里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象，抽象主题角色又叫做抽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="http://yoursite.com/2016/08/28/观察者模式/index.html">
 <meta property="og:site_name" content="CoffeeTao的技术生活">
-<meta property="og:description" content="生活在于折腾！">
+<meta property="og:description" content="观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态上发生变化时，会通知所有观察者对象，使它们能够自动更新自己。
+观察者对应的角色：
+抽象主题（Subject角色）：
+
+抽象主题角色把所有对观察者对象的引用保存在一个聚集（比如ArrayList对象）里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象，抽象主题角色又叫做抽">
+<meta property="og:updated_time" content="2016-08-28T12:46:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CoffeeTao的技术生活">
-<meta name="twitter:description" content="生活在于折腾！">
+<meta name="twitter:title" content="观察者模式">
+<meta name="twitter:description" content="观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态上发生变化时，会通知所有观察者对象，使它们能够自动更新自己。
+观察者对应的角色：
+抽象主题（Subject角色）：
+
+抽象主题角色把所有对观察者对象的引用保存在一个聚集（比如ArrayList对象）里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象，抽象主题角色又叫做抽">
 
 
 
@@ -113,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/28/观察者模式/"/>
 
-  <title> CoffeeTao的技术生活 </title>
+  <title> 观察者模式 | CoffeeTao的技术生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +236,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -247,10 +258,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/08/28/观察者模式/" itemprop="url">
-                  观察者模式
-                </a>
+                观察者模式
               
             
           </h1>
@@ -297,9 +305,7 @@
       
 
       
-        
-          
-            <p><strong>观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态上发生变化时，会通知所有观察者对象，使它们能够自动更新自己。</strong></p>
+        <p><strong>观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态上发生变化时，会通知所有观察者对象，使它们能够自动更新自己。</strong></p>
 <h4 id="观察者对应的角色："><a href="#观察者对应的角色：" class="headerlink" title="观察者对应的角色："></a>观察者对应的角色：</h4><ul>
 <li>抽象主题（Subject角色）：</li>
 </ul>
@@ -335,263 +341,60 @@
 <p>要实现拉模式只需要返回Observable对象即可:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Subject subject)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/12/git-rebase衍合是个什么鬼/" itemprop="url">
-                  git rebase衍合是个什么鬼
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T10:19:41+08:00" content="2016-08-12">
-              2016-08-12
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/12/git-rebase衍合是个什么鬼/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/git-rebase衍合是个什么鬼/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/java/" rel="tag">#java</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><em>接触git有段时间了，对rebase的概念始终比较模糊，今年给自己定的目标是多去深挖，多去搞懂原理，来来来，赶紧撸一发，rebase到底是个什么鬼。</em></p>
-<p>在master上面创建一个my_master分支</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b my_master origin/master</span><br></pre></td></tr></table></figure>
-<p>例图：<br><img src="http://chuantu.biz/t5/27/1470973945x3738746535.png" alt=""></p>
-<p>此时my_master本地做了几次commit操作，而你的小伙伴也在master上面提交了几次新的commit记录。</p>
-<p>例图：<br><img src="http://chuantu.biz/t5/27/1470974015x3738746535.png" alt=""></p>
-<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p>你为了保持同步准备拉取最新代码进行merge处理，此时你调用如下命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-<p>例图：</p>
-<p><img src="http://chuantu.biz/t5/27/1470974158x3738746535.png" alt=""></p>
-<p>此时新增了merge H节点，将两条分支线汇在一起，对于有洁癖的同学们，肯定不想看到这种情况的出现，下面我们看看rebase的神奇之处。</p>
-<h4 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h4><p>切换到my_master分支，进行rebase衍合：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout my_master</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
-<p>上面命令会把你的”my_master”分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到”.git/rebase”目录中),然后把”my_master”分支更新 到最新的”master”分支状态，最后把保存的这些补丁应用到”my_master”分支上。</p>
-<p>例图：<br><img src="http://chuantu.biz/t5/27/1470974219x3738746535.png" alt=""></p>
-<p>当’my_master’分支更新之后，它会指向这些新创建的提交(commit),而那些老的提交会被丢弃。 如果运行垃圾收集命令(pruning garbage collection), 这些被丢弃的提交就会删除。</p>
-<p>在rebase的时候可能会出现conflict情况，这个时候rebase会暂停处理， 这个时候你只需解决冲突，然后调用git add命令将冲突保存到index中，此时你不需要调用git commit命令保存代码到local repository中，只需要调用以下命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --<span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
-<p>这样git会继续引用余下的补丁。</p>
-<p>在任何时候，你可以用–abort参数来终止rebase的操作，并且my_master分支会回到rebase开始前的状态。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
-<p>又学到了新知识！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/12/git-rebase衍合是个什么鬼/" rel="next" title="git rebase衍合是个什么鬼">
+                <i class="fa fa-chevron-left"></i> git rebase衍合是个什么鬼
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/08/11/git-data-transport-commands/" itemprop="url">
-                  git data transport commands
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-11T13:06:33+08:00" content="2016-08-11">
-              2016-08-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/11/git-data-transport-commands/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/11/git-data-transport-commands/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><img src="http://i.stack.imgur.com/XwVzT.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -599,6 +402,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/28/观察者模式/"
+           data-title="观察者模式" data-url="http://yoursite.com/2016/08/28/观察者模式/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -618,8 +429,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://upload.cccnews.com.cn/2014/0313/1394690263626.jpg"
@@ -682,6 +502,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#观察者对应的角色："><span class="nav-number">1.</span> <span class="nav-text">观察者对应的角色：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Subject"><span class="nav-number">2.</span> <span class="nav-text">Subject:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcreteSubject"><span class="nav-number">3.</span> <span class="nav-text">ConcreteSubject</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Observer"><span class="nav-number">4.</span> <span class="nav-text">Observer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcreteObserver"><span class="nav-number">5.</span> <span class="nav-text">ConcreteObserver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client"><span class="nav-number">6.</span> <span class="nav-text">Client</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观察者模式"><span class="nav-number">7.</span> <span class="nav-text">观察者模式</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -778,6 +609,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

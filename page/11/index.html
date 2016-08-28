@@ -248,6 +248,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/" itemprop="url">
+                  Android CountDownTimer 使用时遇到的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-29T16:10:02+08:00" content="2016-04-29">
+              2016-04-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/29/Android-CountDownTimer-使用时遇到的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/Android-CountDownTimer-使用时遇到的坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="CountDownTimer遇到的坑"><a href="#CountDownTimer遇到的坑" class="headerlink" title="CountDownTimer遇到的坑"></a>CountDownTimer遇到的坑</h3><p><strong> 先来看一段触发CountDownTimer的代码 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mDefaultButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                CountDownTimer countDownTimer = <span class="keyword">new</span> CountDownTimer(<span class="number">4000</span>, <span class="number">1</span> * <span class="number">1000</span>) &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, millisUntilFinished + <span class="string">""</span>);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        Log.i(<span class="string">"test"</span>, <span class="string">"isFinish!"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>触发按钮就会触发CountDownTimer计时器，这里我们来分析下CountDownTimer两个参数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> millisInFuture The number of millis in the future from the call</span><br><span class="line">     *   to &#123;<span class="doctag">@link</span> #start()&#125; until the countdown is done and &#123;<span class="doctag">@link</span> #onFinish()&#125;</span><br><span class="line">     *   is called.</span><br><span class="line">     * <span class="doctag">@param</span> countDownInterval The interval along the way to receive</span><br><span class="line">     *   &#123;<span class="doctag">@link</span> #onTick(long)&#125; callbacks.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CountDownTimer</span><span class="params">(<span class="keyword">long</span> millisInFuture, <span class="keyword">long</span> countDownInterval)</span> </span>&#123;</span><br><span class="line">        mMillisInFuture = millisInFuture;</span><br><span class="line">        mCountdownInterval = countDownInterval;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.millisInFuture 计时器从开始计时到结束计时的周长<br>2.countDownInterval 计时器计时的间隔时间</p>
+<p><strong> 我们来分析下CountDownTimer的实现原理: </strong><br>start</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Start the countdown.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> CountDownTimer <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mCancelled = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (mMillisInFuture &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        onFinish();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mStopTimeInFuture = SystemClock.elapsedRealtime() + mMillisInFuture;</span><br><span class="line">    mHandler.sendMessage(mHandler.obtainMessage(MSG));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过start()启动计时器，通过代码可以看出通过mHandler进行一些核心操作，进入到mHandler看看到底干了些什么；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// handles counting down</span></span><br><span class="line">    <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">synchronized</span> (CountDownTimerTest.<span class="keyword">this</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mCancelled) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">long</span> millisLeft = mStopTimeInFuture - SystemClock.elapsedRealtime();</span><br><span class="line">                Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft = "</span> + millisLeft);</span><br><span class="line">                <span class="keyword">if</span> (millisLeft &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    onFinish();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (millisLeft &lt; mCountdownInterval) &#123;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"millisLeft &lt; mCountdownInterval!"</span>);</span><br><span class="line">                    <span class="comment">// no tick, just delay until done</span></span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), millisLeft);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">long</span> lastTickStart = SystemClock.elapsedRealtime();</span><br><span class="line">                    onTick(millisLeft);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// take into account user's onTick taking time to execute</span></span><br><span class="line">                    <span class="keyword">long</span> delay = lastTickStart + mCountdownInterval - SystemClock.elapsedRealtime();</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// special case: user's onTick took more than interval to</span></span><br><span class="line">                    <span class="comment">// complete, skip to next interval</span></span><br><span class="line">                    <span class="keyword">while</span> (delay &lt; <span class="number">0</span>) delay += mCountdownInterval;</span><br><span class="line">                    Log.i(<span class="string">"test"</span>, <span class="string">"delay = "</span> + delay);</span><br><span class="line">                    sendMessageDelayed(obtainMessage(MSG), delay);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>通过代码可以看出实现还是蛮简单的，通过计算delay时间，触发sendMessageDelayed(message, delay)轮训发送消息达到计时的效果。</p>
+<p>这里面反复用到SystemClock.elapsedRealtime()计算时间，这里说明下与其他获取时间的区别：<br> -System.currentTimeMillis()  系统时间，也就是日期时间，可以被系统设置修改，然后值就会发生跳变。<br> -uptimeMillis 自开机后，经过的时间，不包括深度睡眠的时间<br> -elapsedRealtime自开机后，经过的时间，包括深度睡眠的时间</p>
+<p><strong> 这里我来说下我遇到的坑 </strong><br>这里我重写了CountDownTimer类在handler的代码里打印了下Log, 当我构造CountDownTime时传入的参数分别为： 4000， 1000</p>
+<p>那期望的结果是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4000</span></span><br><span class="line"><span class="number">3000</span></span><br><span class="line"><span class="number">2000</span></span><br><span class="line"><span class="number">1000</span></span><br><span class="line">finish</span><br></pre></td></tr></table></figure></p>
+<p><strong> 实际的打印结果是： </strong></p>
+<p>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: 3999<br>04-29 16:24:10.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: 2998<br>04-29 16:24:11.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: 1998<br>04-29 16:24:12.788 2255-2255/com.youzan.zanshowadandroid I/test: delay = 999<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = 997<br>04-29 16:24:13.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:24:14.788 2255-2255/com.youzan.zanshowadandroid I/test: isFinish!</p>
+<p>从上面的日志里面分析，当onTick返回的时间是1998毫秒时， 整个计时器紧接着就delay了1998毫秒， 然后就直接onFinish了， 计算次数减少一次，且最后一次计数间隔大于一毫秒小于两毫秒。</p>
+<p>回到上面场景，我们来分析下到底是什么原因导致的：<br>当第22行onTick(millisLeft)返回，且millisLeft == 1998毫秒， 继续往下执行，执行到最后一行sendMessageDelayed(obtainMessage(MSG), delay)位置，此时delay为999毫秒， 然后休眠999毫秒之后，重新进入到handleMessage方法，此时13行计算后millisLeft == 997， 进入到16行判断里，millisLeft &lt; mCountdownInterval条件成立， 继续休眠997毫秒， 继续进入handleMessage方法，此时millisLeft == -1毫秒，第14行millisLeft &lt;= 0条件成立，直接调用onFinish()方法，计时结束。</p>
+<p>通过分析说明，CountDownTimer计时并不能完全准确，特别是计算一些时间周长短且需求精度高的动作， 所以平时开发时用这个类一定要注意。</p>
+<p>万一要用这个类计算建议millisInFuture参数最好不要写成整数，如上例子如果millisInFuture参数写成4012毫秒。<br>执行打印Log如下：</p>
+<p>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: 4012<br>04-29 16:38:52.098 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:53.098 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: 3012<br>04-29 16:38:53.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: 2011<br>04-29 16:38:54.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: 1010<br>04-29 16:38:55.108 16424-16424/com.youzan.zanshowadandroid I/test: delay = 1000<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = 7<br>04-29 16:38:56.108 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft &lt; mCountdownInterval!<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: millisLeft = -1<br>04-29 16:38:56.118 16424-16424/com.youzan.zanshowadandroid I/test: isFinish!</p>
+<p><strong> 结果符合预期. </strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/27/git-reset-相关知识/" itemprop="url">
                   git reset 相关知识
                 </a>
@@ -445,113 +564,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/26/Android常用的Builder模式/" itemprop="url">
-                  Android常用的Builder模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-26T22:38:53+08:00" content="2016-04-26">
-              2016-04-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/26/Android常用的Builder模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/Android常用的Builder模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="模式的定义"><a href="#模式的定义" class="headerlink" title="模式的定义"></a>模式的定义</h4><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
-<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>1、相同的方法，不同的执行顺序，产生不同的事件结果时；<br>2、多个部件或零件，都可以装配到一个对象中，但是产生的运行结果又不相同时；<br>3、产品类非常复杂，或者产品类中的调用顺序不同产生了不同的效能，这个时候使用建造者模式非常合适</p>
-<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><p><strong> 这里模拟一个Http请求封装 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/26.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; params;</span><br><span class="line">    <span class="keyword">private</span> String requestType;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setUrl</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setParams</span><span class="params">(Map&lt;String, String&gt; params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.params = params;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setRequestType</span><span class="params">(String requestType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.requestType = requestType;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (url == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"url can not be null!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        RequestManager.getInstance().doHttpRequest(url, params, requestType);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/26.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RequestManager mRequestManager;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestManager <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mRequestManager == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mRequestManager = <span class="keyword">new</span> RequestManager();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mRequestManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doHttpRequest</span><span class="params">(String url, Map&lt;String, String&gt; params, String requestType)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO 做相应的请求</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>http请求发起</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by hongentao on 16/4/26.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Builder().setUrl(<span class="string">"http://com.baidu.com/xxx"</span>)</span><br><span class="line">                .setParams(<span class="keyword">new</span> HashMap&lt;String, String&gt;()).setRequestType(<span class="string">"get"</span>).request();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong> 通过上面代码Builder模式的好处一目了然。 </strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -597,7 +609,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
