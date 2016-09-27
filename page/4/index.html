@@ -248,6 +248,194 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/08/Android-Support-Annotations简介/" itemprop="url">
+                  Android Support Annotations简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T20:47:20+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/08/Android-Support-Annotations简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/Android-Support-Annotations简介/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://tools.android.com/tech-docs/support-annotations" target="_blank" rel="external">原文地址</a></p>
+<p>作为19.1版本的Android support library, 有一个新的注解包里面包含一定数量有用的元数据注解功能，你可以用它装饰你自己的代码，他能帮助你抓住一些bug, support library本身也被这些注解装饰，所以作为一个使用support library的用户来说，Android Studio将基于这些注解信息检查你的代码和一些潜在的问题，作为22.2版本，增加了13个新功能你也许会用到。</p>
+<h3 id="Library搞起来"><a href="#Library搞起来" class="headerlink" title="Library搞起来"></a>Library搞起来</h3><p>注解功能并没有被默认包含在里面，他们封装成一个独立的library,（support library现在由一些更小的libraries组成，包括：v4-support, appcompat, gridlayout, mediatouter,等等）</p>
+<p>假如你正在使用appcompat library, 你可以使用注解功能，因为appcompat他自己就依赖于它。</p>
+<p>加入注解功能最简单的方法是打开Project Structure Dialog, 首先选择左边你要选择的module,然后在右边选择Dependencies tab选项，选择底部的+号按钮，然后选择Library Dependencies,此刻你要确认是否在你的sdk中安装Android Support仓库， support annonation library将是下面这个列表中填充连接的一个子项，你可以点击它（它将是这个列表中第一个元素）</p>
+<p><img src="http://tools.android.com/_/rsrc/1411150773675/tech-docs/support-annotations/add-dependency.png" alt=""></p>
+<p>点击OK完成这个编辑工作，这个将在你的build.gradle中被同步编辑，当然这个也可以手动添加：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'com.android.support:support-annotations:22.2.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于Android application和Android library这两个类型的module(你应用了com.android.application或者com.android.library插件的)来说，你需要做的已经都做好了。如果你想只在Java module使用这些注解，那么你就明确的包含SDK仓库了，因为support libraries不能从jcenter获得(Android Gradle插件会自动的包含这些依赖，但是Java插件却没有。)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">   jcenter()</span><br><span class="line">   maven &#123; url &apos;&lt;your-SDK-path&gt;/extras/android/m2repository&apos; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="执行注解"><a href="#执行注解" class="headerlink" title="执行注解"></a>执行注解</h4><p>当你用Android Studio和IntelliJ的时候，如果给标注了这些注解的方法传递错误类型的参数，那么IDE就会实时标记出来。</p>
+<p>从Gradle插件1.3.0-beta1版本开始，并且安装了Android M Preview平台工具的情况下，通过命令行调用gradle的lint任务就可以执行这些检查。如果你想把标记问题作为持续集成的一部分，那么这种方式是非常有用的。说明：这并不包含nullness注解。本文中所介绍的其他注解都可以通过lint执行检查。</p>
+<h4 id="Nullness-Annotations"><a href="#Nullness-Annotations" class="headerlink" title="Nullness Annotations"></a>Nullness Annotations</h4><p>@Nullable注解能用于修饰入参以及返回值可以为空。相似的，@NonNull注解能修饰入参与返回值不能为空。<br>如果一个本地变量的值为null(比如因为过早的代码检查它是否为null)，而你又把它作为参数传递给了一个方法，并且该方法的参数又被@NonNull标注，那么IDE会提醒你，你有一个潜在的崩溃问题。</p>
+<p>v4 support library包中FragmentActivity片段代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.support.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> android.support.annotation.Nullable;</span><br><span class="line">...</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Add support for inflating the &amp;lt;fragment&gt; tag.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(String name, @NonNull Context context, @NonNull AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+<p>(如果你执行Analyze &gt; Infer Nullity，或者你在键入时把@NonNull替换成了@NotNull，那么IDE可能会提供附加的IntelliJ注解。参考底部的“IntelliJ Annotations”段落了解更多)</p>
+<p>注意@NonNull和@Nullable并不是对立的：还有第三种可能：未指定。当你没有指定@NonNull或者@Nullable的时候，工具就不能确定，所以这个API也就不起作用。</p>
+<p>最初，我们在findViewById方法上标注@Nullable，从技术上说，这是正确的：findViewById可以返回null。但是如果你知道你在做什么的时候(如果你传递给他一个存在的id)他是不会返回null的。当我们使用@Nullable注解它的时候，就意味着源代码编辑器中会有大量的代码出现高亮警告。如果你已经意识到每次使用该方法都应该明确的进行null检查，那么就只能用@Nullable标注返回值。有个经验规则：看现有的“好的代码”(比如审查产品代码)，看看这些API是怎么被使用的。如果该代码为null检查结果，你应该为方法注解@Nullable。</p>
+<h4 id="Resource-Type-Annotations"><a href="#Resource-Type-Annotations" class="headerlink" title="Resource Type Annotations"></a>Resource Type Annotations</h4><p>Android的资源值通常都是使用整型传递。这意味着获取一个drawable使用的参数，也能很容易的传递给一个获取string的方法；因为他们都是int类型，编译器很难区分。</p>
+<p>resource类型的注解可以在这种情况下提供类型检查，通过@StringRes注解一个int参数，只有R.string属性才能被IDE认可。<br><img src="http://tools.android.com/_/rsrc/1433281850285/tech-docs/support-annotations/image00.png" alt=""><br>ActionBar中的例子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import android.support.annotation.StringRes;</span><br><span class="line">...</span><br><span class="line">    public abstract void setTitle(@StringRes int resId);</span><br></pre></td></tr></table></figure></p>
+<p>有很多不同的resource类型的注解，其中一些注解类型如下：@StringRes，@DrawableRes，@ColorRes，@InterpolatorRES等等，假如你有一个资源类型为“foo”, 这个相应的资源类型注解为FooRes.</p>
+<p>另外有一个特殊的资源注解类型为@AnyRes, 这种注解类型适用于不可知的特殊注解类型，但是它必须是一个资源类型，例如在Framework中，有一些被用在Resources#getResourceName(@AnyRes int resId)上，使用这个方法的时候，你能调用getResources().getResourceName(R.drawable.icon)和getResources().getResourceName(R.string.app_name),但是不能getResources().getResourceName(42)这样调用。</p>
+<p>要说明的是，假如你的api支持多种资源类型，你能设置多个类型注解在你的参数中。</p>
+<h4 id="IntDef-StringDef-Typedef"><a href="#IntDef-StringDef-Typedef" class="headerlink" title="IntDef/StringDef: Typedef"></a>IntDef/StringDef: Typedef</h4><p>整形除了表示Resource资源文件外， 也可以用作枚举类型使用。</p>
+<p>@IntDef注解能够让很基础的创建一个typedef,通过创建注解你能设计出你所期盼的多种整形常量，然后你可以用这些包装你的API.<br>这是一个appcompat support library中的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.support.annotation.IntDef;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ActionBar</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="meta">@IntDef</span>(&#123;NAVIGATION_MODE_STANDARD, NAVIGATION_MODE_LIST, NAVIGATION_MODE_TABS&#125;)</span><br><span class="line">    <span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> NavigationMode &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NAVIGATION_MODE_STANDARD = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NAVIGATION_MODE_LIST = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NAVIGATION_MODE_TABS = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NavigationMode</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getNavigationMode</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setNavigationMode</span><span class="params">(@NavigationMode <span class="keyword">int</span> mode)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>上面非注解的部分是现有的API。我们创建了一个新的注解(NavigationMode)并且用@IntDef标注它,通过@IntDef我们为返回值或者参数指定了可用的常量值。我们还添加了@Retention(RetentionPolicy.SOURCE)告诉编译器这个新定义的注解不需要被记录在生成的.class文件中(译者注：源代码级别的，生成class文件的时候这个注解就被编译器自动去掉了)。</p>
+<p>通过这种注解方式，如果你传递的参数或者返回值不在指定的常量值中时，IDE将会标记出这种情况。<br><img src="http://tools.android.com/_/rsrc/1433281970170/tech-docs/support-annotations/image06.png" alt=""></p>
+<p>你也可以指定一个整型是一个标记性质的类型；这样客户端代码就通过|，&amp;等操作符同时传递多个常量了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IntDef</span>(flag=<span class="keyword">true</span>, value=&#123;</span><br><span class="line">           DISPLAY_USE_LOGO,</span><br><span class="line">           DISPLAY_SHOW_HOME,</span><br><span class="line">           DISPLAY_HOME_AS_UP,</span><br><span class="line">           DISPLAY_SHOW_TITLE,</span><br><span class="line">           DISPLAY_SHOW_CUSTOM</span><br><span class="line">   &#125;)</span><br><span class="line">   <span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</span><br><span class="line">   <span class="keyword">public</span> <span class="meta">@interface</span> DisplayOptions &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，还有一个字符串版本的注解，就是@StringDef，它和@IntDef的作用基本上是一样，所不同的是它是针对字符串的。该注解一般不常用，但是有的时候非常有用，比如在限定向Activity#getSystemService方法传递的参数范围的时候。</p>
+<h4 id="Threading-Annotations-UiThread-WorkerThread："><a href="#Threading-Annotations-UiThread-WorkerThread：" class="headerlink" title="Threading Annotations: @UiThread, @WorkerThread："></a>Threading Annotations: @UiThread, @WorkerThread：</h4><p>支持Support library 22.2以及以下版本<br>假如你的方法被调用在一些特殊类型的线程中，你能通过以下四种注解进行标记：</p>
+<ul>
+<li>@UiThread</li>
+<li>@MainThread</li>
+<li>@WorkerThread</li>
+<li>@BinderThread</li>
+</ul>
+<p>假如类中所有的方法都是在同一个线程中执行，那么你可以注解类本身，例如android.view.View，他就被直接注解为@UiThread.</p>
+<p>一个好的例子被用在AsyncTask中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WorkerThread</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> Result <span class="title">doInBackground</span><span class="params">(Params... params)</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@MainThread</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(Progress... values)</span> </span>&#123;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>如果你在重写的doInBackground方法里尝试调用onProgressUpdate方法或者View的任何方法，IDE工具就会马上把它标记为一个错误：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//tools.android.com/_/rsrc/1433281805907/tech-docs/support-annotations/image04.png</span></span><br></pre></td></tr></table></figure>
+<p>@UiThread还是@MainThread?</p>
+<p>在进程里只有一个主线程。这个就是@MainThread。同时这个线程也是一个@UiThread。比如activity的主要窗口就运行在这个线程上。然而它也有能力为应用创建其他线程。这很少见，一般具备这样功能的都是系统进程。通常是把和生命周期有关的用@MainThread标注，和View层级结构相关的用@UiThread标注。但是由于@MainThread本质上是一个@UiThread，而大部分情况下@UiThread又是一个@MainThread，所以工具(lint ,Android Studio,等等)可以把他们互换，所以你能在一个可以调用@MainThread方法的地方也能调用@UiThread方法，反之亦然。</p>
+<h4 id="RGB-Color-Integers"><a href="#RGB-Color-Integers" class="headerlink" title="RGB Color Integers"></a>RGB Color Integers</h4><p>当你的API期盼一个color资源你能@ColorRes注解进行设置，但是有些场景并不适应，因为你并不是期望一个颜色资源Id, 而是需要一个真实RGB或者ARGB颜色值。</p>
+<p>正在下面的例子中，你能用@ColorInt注解进行标记。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void setTextColor(@ColorInt int color)</span><br></pre></td></tr></table></figure>
+<p>有了这个，当你传递一个颜色id并不是颜色值的时候，lint就会标记这段错误的代码：</p>
+<p><img src="http://tools.android.com/_/rsrc/1433282020892/tech-docs/support-annotations/image05.png" alt=""></p>
+<h4 id="Size-IntRange-FloatRange"><a href="#Size-IntRange-FloatRange" class="headerlink" title="@Size, @IntRange, @FloatRange"></a>@Size, @IntRange, @FloatRange</h4><p>假如你的参数类型是一个float或者一个double类型，并且有一个限制的变动范围，你能用@FloatRange注解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void setAlpha(@FloatRange(from=0.0, to=1.0) float alpha) &#123;</span><br></pre></td></tr></table></figure>
+<p>假如有人使用该注解的时候传递一个0-255的值，比如这样调用setAlpha(128)，工具将抓到如下的错误：<br><img src="http://tools.android.com/_/rsrc/1433282066730/tech-docs/support-annotations/image08.png" alt=""><br>你也可以指定是否包括起始值</p>
+<p>同样的假如你的参数类型为int或者long,你能用@IntRange注解来约束这个特殊值的范围。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void setAlpha(@IntRange(from=0,to=255) int alpha) &#123; … &#125;</span><br></pre></td></tr></table></figure></p>
+<p>把这些注解应用到参数上是非常有用的，因为用户很有可能会提供错误范围的参数，比如上面的setAlpha例子，有的API是采用0-255的方式，而有的是采用0-1的float值的方式。</p>
+<p>最后，对于arrays，collections，Strings，你也能通过@Size进行约束。</p>
+<p>下面是一些例子：</p>
+<ul>
+<li>collection不能为空：@Size(min=1)</li>
+<li>String字段的长度最长不能超过23个字符:@Size(max=23)</li>
+<li>array的长度只能是2个元素：@Size(2)</li>
+<li>array的长度是2的倍数：例如图形API中获取位置的x/y坐标数组@Size(muliple=2)</li>
+</ul>
+<p><img src="http://tools.android.com/_/rsrc/1433282097234/tech-docs/support-annotations/image03.png" alt=""></p>
+<h4 id="RequiresPermission"><a href="#RequiresPermission" class="headerlink" title="@RequiresPermission"></a>@RequiresPermission</h4><p>假如你设计的方法被调用需要特定的权限，你能用@RequiresPermission注解来封装，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequiresPermission</span>(Manifest.permission.SET_WALLPAPER)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setWallpaper</span><span class="params">(Bitmap bitmap)</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<p>假如你需要权限集合中一个权限，你能用anyof属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@RequiresPermission(anyOf = &#123;</span><br><span class="line">    Manifest.permission.ACCESS_COARSE_LOCATION,</span><br><span class="line">    Manifest.permission.ACCESS_FINE_LOCATION&#125;)</span><br><span class="line">public abstract Location getLastKnownLocation(String provider);</span><br></pre></td></tr></table></figure>
+<p>假如你需要多个权限，请用allOf属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@RequiresPermission(allOf = &#123;</span><br><span class="line">    Manifest.permission.READ_HISTORY_BOOKMARKS, </span><br><span class="line">    Manifest.permission.WRITE_HISTORY_BOOKMARKS&#125;)</span><br><span class="line">public static final void updateVisitedHistory(ContentResolver cr, String url, boolean real) &#123;</span><br></pre></td></tr></table></figure>
+<p>对于intents的权限，可以直接在定义的intent常量字符串字段上标注权限需求(他们通常都已经被@SdkConstant注解标注过了):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@RequiresPermission(android.Manifest.permission.BLUETOOTH)</span><br><span class="line">public static final String ACTION_REQUEST_DISCOVERABLE =</span><br><span class="line">            &quot;android.bluetooth.adapter.action.REQUEST_DISCOVERABLE&quot;;</span><br></pre></td></tr></table></figure>
+<p>对于content providers的权限，你可能需要单独的标注读和写的权限访问，所以可以用@Read或者@Write标注每一个权限需求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@RequiresPermission.Read(@RequiresPermission(READ_HISTORY_BOOKMARKS))</span><br><span class="line">@RequiresPermission.Write(@RequiresPermission(WRITE_HISTORY_BOOKMARKS))</span><br><span class="line">public static final Uri BOOKMARKS_URI = Uri.parse(&quot;content://browser/bookmarks&quot;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://tools.android.com/_/rsrc/1433282206228/tech-docs/support-annotations/image01.png" alt=""></p>
+<h4 id="CallSuper"><a href="#CallSuper" class="headerlink" title="@CallSuper"></a>@CallSuper</h4><p>假如你的API允许调用者重写其中一个方法,但是你需要自己的方法被调用者调用，你能用@CallSuper注解来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@CallSuper</span><br><span class="line">protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br></pre></td></tr></table></figure>
+<p>用了这个后，如果重写方法没有调用父方法时，工具将给出错误提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://tools.android.com/_/rsrc/1433282184065/tech-docs/support-annotations/image02.png</span><br></pre></td></tr></table></figure></p>
+<p>(Android Studio 1.3 Preview 1的lint检查有个关于这个注解的bug，这个bug就是即使是对的重写也会报错，这个bug已经在Preview 2版本修改，可以通过canary channel更新到Preview 2版本。)</p>
+<h4 id="CheckResult"><a href="#CheckResult" class="headerlink" title="@CheckResult"></a>@CheckResult</h4><p>假如你的方法返回一个值并且希望调用者运用返回的值，你可以用@CheckResult注解来实现。</p>
+<p>当然你也不需要为每个非空返回的方法都进行标注，这个注解的主要目的是帮助那些容易被混淆，难以被理解的API的使用者。<br>例如，很多开发者对String,trim()都不是很明白，大家都认为调用这个方法将导致String发生改变并且将移除空白的字符，如果这个方法被@CheckResult标注，工具就会对那些没有使用trim()返回结果的调用者发出警告。</p>
+<p>Android中，Context#checkPermission这个方法已经被@CheckResult标注了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@CheckResult(suggest=&quot;#enforcePermission(String,int,int,String)&quot;)</span><br><span class="line">    public abstract int checkPermission(@NonNull String permission, int pid, int uid);</span><br></pre></td></tr></table></figure></p>
+<p>这是非常重要的，因为有些使用context.checkPermission的开发者认为他们已经执行了一个权限,但其实这个方法仅仅只做了检查并且反馈一个是否成功的值而已。如果开发者使用了这个方法，但是又不用其返回值，那么这个开发者真正想调用的可能是这个Context#enforcePermission方法，而不是checkPermission。</p>
+<p><img src="http://www.flysnow.org/uploads/2015/08/image07.png" alt=""></p>
+<h4 id="VisibleForTesting"><a href="#VisibleForTesting" class="headerlink" title="@VisibleForTesting"></a>@VisibleForTesting</h4><p>你可以把这个注解标注到类、方法或者字段上，以便你在测试的时候可以使用他们。</p>
+<h4 id="Keep"><a href="#Keep" class="headerlink" title="@Keep"></a>@Keep</h4><p>我们也增加了@Keep注解在support annotations中，这个可以避免被修饰的类或者方法被混淆。</p>
+<h4 id="在你自己的库中使用注解"><a href="#在你自己的库中使用注解" class="headerlink" title="在你自己的库中使用注解"></a>在你自己的库中使用注解</h4><p>如果在你自己的库中使用了这些注解，并且是通过Gradle构建生成aar包，那么在构建的时候Android Gradle插件会提取注解信息放在AAR文件中供引用你的库的客户端使用。在AAR文件中你可以看到一个名为annotations.zip的文件，这个文件记录的就是注解信息，使用的是IntelliJ的扩展注解XML格式。这是必须的，因为.class文件不能包含足够的要处理以上@IntDef注解的信息；注意我们只需记录该常量的一个引用，而不是它的值。当且仅当你的工程依赖注解库的时候，Android Gradle插件会把提取注解的任务作为构建的一部分执行它。(说明：只有源保留注解被放置在.aar文件中；class级别的会被放在classes.jar里。)</p>
+<h4 id="IntelliJ注解"><a href="#IntelliJ注解" class="headerlink" title="IntelliJ注解"></a>IntelliJ注解</h4><p>IntelliJ，Android Studio就是基于它开发的，IntelliJ有一套它自己的注解；IntDef分析其实重用的是MagicConstant分析的代码，IntelliJ null分析其实用的是一组配置好的null注解。如果你执行Analyze &gt; Infer Nullity…，它会试图找出所有的null约束并添加他们。这个检查有时会插入IntelliJ注解。你可以通过搜索,替换为Android注解库的注解，或者你也可以直接用IntelliJ注解。在build.gradle里或者通过Project Structure对话框的Dependencies面板都可以添加如下依赖：</p>
+<p>dependencies {<br>    compile ‘com.intellij:annotations:12.0’<br>}</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/08/汽车知识6/" itemprop="url">
                   汽车知识6
                 </a>
@@ -440,123 +628,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/06/汽车知识4/" itemprop="url">
-                  汽车知识4
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-06T13:49:40+08:00" content="2016-07-06">
-              2016-07-06
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/06/汽车知识4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/06/汽车知识4/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="独立悬挂于非独立悬挂的区别"><a href="#独立悬挂于非独立悬挂的区别" class="headerlink" title="独立悬挂于非独立悬挂的区别"></a>独立悬挂于非独立悬挂的区别</h4><p>转载知乎一篇解答：</p>
-<ul>
-<li><p>独立悬挂包括：多连杆式、双叉臂式、双横臂式、麦弗逊式、烛式等</p>
-</li>
-<li><p>非独立悬挂包括：平行片弹簧式、整体桥式等</p>
-</li>
-<li><p>半独立悬挂：拖拽臂式（也就是扭力梁式）</p>
-</li>
-</ul>
-<p>图例：<br><img src="http://chuantu.biz/t5/16/1467869436x1035372866.png" alt=""></p>
-<p>虽然良好的调教可以弥补悬挂形式的不足，但是天生的结构原因，独立悬架系统是每一侧的车轮都是单独地通过弹性悬挂系统悬架在车架或车身下面的。质量轻，减少了车身受到的冲击，并提高了车轮的地面附着力；可用刚度小的较软弹簧，改善汽车的舒适性；可以使发动机位置降低，汽车重心也得到降低，从而提高汽车的行驶稳定性；左右车轮单独跳动，互不相干，能减小车身的倾斜和震动。</p>
-<p>不过，独立悬挂系统存在着结构复杂、成本高、维修不便的缺点，同时因为结构复杂，会侵占一些车内乘坐空间。下图的福克斯与卡罗拉就是分别采用了独立悬挂与非独立悬挂，尾箱里悬挂所占空间，明显看出福克斯的多连杆悬挂侵占的空间更多（两侧鼓包处）。</p>
-<p><img src="http://chuantu.biz/t5/16/1467869458x1035372866.png" alt=""></p>
-<p>而非独立悬挂系统，由于成本原因，则是更多家用车，廉价车的首选。其结构简单实用、占用空间最小、制造成本低，维修方便。除此之外左右轮在弹跳时会相互牵连，轮胎角度的变化量小使轮胎的磨耗小。</p>
-<p>非独立悬挂的缺点就是独立悬挂的优点啦！.左右轮在弹跳时，会相互牵连，而降低乘坐的舒适性及操控的安定性，抗侧倾能力也较弱。</p>
-<p>但是在一些底盘功力深厚的厂家，比如标致雪铁龙公司，他们包括运动型车的大多车型在良好的调教下，舒适性、运动型一点也不差，对于中国这类路况复杂的地区，也未尝不是一个良好的选择。</p>
-<p>所以综合来看，两种悬挂各有优势。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -602,7 +673,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -612,7 +683,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
