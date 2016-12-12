@@ -248,128 +248,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/12/git-rebase衍合是个什么鬼/" itemprop="url">
-                  git rebase衍合是个什么鬼
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T10:19:41+08:00" content="2016-08-12">
-              2016-08-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/12/git-rebase衍合是个什么鬼/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/git-rebase衍合是个什么鬼/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>接触git有段时间了，对rebase的概念始终比较模糊，今年给自己定的目标是多去深挖，多去搞懂原理，来来来，赶紧撸一发，rebase到底是个什么鬼。</em></p>
-<p>在master上面创建一个my_master分支</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b my_master origin/master</span><br></pre></td></tr></table></figure>
-<p>例图：<br><img src="http://chuantu.biz/t5/27/1470973945x3738746535.png" alt=""></p>
-<p>此时my_master本地做了几次commit操作，而你的小伙伴也在master上面提交了几次新的commit记录。</p>
-<p>例图：<br><img src="http://chuantu.biz/t5/27/1470974015x3738746535.png" alt=""></p>
-<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p>你为了保持同步准备拉取最新代码进行merge处理，此时你调用如下命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-<p>例图：</p>
-<p><img src="http://chuantu.biz/t5/27/1470974158x3738746535.png" alt=""></p>
-<p>此时新增了merge H节点，将两条分支线汇在一起，对于有洁癖的同学们，肯定不想看到这种情况的出现，下面我们看看rebase的神奇之处。</p>
-<h4 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h4><p>切换到my_master分支，进行rebase衍合：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout my_master</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
-<p>上面命令会把你的”my_master”分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到”.git/rebase”目录中),然后把”my_master”分支更新 到最新的”master”分支状态，最后把保存的这些补丁应用到”my_master”分支上。</p>
-<p>例图：<br><img src="http://chuantu.biz/t5/27/1470974219x3738746535.png" alt=""></p>
-<p>当’my_master’分支更新之后，它会指向这些新创建的提交(commit),而那些老的提交会被丢弃。 如果运行垃圾收集命令(pruning garbage collection), 这些被丢弃的提交就会删除。</p>
-<p>在rebase的时候可能会出现conflict情况，这个时候rebase会暂停处理， 这个时候你只需解决冲突，然后调用git add命令将冲突保存到index中，此时你不需要调用git commit命令保存代码到local repository中，只需要调用以下命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --<span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
-<p>这样git会继续引用余下的补丁。</p>
-<p>在任何时候，你可以用–abort参数来终止rebase的操作，并且my_master分支会回到rebase开始前的状态。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
-<p>又学到了新知识！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/11/git-data-transport-commands/" itemprop="url">
                   git data transport commands
                 </a>
@@ -572,6 +450,116 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/10/git-fast-forward与no-fast-forward的区别/" itemprop="url">
+                  git fast-forward与no fast-forward的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-10T16:49:14+08:00" content="2016-08-10">
+              2016-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/10/git-fast-forward与no-fast-forward的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/10/git-fast-forward与no-fast-forward的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Fast-Forward"><a href="#Fast-Forward" class="headerlink" title="Fast-Forward"></a>Fast-Forward</h3><p>例如：一直在develop分支上开发，并在其上进行一系列提交，完成时merge master分支，此时，master merge develop分支之后并未产生任何新的commit。此时的合并就叫fast-forward。</p>
+<h4 id="Fast-Forward具体定义"><a href="#Fast-Forward具体定义" class="headerlink" title="Fast-Forward具体定义"></a>Fast-Forward具体定义</h4><p>当前 master 分支所指向的提交是你当前提交（有关develop的提交）的直接上游，所以 Git 只是简单的将指针向前移动。 换句话说，当你试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候，只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。</p>
+<h4 id="使用fast-forward"><a href="#使用fast-forward" class="headerlink" title="使用fast forward"></a>使用fast forward</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git merge develop</span><br><span class="line">Updating <span class="number">9</span>b47828..<span class="number">8f</span>eec56</span><br><span class="line">Fast-forward</span><br><span class="line"> app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java | <span class="number">1</span> +</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)</span><br></pre></td></tr></table></figure>
+<p>上面可以看出这是一次fast-forward式的合并，且合并后的视图为扁平状，看不出develop的任何提交记录。</p>
+<h4 id="禁用fast-forward"><a href="#禁用fast-forward" class="headerlink" title="禁用fast forward"></a>禁用fast forward</h4><p>-—no-ff (no fast foward)，使得每一次的合并都创建一个新的commit记录。即使这个commit只是fast-foward，用来避免丢失信息。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git commit -am <span class="string">"modify MainActivity"</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git merge --no-ff develop</span><br><span class="line">Merge made by the <span class="string">'recursive'</span> strategy.</span><br><span class="line"> app/src/main/java/com/kakasure/splashdemo/ui/MainActivity.java | <span class="number">1</span> -</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> deletion(-)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hongentaodeMacBook-Pro:SplashView hongentao$ git log</span><br><span class="line">commit <span class="number">134</span>b3b762de48e7852ebf607a9e2d39191e2aa2d</span><br><span class="line">Merge: <span class="number">8f</span>eec56 <span class="number">3</span>a259fc</span><br><span class="line">Author: hongentao &lt;hongentao<span class="meta">@youzan</span>.com&gt;</span><br><span class="line">Date:   Wed Aug <span class="number">10</span> <span class="number">17</span>:<span class="number">05</span>:<span class="number">20</span> <span class="number">2016</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    Merge branch <span class="string">'develop'</span></span><br><span class="line"></span><br><span class="line">commit <span class="number">3</span>a259fcf2786290e6faeaaa63def9a919766c0df</span><br><span class="line">Author: hongentao &lt;hongentao<span class="meta">@youzan</span>.com&gt;</span><br><span class="line">Date:   Wed Aug <span class="number">10</span> <span class="number">17</span>:<span class="number">05</span>:<span class="number">07</span> <span class="number">2016</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    modify MainActivity</span><br></pre></td></tr></table></figure>
+<p>可以看出，使用–no-ff后，会多生成一个commit 记录，并强制保留develop分支的开发记录（而fast-forward的话则是直接合并，看不出之前Branch的任何记录）。这对于以后代码进行分析特别有用。</p>
+<p><em>应用场景</em></p>
+<p>-–no-ff，其作用是：要求git merge即使在fast forward条件下也要产生一个新的merge commit。此处，要求采用–no-ff的方式进行分支合并，其目的在于，希望保持原有“develop branches”整个提交链的完整性。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -617,7 +605,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

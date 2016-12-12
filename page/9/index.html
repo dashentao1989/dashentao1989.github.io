@@ -248,138 +248,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/23/Proxy代理模式/" itemprop="url">
-                  Proxy代理模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-23T14:12:19+08:00" content="2016-06-23">
-              2016-06-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/23/Proxy代理模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/Proxy代理模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="代理模式："><a href="#代理模式：" class="headerlink" title="代理模式："></a>代理模式：</h4><ul>
-<li><p>职责清晰<br>真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。</p>
-</li>
-<li><p>代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了中介的作用和保护了目标对象的作用。</p>
-</li>
-<li><p>高扩展性</p>
-</li>
-</ul>
-<h4 id="场景："><a href="#场景：" class="headerlink" title="场景："></a>场景：</h4><p>有这样一个场景：你要去买个杯子，一般情况下你不可能直接去工厂去买，而是去超市或者批发市场购买，这个时候超市，批发市场就充当了第三角色也就是代理商。</p>
-<h4 id="角色定义："><a href="#角色定义：" class="headerlink" title="角色定义："></a>角色定义：</h4><ul>
-<li><p>Subject: 抽象角色。声明真实对象和代理对象的共同接口。</p>
-</li>
-<li><p>Proxy: 代理角色。代理对象与真实对象实现相同的接口，所以它能够在任何时刻都能够代理真实对象。代理角色内部包含有对真实对象的引用，所以她可以操作真实对象，同时也可以附加其他的操作，相当于对真实对象进行封装。</p>
-</li>
-</ul>
-<ul>
-<li>RealSubject: 真实角色。它代表着真实对象，是我们最终要引用的对象</li>
-</ul>
-<p><strong>Subject</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CupListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buyCup</span><span class="params">(<span class="keyword">double</span> money)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Proxy</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CupProxy</span> <span class="keyword">implements</span> <span class="title">CupListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> CupListener cupListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CupProxy</span><span class="params">(CupListener cupListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.cupListener = cupListener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buyCup</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"扣掉两块代理费"</span>);</span><br><span class="line">        cupListener.buyCup(money - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>RealSubject</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">You</span> <span class="keyword">implements</span> <span class="title">CupListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buyCup</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"买到东西!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>调用方式</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CupTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        You you = <span class="keyword">new</span> You();</span><br><span class="line">        CupProxy cupProxy = <span class="keyword">new</span> CupProxy(you);</span><br><span class="line">        cupProxy.buyCup(<span class="number">13</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>运行结果</em></p>
-<p>扣掉两块代理费<br><br>买到东西！</p>
-<h4 id="代理模式的优缺点："><a href="#代理模式的优缺点：" class="headerlink" title="代理模式的优缺点："></a>代理模式的优缺点：</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1、 代理模式能够协调调用者和被调用者，在一定程度上降低了系统的耦合度。</p>
-<p>2、 代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了的作用和保护了目标对象的。</p>
-<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>1、由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢。</p>
-<p>2、 实现代理模式需要额外的工作，有些代理模式的实现非常复杂。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/06/21/git-tag标签/" itemprop="url">
                   git tag标签
                 </a>
@@ -616,6 +484,127 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/15/proguard-那些事/" itemprop="url">
+                  proguard 那些事
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T15:08:06+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/15/proguard-那些事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/proguard-那些事/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><h4 id="dump-txt"><a href="#dump-txt" class="headerlink" title="dump.txt"></a>dump.txt</h4><ul>
+<li>描述apk所有文件的内部结构<br><em>Describes the internal structure of all the class files in the APK.</em></li>
+</ul>
+<h4 id="mapping-txt"><a href="#mapping-txt" class="headerlink" title="mapping.txt"></a>mapping.txt</h4><ul>
+<li>提供了一个源文件与混淆文件的对照<br><em>Provides a translation between the original and obfuscated class, method, and field names.</em></li>
+</ul>
+<h4 id="seeds-txt"><a href="#seeds-txt" class="headerlink" title="seeds.txt"></a>seeds.txt</h4><ul>
+<li>列出没有被混淆的类和成员变量<br><em>Lists the classes and members that were not obfuscated.</em></li>
+</ul>
+<h4 id="usage-txt"><a href="#usage-txt" class="headerlink" title="usage.txt"></a>usage.txt</h4><ul>
+<li>列出apk中被移除的代码<em> 
+</em>Lists the code that was removed from the APK.*</li>
+</ul>
+<ul>
+<li>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></li>
+</ul>
+<ul>
+<li>要值得注意的是在每次通过proguard打release包时mapping.txt文件都会被重写， 所以你必须仔细的保存一份复制在打一个新的而release包时，通过在打release包时保留一个mapping.txt文件，这样的话当用户在使用老版本app时提出提出混淆的错误信息是你能根据mapping.txt对照关系进行相应准确的deug.</li>
+</ul>
+<p><em>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</em></p>
+<p><em>more coming soon!</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -661,7 +650,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
