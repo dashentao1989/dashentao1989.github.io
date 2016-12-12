@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/19/Vim使用心得/" itemprop="url">
-                  Vim使用心得
+                <a class="post-title-link" href="/2016/06/15/proguard-那些事/" itemprop="url">
+                  proguard 那些事
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-19T11:17:12+08:00" content="2016-05-19">
-              2016-05-19
+            <time itemprop="dateCreated" datetime="2016-06-15T15:08:06+08:00" content="2016-06-15">
+              2016-06-15
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/19/Vim使用心得/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/Vim使用心得/" itemprop="commentsCount"></span>
+                <a href="/2016/06/15/proguard-那些事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/proguard-那些事/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,98 +299,27 @@
       
         
           
-            <h3 id="Better-Stronger-Faster"><a href="#Better-Stronger-Faster" class="headerlink" title="Better.Stronger.Faster"></a>Better.Stronger.Faster</h3><p><strong>为了装逼，努力学会VIM</strong></p>
+            <h3 id="With-each-build-ProGuard-outputs-the-following-files"><a href="#With-each-build-ProGuard-outputs-the-following-files" class="headerlink" title="With each build, ProGuard outputs the following files:"></a>With each build, ProGuard outputs the following files:</h3><h4 id="dump-txt"><a href="#dump-txt" class="headerlink" title="dump.txt"></a>dump.txt</h4><ul>
+<li>描述apk所有文件的内部结构<br><em>Describes the internal structure of all the class files in the APK.</em></li>
+</ul>
+<h4 id="mapping-txt"><a href="#mapping-txt" class="headerlink" title="mapping.txt"></a>mapping.txt</h4><ul>
+<li>提供了一个源文件与混淆文件的对照<br><em>Provides a translation between the original and obfuscated class, method, and field names.</em></li>
+</ul>
+<h4 id="seeds-txt"><a href="#seeds-txt" class="headerlink" title="seeds.txt"></a>seeds.txt</h4><ul>
+<li>列出没有被混淆的类和成员变量<br><em>Lists the classes and members that were not obfuscated.</em></li>
+</ul>
+<h4 id="usage-txt"><a href="#usage-txt" class="headerlink" title="usage.txt"></a>usage.txt</h4><ul>
+<li>列出apk中被移除的代码<em> 
+</em>Lists the code that was removed from the APK.*</li>
+</ul>
 <ul>
-<li>i 编辑</li>
-<li>:wq ZZ :x 保存退出</li>
-<li>:q! 退出不保存</li>
-<li>yy 复制</li>
-<li>p 粘贴</li>
-<li>:q 退出不保存</li>
-<li>v 可视化</li>
-<li>hjkl 光标左上右下移动</li>
-<li>0 光标移动到该行开头</li>
-<li>$ 光标移动到该行末尾</li>
-<li>^ 光标移动到该行第一个不是blank的地方</li>
-<li>g_ 光标移动到该行最后一个不是blank的地方</li>
-<li>w 移动到下个单词的开头 </li>
-<li>e 移动到下个单词的结尾</li>
-<li>:N 移动到第N行</li>
-<li>:set number 显示行号</li>
-<li>:set nonumber 不显示行号</li>
-<li>. 执行上次操作</li>
-<li>.N 执行上次操作N次</li>
-<li>dd 删除改行</li>
-<li>Ndd 删除N行</li>
-<li>o 该行前面插入新行</li>
-<li>O 该行后面插入新行</li>
-<li>N<command> 重复执行command命令N次</li>
-<li>% 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
-<li>*和#:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词</li>
-<li>v 可视化</li>
-<li>fa 到下个为a的字符处，你也可以fs到下一个为s的字符</li>
-<li>3fa 在当前行查找第三个出现的a</li>
-<li>F和T 和f和t一样，只不过是相反的方向</li>
-<li>/pattern 寻找pattern匹配项</li>
-<li>gU 变大写</li>
-<li>gu 变小写</li>
-<li>y2/foo 拷贝2个“foo”之间的字符串</li>
-<li><p><ctrl-p>或是ctrl-n 自动提示功能</ctrl-p></p>
-</li>
-<li><p>ctrl+V 块操作</p>
-</li>
-<li><p>ctrl+n, ctrl+p 自动提示功能， 但是智能提示当前编辑文档中有的单词，比较蛋疼</p>
-</li>
-<li><p>ctrl+b 向后翻页</p>
-</li>
-<li>ctrl+f 向前翻页</li>
-<li>H 移动到当前页面的首行</li>
-<li>M 移动到当前页面的中部</li>
-<li>L 移动到当前页面的地步</li>
-<li>N% 移动到该文档的百分之多少的位置， 例如50% 移动到当前页面的50%的地方</li>
-<li>q/ </li>
-<li>q? 打开查找历史（Vim 会打开一个新的窗口）</li>
-<li>/pattern 查找pattern匹配的内容， 上下箭头翻动查找历史记录</li>
+<li>这些文件保存在<module-name>/build/outputs/mapping/release下面<br><em>These files are saved at <module-name>/build/outputs/mapping/release/.</module-name></em></module-name></li>
 </ul>
-<h4 id="ctrl-G详解"><a href="#ctrl-G详解" class="headerlink" title="ctrl+G详解"></a>ctrl+G详解</h4><ul>
-<li>ctrl+G 查找当前光标所在的位置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;haha.txt&quot; line 19 of 278 --6%-- col 3</span><br></pre></td></tr></table></figure>
-<p>总共278行， 该光标处于19行， 总文件内容的6%的地方， 第三列的位置</p>
-<h4 id="块操作"><a href="#块操作" class="headerlink" title="块操作"></a>块操作</h4><ul>
-<li>对所选择的代码段的行首统一加上某个字符：<br><em>例如对一段代码加注释</em></li>
-</ul>
-<ol>
-<li>ctrl+v 开始块操作</li>
-<li>h,j 上下进行移动操作</li>
-<li>0 光标移动到改行的行首</li>
-<li>I 开始编辑</li>
-<li>插入字段//</li>
-<li>esc 编辑生效</li>
-</ol>
-<h5 id="运行效果："><a href="#运行效果：" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//111</span><br><span class="line">//222</span><br><span class="line">//333333</span><br><span class="line">//5555555</span><br></pre></td></tr></table></figure>
 <ul>
-<li>对所选的代码段的行尾统一加上某个字符：</li>
+<li>要值得注意的是在每次通过proguard打release包时mapping.txt文件都会被重写， 所以你必须仔细的保存一份复制在打一个新的而release包时，通过在打release包时保留一个mapping.txt文件，这样的话当用户在使用老版本app时提出提出混淆的错误信息是你能根据mapping.txt对照关系进行相应准确的deug.</li>
 </ul>
-<ol>
-<li>ctrl_v 开启块操作</li>
-<li>h,j 上下进行移动操作</li>
-<li>$ 光标移动到改行的末尾</li>
-<li>A 开始编辑</li>
-<li>插入字段//</li>
-<li>esc编辑生效</li>
-</ol>
-<h5 id="运行效果：-1"><a href="#运行效果：-1" class="headerlink" title="运行效果："></a>运行效果：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">111//</span><br><span class="line">22222//</span><br><span class="line">3333333//</span><br><span class="line">11//</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除选中的单词</li>
-</ul>
-<ol>
-<li>w 光标移动到定位单词的首字母</li>
-<li>v 开始可视化</li>
-<li>e 光标移动到定位单词的尾字母</li>
-<li>d 删除该单词</li>
-</ol>
-<p>// TODO 后续持续更新</p>
+<p><em>Be aware that the mapping.txt file is overwritten every time you create a release build with ProGuard, so you must carefully save a copy each time you publish a new release. By retaining a copy of the mapping.txt file for each release build, you’ll be able to debug a problem if a user submits an obfuscated stack trace from an older version of your app.</em></p>
+<p><em>more coming soon!</em></p>
 
           
         
@@ -440,8 +369,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/17/assembleRelease-SimException异常/" itemprop="url">
-                  assembleRelease SimException异常
+                <a class="post-title-link" href="/2016/06/12/打开超级adbd引起的Logcat异常/" itemprop="url">
+                  打开超级adbd引起的Logcat异常
                 </a>
               
             
@@ -454,8 +383,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-17T15:47:25+08:00" content="2016-05-17">
-              2016-05-17
+            <time itemprop="dateCreated" datetime="2016-06-12T16:54:37+08:00" content="2016-06-12">
+              2016-06-12
             </time>
           </span>
 
@@ -465,8 +394,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/17/assembleRelease-SimException异常/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/17/assembleRelease-SimException异常/" itemprop="commentsCount"></span>
+                <a href="/2016/06/12/打开超级adbd引起的Logcat异常/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/12/打开超级adbd引起的Logcat异常/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -491,7 +420,10 @@
       
         
           
-            <p><a href="http://blog.csdn.net/xude1985/article/details/50776045" target="_blank" rel="external">Gradle之dependencies</a></p>
+            <p>打开logcat莫名其妙报如下这个异常：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Communication error: </span><br><span class="line">                                                        java.io.IOException: Connection refused</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connectLocal(Native Method)</span><br><span class="line">                                                            at android.net.LocalSocketImpl.connect(LocalSocketImpl.java:<span class="number">290</span>)</span><br><span class="line">                                                            at android.net.LocalSocket.connect(LocalSocket.java:<span class="number">130</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.listenToSocket(UsbDebuggingManager.java:<span class="number">84</span>)</span><br><span class="line">                                                            at com.android.server.usb.UsbDebuggingManager.run(UsbDebuggingManager.java:<span class="number">120</span>)</span><br><span class="line">                                                            at java.lang.Thread.run(Thread.java:<span class="number">841</span>)</span><br></pre></td></tr></table></figure></p>
+<p>app编译与运行都正常，比较纳闷，最后发现了原因：<br>超级adbd导致的：<br>只要关掉启用adbd(必须启用USB调试才能使用) 选项就可以使用了。</p>
+<p>那么超级adbd是个什么东西呢？</p>
+<p><em>对于已经root的了手机，输入adb root出现adbd cannot run as root in production builds，装了这个之后完美解决，不用老是adb shell然后su一下。</em></p>
 
           
         
@@ -541,8 +473,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/12/gitignore注意事项/" itemprop="url">
-                  gitignore注意事项
+                <a class="post-title-link" href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" itemprop="url">
+                  CEO COO CTO CFO ...到底是什么鬼
                 </a>
               
             
@@ -555,8 +487,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T16:15:15+08:00" content="2016-05-12">
-              2016-05-12
+            <time itemprop="dateCreated" datetime="2016-05-24T10:51:02+08:00" content="2016-05-24">
+              2016-05-24
             </time>
           </span>
 
@@ -566,8 +498,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/12/gitignore注意事项/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/gitignore注意事项/" itemprop="commentsCount"></span>
+                <a href="/2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/CEO-COO-CTO-CFO-到底是什么鬼/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -592,9 +524,7 @@
       
         
           
-            <p> <strong> 在Android中Git提交想忽略某些不想提交的文件，可以在项目目录中新建一个.gitignore，如果没有这个文件，可以手动建一个。里面匹配一下你不想提交的文件。 </strong></p>
-<p> .gitignore内容如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#built application files</span><br><span class="line">*.apk</span><br><span class="line">*.ap_</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># files for the dex VM</span><br><span class="line">*.dex</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Java class files</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># generated files</span><br><span class="line">bin/</span><br><span class="line">gen/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Local configuration file (sdk path, etc)</span><br><span class="line">local.properties</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Windows thumbnail db</span><br><span class="line">Thumbs.db</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># OSX files</span><br><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Eclipse project files</span><br><span class="line">.classpath</span><br><span class="line">.project</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Android Studio</span><br><span class="line">.idea</span><br><span class="line">#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.</span><br><span class="line">.gradle</span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Signing files</span><br><span class="line">.signing/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># User-specific configurations</span><br><span class="line">.idea/libraries/</span><br><span class="line">.idea/workspace.xml</span><br><span class="line">.idea/tasks.xml</span><br><span class="line">.idea/.name</span><br><span class="line">.idea/compiler.xml</span><br><span class="line">.idea/copyright/profiles_settings.xml</span><br><span class="line">.idea/encodings.xml</span><br><span class="line">.idea/misc.xml</span><br><span class="line">.idea/modules.xml</span><br><span class="line">.idea/scopes/scope_settings.xml</span><br><span class="line">.idea/vcs.xml</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure></p>
-<p>可能.gitignore不生效:<br><strong> 原因如下： </strong><br>因为.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .  </span><br><span class="line">git add .  </span><br><span class="line">git commit -m <span class="string">'update .gitignore'</span></span><br></pre></td></tr></table></figure></p>
+            <p>首席品牌官 【CBO】  chief brand officer<br>首席文化官 【CCO】  chief Cultural officer<br>开发总监   【CDO】  chief Development officer<br>首席执行官 【CEO】  chief Executive officer<br>首席财务官 【CFO】  chief finance officer<br>人事总监   【CHO】  chief Human resource officer<br>首席信息官 【CIO】  chief information officer<br>首席知识官 【CKO】  chief knowledge officer<br>首席市场官 【CMO】  chief Maketing officer<br>首席谈判官 【CNO】  chief Negotiation officer<br>首席营运官 【COO】  chief Operation officer<br>公关总监   【CPO】  chief Public relation officer<br>质量总监   【CQO】  chief Quality officer<br>销售总监   【CSO】  chief Sales officer<br>首席技术官 【CTO】  chief Technology officer<br>评估总监   【CVO】  chief Valuation officer</p>
 
           
         
@@ -627,7 +557,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -668,7 +598,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -678,7 +608,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
